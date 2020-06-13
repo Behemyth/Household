@@ -15,6 +15,6 @@ jobs:
     - name: docker-swarm-deploy
       uses: sagebind/docker-swarm-deploy-action@v2
       with:
-        remote_host:  ssh://${{ secrets.MINI-BEHEMYTH_SSH_SERVER }}
+        remote_host:  ssh://"$BEHEMYTH_SSH_SERVER"
         ssh_private_key: ${{ secrets.MINI_BEHEMYTH_SSH_PRIVATE_KEY }}
         args: stack deploy --compose-file docker-compose.yaml services
