@@ -1,0 +1,20 @@
+name: Docker Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Deploy the stack to a docker swarm
+    - name: docker-swarm-deploy
+      uses: sagebind/docker-swarm-deploy-action@v2
+      with:
+        remote_host:  ssh://${{ secrets.MINI-BEHEMYTH_SSH_SERVER }}
+        ssh_private_key: ${{ secrets.MINI_BEHEMYTH_SSH_PRIVATE_KEY }}
+        args: stack deploy --compose-file docker-compose.yaml services
