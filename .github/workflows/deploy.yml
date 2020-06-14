@@ -18,7 +18,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "docker-compose.yaml"
+        source: "docker-compose.yml"
         target: "stack"
         
     - name: Execute
@@ -27,4 +27,4 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        script: docker stack deploy --compose-file stack/docker-compose.yaml services
+        script: docker stack deploy --compose-file stack/docker-compose.yml services
