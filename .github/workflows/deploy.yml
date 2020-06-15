@@ -27,4 +27,4 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        script: docker stack deploy --compose-file stack/docker-compose.yml --resolve-image never services 
+        script: docker stack deploy --compose-file stack/docker-compose.yml services 
