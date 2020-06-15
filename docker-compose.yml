@@ -2,7 +2,7 @@ version: '3'
 
 services:
     reverse:
-        image: lroguet/rpi-nginx-proxy:latest
+        image: jwilder/nginx-proxy:latest
         ports:
         - 80:80
         - 443:443
@@ -19,3 +19,13 @@ services:
             - /mnt/gluster/registry/auth:/auth
         ports:
             - 5000:5000
+
+    artifactory:
+        environment:
+            - VIRTUAL_HOST=artifactory.behemythic.com
+        image: docker.bintray.io/jfrog/artifactory-cpp-ce:latest
+        volumes:
+            - /mnt/gluster/artifactory/var/:/var/opt/jfrog/artifactory
+        ports:
+            - 8081:8081
+            - 8082:8082
