@@ -9,13 +9,13 @@ services:
         volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
 
-    artifactory:
+    docker:
         environment:
-            - VIRTUAL_HOST=artifactory.behemythic.com
-
-        image: docker.bintray.io/jfrog/artifactory-cpp-ce:latest
+            - VIRTUAL_HOST=docker.behemythic.com
+        image: registry:latest
         volumes:
-            - /mnt/gluster/artifactory/var/:/var/opt/jfrog/artifactory
+            - /mnt/gluster/registry/data:/var/lib/registry
+            - /mnt/gluster/registry/certs:/certs
+            - /mnt/gluster/registry/auth:/auth
         ports:
-            - 8081:8081
-            - 8082:8082
+            - 5000:5000
