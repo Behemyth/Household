@@ -9,15 +9,6 @@ services:
         volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
 
-    docker:
-        environment:
-            - VIRTUAL_HOST=docker.behemythic.com
-        image: registry:latest
-        volumes:
-            - docker-data:/var/lib/registry
-        ports:
-            - 5000:5000
-
     artifactory:
         environment:
             - VIRTUAL_HOST=artifactory.behemythic.com
