@@ -14,7 +14,7 @@ services:
             - VIRTUAL_HOST=conan.behemythic.com
         image: conanio/conan_server:latest
         ports:
-            - 80:9300
+            - 9300:9300
 
 volumes:
     docker-data:
