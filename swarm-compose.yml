@@ -9,12 +9,9 @@ services:
         volumes:
         - /var/run/docker.sock:/tmp/docker.sock:ro
 
-    artifactory:
+    conan:
         environment:
             - VIRTUAL_HOST=conan.behemythic.com
         image: conanio/conan_server:latest
         ports:
             - 9300:9300
-
-volumes:
-    docker-data:
