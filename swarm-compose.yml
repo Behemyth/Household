@@ -21,6 +21,7 @@ services:
     artifactory:
         environment:
             - VIRTUAL_HOST=artifactory.behemythic.com
+            - VIRTUAL_PORT=8082
         image: docker.bintray.io/jfrog/artifactory-cpp-ce:latest
         volumes:
             - artifactory_data:/var/opt/jfrog/artifactory
