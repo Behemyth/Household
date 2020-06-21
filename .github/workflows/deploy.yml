@@ -29,4 +29,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script: |
           docker stack deploy --compose-file swarm-compose.yml services
-          docker-compose up -d -f persistent-compose.yml
+          docker-compose -f persistent-compose.yml up -d
