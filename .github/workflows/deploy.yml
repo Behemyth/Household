@@ -18,7 +18,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "stack-compose.yml, persistent-compose.yml"
+        source: "swarm-compose.yml, persistent-compose.yml"
         target: "."
         
     - name: Execute
