@@ -27,6 +27,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        script: \
-        docker stack deploy --compose-file swarm-compose.yml services \
-        docker-compose up -d -f persistent-compose.yml
+        script: |
+          docker stack deploy --compose-file swarm-compose.yml services
+          docker-compose up -d -f persistent-compose.yml
