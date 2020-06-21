@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         source: "./deployment/"
-        target: "~/."
+        target: "."
         
     - name: Execute
       uses: appleboy/ssh-action@v0.1.1
@@ -27,6 +27,8 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
+        strip_components: 
+          1
         script: |
           docker stack deploy --compose-file swarm-compose.yml services
           docker-compose up -d -f persistent-compose.yml
