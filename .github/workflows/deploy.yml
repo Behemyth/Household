@@ -18,7 +18,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "./deployment/"
+        source: "stack-compose.yml, persistent-compose.yml"
         target: "."
         
     - name: Execute
@@ -27,8 +27,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        strip_components: 
-          1
         script: |
           docker stack deploy --compose-file swarm-compose.yml services
           docker-compose up -d -f persistent-compose.yml
