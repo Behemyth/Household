@@ -14,9 +14,7 @@ services:
             - VIRTUAL_HOST=docker.behemythic.com
         image: registry:latest
         volumes:
-            - /mnt/gluster/registry/data:/var/lib/registry
-            - /mnt/gluster/registry/certs:/certs
-            - /mnt/gluster/registry/auth:/auth
+            - docker-data:/var/lib/registry
         ports:
             - 5000:5000
 
@@ -25,7 +23,10 @@ services:
             - VIRTUAL_HOST=artifactory.behemythic.com
         image: docker.bintray.io/jfrog/artifactory-cpp-ce:latest
         volumes:
-            - /mnt/gluster/artifactory/var/:/var/opt/jfrog/artifactory
+            - artifactory_data:/var/opt/jfrog/artifactory
         ports:
             - 8081:8081
-            - 8082:8082
+
+volumes:
+    docker-data:
+    artifactory_data:
