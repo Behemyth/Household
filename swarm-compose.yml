@@ -15,3 +15,21 @@ services:
         image: conanio/conan_server:latest
         ports:
             - 9300:9300
+
+    minecraft:
+        environment:
+            - VIRTUAL_HOST=minecraft.behemythic.com
+            - EULA=TRUE
+            - GAMEMODE=survival
+            - DIFFICULTY=hard
+            - WHITE_LIST 
+        image: itzg/minecraft-bedrock-server:latest
+        volumes:
+            - minecraft-data:/data
+        ports:
+            - 19132:19132/udp
+        stdin_open: true
+        tty: true
+
+volumes:
+    minecraft-data:
