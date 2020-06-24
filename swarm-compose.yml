@@ -1,25 +1,39 @@
 version: '3.8'
 
 services:
-    reverse:
-        image: jwilder/nginx-proxy:latest
+    traefik:
+        image: traefik:latest
+        command:
+            - --entrypoints.web.address=:80
+            - --entrypoints.websecure.address=:443
+            - --providers.docker=true
+            - --api
+            - --certificatesresolvers.le.behemyth.email=asher.norland@gmail.com
+            - --certificatesresolvers.le.behemyth.storage=/behemyth.json
+            - --certificatesresolvers.le.behemyth.tlschallenge=true
         ports:
-        - 80:80
-        - 443:443
+            - 80:80
+            - 443:443
         volumes:
-        - /var/run/docker.sock:/tmp/docker.sock:ro
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+            - ./behemyth.json:/behemyth.json
+        labels:
+            - "traefik.http.routers.traefik.rule=Host(`api.behemythic.com`)"
+            - "traefik.http.routers.traefik.service=api@internal"
+            - "traefik.http.routers.traefik.middlewares=admin"
+            - "traefik.http.routers.traefik.tls.certresolver=le"
+            - "traefik.http.routers.traefik.entrypoints=websecure"
+            - "traefik.http.middlewares.admin.basicauth.users=admin:xxx"
 
     conan:
-        environment:
-            - VIRTUAL_HOST=conan.behemythic.com
         image: conanio/conan_server:latest
-        ports:
-            - 9300:9300
+        labels:
+        - "traefik.http.routers.conan.rule=Host(`conan.behemythic.com`)"
+        - "traefik.http.services.conan.loadbalancer.server.port=9300"
 
     minecraft:
         environment:
             - SERVER_NAME=Behemythical
-            - VIRTUAL_HOST=minecraft.behemythic.com
             - EULA=TRUE
             - GAMEMODE=survival
             - DIFFICULTY=hard
@@ -27,8 +41,9 @@ services:
         image: itzg/minecraft-bedrock-server:latest
         volumes:
             - minecraft-data:/data
-        ports:
-            - 19132:19132/udp
+        labels:
+            - "traefik.http.routers.conan.rule=Host(`minecraft.behemythic.com`)"
+            - "traefik.http.services.conan.loadbalancer.server.port=19132"
         stdin_open: true
         tty: true
 
