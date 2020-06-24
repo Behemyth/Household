@@ -5,25 +5,12 @@ services:
         image: traefik:latest
         command:
             - --entrypoints.web.address=:80
-            - --entrypoints.websecure.address=:443
             - --providers.docker=true
-            - --api
-            - --certificatesresolvers.le.behemyth.email=asher.norland@gmail.com
-            - --certificatesresolvers.le.behemyth.storage=/behemyth.json
-            - --certificatesresolvers.le.behemyth.tlschallenge=true
+            - --api.insecure
         ports:
             - 80:80
-            - 443:443
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
-            - ./behemyth.json:/behemyth.json
-        labels:
-            - "traefik.http.routers.traefik.rule=Host(`api.behemythic.com`)"
-            - "traefik.http.routers.traefik.service=api@internal"
-            - "traefik.http.routers.traefik.middlewares=admin"
-            - "traefik.http.routers.traefik.tls.certresolver=le"
-            - "traefik.http.routers.traefik.entrypoints=websecure"
-            - "traefik.http.middlewares.admin.basicauth.users=admin:xxx"
 
     conan:
         image: conanio/conan_server:latest
