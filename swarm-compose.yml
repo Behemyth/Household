@@ -22,7 +22,7 @@ services:
             - EULA=TRUE
             - GAMEMODE=survival
             - DIFFICULTY=hard
-            - WHITE_LIST=Behemythic
+            - VIEW_DISTANCE=12
         image: itzg/minecraft-bedrock-server:latest
         volumes:
             - minecraft-data:/data
