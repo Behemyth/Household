@@ -22,7 +22,7 @@ services:
             - EULA=TRUE
             - GAMEMODE=survival
             - DIFFICULTY=hard
-            - WHITE_LIST 
+            - WHITE_LIST=Behemythic
         image: itzg/minecraft-bedrock-server:latest
         volumes:
             - minecraft-data:/data
