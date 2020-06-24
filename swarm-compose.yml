@@ -18,6 +18,7 @@ services:
 
     minecraft:
         environment:
+            - SERVER_NAME=Behemythical
             - VIRTUAL_HOST=minecraft.behemythic.com
             - EULA=TRUE
             - GAMEMODE=survival
