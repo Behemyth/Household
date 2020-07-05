@@ -28,13 +28,6 @@ services:
         labels:
         - "traefik.http.routers.conan.rule=Host(`conan.behemythic.com`)"
 
-    router:
-        image: itzg/mc-router
-        ports:
-            - 25565:25565
-        command:
-            - --mapping=minecraft.behemythic.com=minecraft:25565
-
     minecraft:
         environment:
             - SERVER_NAME=Behemythical
@@ -43,8 +36,12 @@ services:
             - DIFFICULTY=hard
             - VIEW_DISTANCE=12
         image: itzg/minecraft-bedrock-server:latest
+        ports:
+            - 19132:19132/udp
         volumes:
             - minecraft-data:/data
+        labels:
+            - "traefik.http.routers.minecraft.rule=Host(`minecraft.behemythic.com`)"
         stdin_open: true
         tty: true
 
