@@ -27,7 +27,11 @@ services:
         image: conanio/conan_server:latest
         labels:
             - "traefik.http.routers.conan.rule=Host(`conan.behemythic.com`)"
-            - "traefik.udp.services.minecraft.loadBalancer.server.port=9300"
+            - "traefik.udp.services.conan.loadBalancer.server.port=9300"
+        deploy:
+            placement:
+                constraints:
+                    - "node.labels.arch==amd64"
 
     minecraft:
         environment:
@@ -48,6 +52,10 @@ services:
 
         stdin_open: true
         tty: true
+        deploy:
+            placement:
+                constraints:
+                    - "node.labels.arch==amd64"
 
 volumes:
     minecraft-data:
