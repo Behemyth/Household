@@ -6,14 +6,12 @@ services:
         command:
             - --entrypoints.web.address=:80
             - --entrypoints.web-secured.address=:443
-            - --entrypoints.minecraft.address=:19132/udp
             - --providers.docker.exposedbydefault=false
             - --providers.docker=true
             - --providers.docker.swarmMode=true
         ports:
             - 80:80
             - 443:443
-            - 19132:19132/udp # UDP ports don't have routing rules
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
         deploy:
@@ -41,15 +39,10 @@ services:
             - DIFFICULTY=hard
             - VIEW_DISTANCE=12
         image: itzg/minecraft-bedrock-server:latest
-        depends_on:
-            - "traefik"
         volumes:
             - minecraft-data:/data
-        labels:
-            - "traefik.udp.routers.minecraft.entrypoints=minecraft"
-            - "traefik.udp.routers.minecraft.service=minecraft"
-            - "traefik.udp.services.minecraft.loadBalancer.server.port=19132"
-
+        ports:
+            - 19132:19132/udp
         stdin_open: true
         tty: true
         deploy:
