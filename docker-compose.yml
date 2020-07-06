@@ -32,21 +32,21 @@ services:
                     - "node.labels.arch==amd64"
 
     minecraft:
-        image: itzg/minecraft--server:latest
+        image: itzg/minecraft-bedrock-server:latest    
         environment:
             - SERVER_NAME=Behemythical
-            - ENABLE_RCON=false
             - EULA=TRUE
             - GAMEMODE=survival
             - DIFFICULTY=hard
-            - VIEW_DISTANCE=12
+            - VIEW_DISTANCE=16
+            - TICK_DISTANCE=8
+            - WHITE_LIST=true
         volumes:
             - minecraft-data:/data
+        ports:
+            - 19132:19132/udp
         stdin_open: true
         tty: true
-        labels:
-            - "traefik.http.routers.minecraft.rule=Host(`minecraft.behemythic.com`)"
-            - "traefik.http.services.minecraft.loadBalancer.server.port=25565"
         deploy:
             placement:
                 constraints:
