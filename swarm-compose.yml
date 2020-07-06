@@ -6,10 +6,11 @@ services:
         command:
             - --entrypoints.web.address=:80
             - --entrypoints.web-secured.address=:443
+            - --entrypoints.minecraft.address=:19132/udp
+            - --providers.docker.exposedbydefault=false
             - --providers.docker=true
             - --providers.docker.swarmMode=true
             - --api.insecure=true
-            - --providers.docker.defaultrule=Host(`{{ index .Labels "com.docker.compose.service" }}.behemythic.com`)
         ports:
             - 80:80
             - 443:443
@@ -24,6 +25,8 @@ services:
         image: conanio/conan_server:latest
         ports:
             - 9300:9300
+        labels:
+        - "traefik.http.routers.conan.rule=Host(`conan.behemythic.com`)"
 
     minecraft:
         environment:
@@ -33,10 +36,12 @@ services:
             - DIFFICULTY=hard
             - VIEW_DISTANCE=12
         image: itzg/minecraft-bedrock-server:latest
-        ports:
-            - 19132:19132/udp
         volumes:
             - minecraft-data:/data
+        labels:
+            - traefik.udp.routers.minecraft.entrypoints: "minecraft"
+            - traefik.udp.services.minecraft.loadBalancer.server.port: "19132"
+
         stdin_open: true
         tty: true
 
