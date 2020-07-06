@@ -27,7 +27,7 @@ services:
         image: conanio/conan_server:latest
         labels:
             - "traefik.http.routers.conan.rule=Host(`conan.behemythic.com`)"
-            - "traefik.udp.services.conan.loadBalancer.server.port=9300"
+            - "traefik.http.services.conan.loadBalancer.server.port=9300"
         deploy:
             placement:
                 constraints:
