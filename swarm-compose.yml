@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     traefik:
-        image: traefik:v2.2.1
+        image: traefik
         command:
             - --entrypoints.web.address=:80
             - --entrypoints.web-secured.address=:443
