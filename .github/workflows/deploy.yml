@@ -18,7 +18,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        source: "swarm-compose.yml"
+        source: "docker-compose.yml"
         target: "."
         
     - name: Execute
@@ -28,4 +28,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          docker stack deploy --prune -c swarm-compose.yml services
+          docker stack deploy --prune services
