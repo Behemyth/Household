@@ -28,4 +28,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          docker stack deploy --prune services
+          docker stack deploy --prune -c docker-compose.yml services
