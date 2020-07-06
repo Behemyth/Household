@@ -28,4 +28,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          docker stack deploy --prune --c swarm-compose.yml services
+          docker stack deploy --prune -c swarm-compose.yml services
