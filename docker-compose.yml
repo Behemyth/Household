@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     traefik:
-        image: traefik
+        image: traefik:latest
         command:
             - --entrypoints.web.address=:80
             - --entrypoints.web-secured.address=:443
@@ -18,6 +18,9 @@ services:
         volumes:
             - /var/run/docker.sock:/tmp/docker.sock:ro
         deploy:
+            placement:
+                constraints:
+                    - "node.labels.arch==amd64"
             labels:
                 - "traefik.enable=true"
 
