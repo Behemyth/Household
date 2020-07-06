@@ -39,8 +39,8 @@ services:
         volumes:
             - minecraft-data:/data
         labels:
-            - traefik.udp.routers.minecraft.entrypoints: "minecraft"
-            - traefik.udp.services.minecraft.loadBalancer.server.port: "19132"
+            - "traefik.udp.routers.minecraft.entrypoints=minecraft"
+            - "traefik.udp.services.minecraft.loadBalancer.server.port=19132"
 
         stdin_open: true
         tty: true
