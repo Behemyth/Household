@@ -31,26 +31,5 @@ services:
                 constraints:
                     - "node.labels.arch==amd64"
 
-    minecraft:
-        image: itzg/minecraft-bedrock-server:latest    
-        environment:
-            - SERVER_NAME=Behemythical
-            - EULA=TRUE
-            - GAMEMODE=survival
-            - DIFFICULTY=hard
-            - VIEW_DISTANCE=16
-            - TICK_DISTANCE=8
-            - WHITE_LIST=true
-        volumes:
-            - minecraft-data:/data
-        ports:
-            - 19132:19132/udp
-        stdin_open: true
-        tty: true
-        deploy:
-            placement:
-                constraints:
-                    - "node.labels.arch==amd64"
-
 volumes:
     minecraft-data:
