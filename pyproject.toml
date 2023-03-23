@@ -2,8 +2,7 @@
 description = "Home server package"
 name = "household"
 
-license-expression = "MIT"
-
+license = "MIT"
 authors = [
   {name = "Asher Norland", email = "asher.norland@gmail.com"},
 ]
@@ -11,10 +10,10 @@ readme = "README.md"
 
 dynamic = ["version"]
 
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 dependencies = [
-  "ansible>=6.5.0",
+  "ansible>=7.3.0",
 ]
 
 [project.license-files]
