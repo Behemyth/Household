@@ -11,13 +11,13 @@ Home server management
 
 ## Development Setup 
 
+Must be run through WSL
+
 Install the python dependencies with the `pdm` tool
 
 ```bash
 pdm install
 ```
-
-
 
 ## Node Setup
 

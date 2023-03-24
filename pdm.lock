@@ -30,6 +30,8 @@ requires_python = ">=3.7.2"
 summary = "An abstract syntax tree for Python with inference support."
 dependencies = [
     "lazy-object-proxy>=1.4.0",
+    "typing-extensions>=4.0.0; python_version < \"3.11\"",
+    "wrapt<2,>=1.11; python_version < \"3.11\"",
     "wrapt<2,>=1.14; python_version >= \"3.11\"",
 ]
 
@@ -44,6 +46,7 @@ dependencies = [
     "packaging>=22.0",
     "pathspec>=0.9.0",
     "platformdirs>=2",
+    "tomli>=1.1.0; python_version < \"3.11\"",
 ]
 
 [[package]]
@@ -124,6 +127,7 @@ requires_python = ">=3.7"
 summary = "Optional static typing for Python"
 dependencies = [
     "mypy-extensions>=1.0.0",
+    "tomli>=1.1.0; python_version < \"3.11\"",
     "typing-extensions>=3.10",
 ]
 
@@ -165,10 +169,12 @@ summary = "python code static checker"
 dependencies = [
     "astroid<=2.17.0-dev0,>=2.15.0",
     "colorama>=0.4.5; sys_platform == \"win32\"",
+    "dill>=0.2; python_version < \"3.11\"",
     "dill>=0.3.6; python_version >= \"3.11\"",
     "isort<6,>=4.2.5",
     "mccabe<0.8,>=0.6",
     "platformdirs>=2.2.0",
+    "tomli>=1.1.0; python_version < \"3.11\"",
     "tomlkit>=0.10.1",
 ]
 
@@ -182,6 +188,12 @@ summary = "YAML parser and emitter for Python"
 name = "resolvelib"
 version = "0.8.1"
 summary = "Resolve abstract dependencies into concrete ones"
+
+[[package]]
+name = "tomli"
+version = "2.0.1"
+requires_python = ">=3.7"
+summary = "A lil' TOML parser"
 
 [[package]]
 name = "tomlkit"
@@ -203,7 +215,7 @@ summary = "Module for decorators, wrappers and monkey patching."
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:e44695351a1e7d9fa9f1ca9613c37499f69da8bf36bdec7a4f40f43baebc5f6e"
+content_hash = "sha256:4280d6e988d49396af2408adeb3a8bf94d00ad837d0f69136ec1c33f3e1b6cf4"
 
 [metadata.files]
 "ansible 7.3.0" = [
@@ -547,6 +559,10 @@ content_hash = "sha256:e44695351a1e7d9fa9f1ca9613c37499f69da8bf36bdec7a4f40f43ba
 "resolvelib 0.8.1" = [
     {url = "https://files.pythonhosted.org/packages/98/c0/46cfa3f56e43033b705965120058c018375600fa8fdb44c4e53d75820673/resolvelib-0.8.1-py2.py3-none-any.whl", hash = "sha256:d9b7907f055c3b3a2cfc56c914ffd940122915826ff5fb5b1de0c99778f4de98"},
     {url = "https://files.pythonhosted.org/packages/ac/20/9541749d77aebf66dd92e2b803f38a50e3a5c76e7876f45eb2b37e758d82/resolvelib-0.8.1.tar.gz", hash = "sha256:c6ea56732e9fb6fca1b2acc2ccc68a0b6b8c566d8f3e78e0443310ede61dbd37"},
+]
+"tomli 2.0.1" = [
+    {url = "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
+    {url = "https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
 "tomlkit 0.11.6" = [
     {url = "https://files.pythonhosted.org/packages/2b/df/971fa5db3250bb022105d17f340339370f73d502e65e687a94ca1a4c4b1f/tomlkit-0.11.6-py3-none-any.whl", hash = "sha256:07de26b0d8cfc18f871aec595fda24d95b08fef89d147caa861939f37230bf4b"},
