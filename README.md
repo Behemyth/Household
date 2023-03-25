@@ -22,10 +22,23 @@ pdm install
 ## Node Setup
 
 ### Debian
-- Create User and Password
-- User Sudo Permission
-- SSH Key Setup
-- Disable Passwords
+- Create User on Host
+    - A part of the OS installation
+    
+- User Permissions on Host
+    - `su -`
+    - `apt update`
+    - `apt install sudo -y`
+    - `su - <username>`
+
+- SSH Key Setup on Client
+    - `ssh-keygen -b 4096`
+    - `ssh-copy-id <username>@<hostname>`
+
+- Disable SSH Passwords on Host
+    - Edit `/etc/ssh/sshd_config`
+    - Set `PasswordAuthentication no`
+    - Restart
 
 ## Playbooks
 
