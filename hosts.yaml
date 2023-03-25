@@ -1,3 +1,5 @@
 all:
   hosts:
   children:
+    swarm_managers:
+    - mini-behemyth
