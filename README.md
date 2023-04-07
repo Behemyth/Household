@@ -40,6 +40,10 @@ pdm install
     - Set `PasswordAuthentication no`
     - Restart
 
+### Connect
+
+`ssh <username>@<hostname>`
+
 ## Playbooks
 
 Installing the stuff onto the nodes
