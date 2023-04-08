@@ -40,6 +40,11 @@ pdm install
     - Set `PasswordAuthentication no`
     - Restart
 
+### Router
+
+- Expose Ports and Forward to Manager
+    - TODO
+
 ### Connect
 
 ```bash

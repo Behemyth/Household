@@ -22,3 +22,6 @@ jobs:
     
     - name: Install Dependencies
       run: pdm install
+
+    - name: Deploy Ansible
+      run: pdm run ansible
