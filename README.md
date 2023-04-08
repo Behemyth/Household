@@ -42,7 +42,9 @@ pdm install
 
 ### Connect
 
-`ssh <username>@<hostname>`
+```bash
+ssh <username>@<hostname>
+```
 
 ## Playbooks
 
