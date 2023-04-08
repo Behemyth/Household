@@ -13,7 +13,7 @@ jobs:
 
     # Deploy the stack to a docker swarm
     - name: Copy
-      uses: appleboy/scp-action@v0.1.0
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
