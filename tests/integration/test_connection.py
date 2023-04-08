@@ -3,18 +3,15 @@
 
 from typing import Any
 
-import pytest
-
 
 class TestConnection:
-    """Verifies connections"""
+    """Setup verification"""
 
     def test_require_ansible(self, host: Any) -> None:
-        """Tests host connection
+        """Verifies that ansible is being used as the Testinfra backend
 
         Args:
             host: The Testinfra host
         """
 
-        with pytest.raises(RuntimeError):
-            host.ansible("setup")
+        host.ansible("setup")

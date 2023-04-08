@@ -2,10 +2,10 @@
 description = "Home server package"
 name = "household"
 
-license = "MIT"
 authors = [
   {name = "Asher Norland", email = "asher.norland@gmail.com"},
 ]
+license = "MIT"
 readme = "README.md"
 
 dynamic = ["version"]
@@ -35,7 +35,7 @@ lint = [
 ]
 test = [
   "pytest>=7.1.2",
-  "pytest-testinfra>=7.0.0"
+  "pytest-testinfra>=7.0.0",
 ]
 
 [tool.pdm.scripts]
@@ -43,6 +43,7 @@ analyze = {shell = "pylint --verbose household tests"}
 format = {shell = "black --check --verbose ."}
 lint = {composite = ["analyze", "format", "sort-imports", "type-check"]}
 sort-imports = {shell = "isort --check-only --diff --verbose ."}
+test = {shell = "pytest --ansible-inventory=hosts"}
 type-check = {shell = "mypy ."}
 
 [tool.pytest.ini_options]
