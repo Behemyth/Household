@@ -7,7 +7,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+        
     steps:
     - uses: actions/checkout@v3
 
+    - name: Install PDM
+      uses: pdm-project/setup-pdm@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: true
+    
+    - name: Install Dependencies
+      run: pdm install
