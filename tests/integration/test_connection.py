@@ -1,26 +1,28 @@
 """Tests ansible inventory connections
 """
 
-from typing import Any
+from testinfra.host import Host
 
 
 class TestConnection:
     """Setup verification"""
 
-    def test_require_ansible(self, host: Any) -> None:
-        """Verifies that ansible is being used as the Testinfra backend
+    def test_connection(self, host: Host) -> None:
+        """Verifies that each host can be connected to
+
+        Args:
+            host: The Testinfra host
+        """
+        assert host.user.exists
+
+    def test_internet(self, host: Host) -> None:
+        """Verifies that each host can access the outside world
 
         Args:
             host: The Testinfra host
         """
 
-        host.ansible("--version")
+        google = host.addr("google.com")
 
-    def test_connection(self, host: Any) -> None:
-        """Verifies that all hosts can be reached
-
-        Args:
-            host: The Testinfra host
-        """
-
-        host.ansible("all -i inventory -m ping")
+        assert google.is_resolvable
+        assert google.is_reachable
