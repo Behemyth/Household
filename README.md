@@ -43,7 +43,8 @@ pdm install
 ### Router
 
 - Expose Ports and Forward to Manager
-    - TODO
+    - 443
+    - 22
 
 ### Connect
 

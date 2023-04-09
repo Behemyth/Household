@@ -14,13 +14,13 @@ class TestConnection:
             host: The Testinfra host
         """
 
-        host.ansible("setup")
+        host.ansible("--version")
 
-    def test_setup(self, host: Any) -> None:
-        """Verifies that ansible is being used as the Testinfra backend
+    def test_connection(self, host: Any) -> None:
+        """Verifies that all hosts can be reached
 
         Args:
             host: The Testinfra host
         """
 
-        host.ansible("setup")
+        host.ansible("all -i inventory -m ping")

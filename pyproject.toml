@@ -43,14 +43,16 @@ analyze = {shell = "pylint --verbose household tests"}
 format = {shell = "black --check --verbose ."}
 lint = {composite = ["analyze", "format", "sort-imports", "type-check"]}
 sort-imports = {shell = "isort --check-only --diff --verbose ."}
-test = {shell = "pytest --ansible-inventory=inventory"}
+test = {shell = "pytest --hosts='ansible://all' --ansible-inventory=inventory"}
 type-check = {shell = "mypy ."}
 
 [tool.pytest.ini_options]
 log_cli = true
+testinfra = "--hosts = 'ansible://all' --ansible-inventory = inventory"
 testpaths = [
   "tests",
 ]
+
 
 [tool.black]
 line-length = 120
