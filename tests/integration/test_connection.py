@@ -1,13 +1,13 @@
 """Tests ansible inventory connections
 """
 
-from testinfra.host import Host
+from typing import Any
 
 
 class TestConnection:
     """Setup verification"""
 
-    def test_connection(self, host: Host) -> None:
+    def test_connection(self, host: Any) -> None:
         """Verifies that each host can be connected to
 
         Args:
@@ -15,7 +15,7 @@ class TestConnection:
         """
         assert host.user.exists
 
-    def test_internet(self, host: Host) -> None:
+    def test_internet(self, host: Any) -> None:
         """Verifies that each host can access the outside world
 
         Args:
