@@ -1,4 +1,4 @@
-name: Docker Deployment
+name: Ansible Deployment
 
 on:
   push:
@@ -7,21 +7,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.11"]
         
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install PDM
-      uses: pdm-project/setup-pdm@v3
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2
       with:
-        python-version: ${{ matrix.python-version }}
-        cache: true
-    
-    - name: Install Dependencies
-      run: pdm install
-
-    - name: Deploy Ansible
-      run: pdm run ansible
+        playbook: deploy.yml
+        directory: ./playbooks
+        key: ${{secrets.SSH_PRIVATE_KEY}}
