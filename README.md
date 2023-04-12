@@ -43,7 +43,9 @@ pdm install
 ### Github Setup
 
 - Generate key pair
-    -ssh-keygen -t ed25519 -C "<email>" -f ~/.ssh/id_github
+    -`ssh-keygen -t ed25519 -C "<email>" -f id_github`
+    -`ssh-copy-id -i id_github <username>@<hostname>`
+    - Add private key to Github Secrets
 
 ### Router
 

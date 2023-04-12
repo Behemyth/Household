@@ -9,7 +9,7 @@ jobs:
       - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-host: ${{ secrets.DOMAIN }}
+          ssh-host: ${{ secrets.USERNAME }}@${{ secrets.HOST }}
           
       - uses: synodic-software/.github/.github/workflows/python-check.yml@stable
 
