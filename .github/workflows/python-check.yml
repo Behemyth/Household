@@ -3,17 +3,50 @@ on:
   - pull_request
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+        python-version: ["3.11"]
+
+    runs-on: ${{ matrix.os }}
+
     steps:
-      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@v3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-host: ${{ secrets.USERNAME }}@${{ secrets.HOST }}
-          
-      - uses: synodic-software/.github/.github/workflows/python-check.yml@stable
+          python-version: ${{ matrix.python-version }}
+          cache: true
+
+      - name: Install Dependencies
+        run: pdm install
+
+      - name: Test
+        run: pdm run test
 
   lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PDM
+        uses: pdm-project/setup-pdm@v3
+        with:
+          python-version: "3.11"
+          cache: true
+
+      - name: Install Dependencies
+        run: pdm install
+
+      - name: Lint 
+        run: pdm run lint
+
+  ansible-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
