@@ -42,8 +42,8 @@ pdm install
 
 ### Github Setup
 
-- [Github Documentation for Deployment Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key)
-    - `ssh-keygen -t ed25519 -C "<email>"` on the Server
+- Generate key pair
+    -ssh-keygen -t ed25519 -C "<email>" -f ~/.ssh/id_github
 
 ### Router
 

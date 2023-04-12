@@ -4,4 +4,23 @@ on:
 
 jobs:
   check:
-    uses: synodic-software/.github/.github/workflows/python-check.yml@stable
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kielabokkie/ssh-key-and-known-hosts-action@v1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-host: ${{ secrets.DOMAIN }}
+          
+      - uses: synodic-software/.github/.github/workflows/python-check.yml@stable
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Run Ansible Lint
+        uses: ansible/ansible-lint-action@v6
+        with:
+            path: "playbooks/"
