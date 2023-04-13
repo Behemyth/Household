@@ -19,7 +19,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           ssh-host: ${{ secrets.HOST }}
-                
+
       - name: Install PDM
         uses: pdm-project/setup-pdm@v3
         with:
@@ -48,7 +48,7 @@ jobs:
       - name: Install Dependencies
         run: pdm install
 
-      - name: Lint 
+      - name: Lint
         run: pdm run lint
 
   ansible-lint:
@@ -61,4 +61,4 @@ jobs:
       - name: Run Ansible Lint
         uses: ansible/ansible-lint-action@v6
         with:
-            path: "playbooks/"
+          path: "playbook/"
