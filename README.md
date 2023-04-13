@@ -1,5 +1,11 @@
 # Household
-Home server management
+Home server management.
+
+Contents:
+
+- [Development Setup ](#development-setup)  
+- [Server Setup ](#server-setup)  
+- [Directory Structure](#directory-structure)  
 
 ## Server Stuff I'm Using
 
@@ -11,7 +17,7 @@ Home server management
 
 ## Development Setup 
 
-Must be run through WSL
+Must be run through WSL, and not on the shared mount.
 
 Install the python dependencies with the `pdm` tool
 
@@ -19,7 +25,7 @@ Install the python dependencies with the `pdm` tool
 pdm install
 ```
 
-## Node Setup
+## Server Setup
 
 ### SSH Setup
 - Create User on Server
@@ -59,7 +65,9 @@ pdm install
 ssh <username>@<hostname>
 ```
 
-## Playbooks
+## Directory Structure
+
+### Playbooks
 
 Installing the stuff onto the nodes
 
