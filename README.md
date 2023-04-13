@@ -32,7 +32,7 @@ pdm install
     - `su - <username>`
 
 - SSH Key Setup on Development Machine
-    - `ssh-keygen -b 4096`
+    - `ssh-keygen -t ed25519 -C "<email>"`
     - `ssh-copy-id <username>@<hostname>`
 
 - Disable SSH Passwords on Server
