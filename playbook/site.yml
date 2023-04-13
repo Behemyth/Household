@@ -1,2 +1,7 @@
-version: '3.5'
-services:
+- name: Server Installation
+  hosts: all
+  tasks:
+  - name: Ensure apache is at the latest version
+    include_vars: all.yml
+    import_role:
+      name: defaults

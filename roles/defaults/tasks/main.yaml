@@ -1,0 +1,7 @@
+- name: Update System Dependencies
+  become: true
+  become_method: sudo
+  apt:
+    state: latest
+    upgrade: yes
+    update_cache: yes
