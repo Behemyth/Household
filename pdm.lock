@@ -24,6 +24,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "ansible"
+version = "7.4.0"
+extras = ["azure"]
+requires_python = ">=3.9"
+summary = "Radically simple IT automation"
+dependencies = [
+    "ansible==7.4.0",
+]
+
+[[package]]
 name = "astroid"
 version = "2.15.2"
 requires_python = ">=3.7.2"
@@ -257,7 +267,7 @@ summary = "Module for decorators, wrappers and monkey patching."
 [metadata]
 lock_version = "4.2"
 groups = ["default", "lint", "test"]
-content_hash = "sha256:c21db028e1528b2c455c5db28590af606a689b6e007cf156a034f170a9e3561b"
+content_hash = "sha256:d659f99d8a441a5158d6558c8e92b7154f422414ee4db944e50a49a4ef0f835a"
 
 [metadata.files]
 "ansible 7.4.0" = [

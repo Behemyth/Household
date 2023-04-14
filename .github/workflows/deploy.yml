@@ -21,3 +21,4 @@ jobs:
         with:
           playbook: site.yml
           directory: ./playbook
+          vault_password: ${{secrets.VAULT_PASSWORD}}

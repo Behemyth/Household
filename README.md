@@ -67,7 +67,9 @@ ssh <username>@<hostname>
 
 ## Directory Structure
 
-### Playbooks
+### /inventory
+
+### /playbook
 
 Installing the stuff onto the nodes
 
@@ -75,3 +77,10 @@ Installing the stuff onto the nodes
 ansible-playbook playbooks/install.yml
 ```
 
+### /roles
+
+Reusable crap
+
+### /tests
+
+pytest tests verifying server infrastructure so that ansible is garunteed to connect
