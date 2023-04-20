@@ -1,7 +1,14 @@
 - name: Server Installation
   hosts: all
+  collections:
+  - azure.azcollection
+
+  vars:
+    vault_name: behemyth-vault
+    secret_name: USERNAME
+
   tasks:
-  - name: Ensure apache is at the latest version
+  - name: Ensure
     include_vars: all.yml
     import_role:
       name: defaults

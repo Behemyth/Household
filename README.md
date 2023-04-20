@@ -25,6 +25,8 @@ Install the python dependencies with the `pdm` tool
 pdm install
 ```
 
+Log into Azure for key vault access
+
 ## Server Setup
 
 ### SSH Setup
