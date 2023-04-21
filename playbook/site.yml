@@ -1,12 +1,11 @@
 - name: Server Installation
   hosts: all
-  collections:
-  - azure.azcollection
 
   vars:
     vault_name: behemyth-vault
     secret_name: USERNAME
 
   tasks:
-    - import_role:
-      name: defaults
+    - name: Configure
+      ansible.builtin.import_role:
+        name: defaults
