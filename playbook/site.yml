@@ -8,7 +8,5 @@
     secret_name: USERNAME
 
   tasks:
-  - name: Ensure
-    include_vars: all.yml
-    import_role:
+    - import_role:
       name: defaults
