@@ -1,7 +1,6 @@
 - name: Update System Dependencies
   become: true
   become_method: sudo
-  apt:
-    state: latest
-    upgrade: yes
-    update_cache: yes
+  ansible.builtin.apt:
+    upgrade: true
+    update_cache: true

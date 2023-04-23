@@ -24,6 +24,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "ansible-vault"
+version = "2.1.0"
+summary = "R/W an ansible-vault yaml file"
+dependencies = [
+    "ansible",
+    "setuptools",
+]
+
+[[package]]
 name = "ansible"
 version = "7.4.0"
 extras = ["azure"]
@@ -241,6 +250,12 @@ version = "0.8.1"
 summary = "Resolve abstract dependencies into concrete ones"
 
 [[package]]
+name = "setuptools"
+version = "67.7.1"
+requires_python = ">=3.7"
+summary = "Easily download, build, install, upgrade, and uninstall Python packages"
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 requires_python = ">=3.7"
@@ -267,7 +282,7 @@ summary = "Module for decorators, wrappers and monkey patching."
 [metadata]
 lock_version = "4.2"
 groups = ["default", "lint", "test"]
-content_hash = "sha256:d659f99d8a441a5158d6558c8e92b7154f422414ee4db944e50a49a4ef0f835a"
+content_hash = "sha256:9c6f3c0b35a668db09ce33d468fb67192126dfd15b103eb19743d25ada10a9c4"
 
 [metadata.files]
 "ansible 7.4.0" = [
@@ -277,6 +292,9 @@ content_hash = "sha256:d659f99d8a441a5158d6558c8e92b7154f422414ee4db944e50a49a4e
 "ansible-core 2.14.4" = [
     {url = "https://files.pythonhosted.org/packages/4a/a9/bf80d80a6c5dce41d8933e16553ae26b048b42385fb4bfdbf6ffb222a102/ansible_core-2.14.4-py3-none-any.whl", hash = "sha256:3915ef89f74ffd6277e534b4f14843d2425a3e7bb6ffae26eecd4cc571d020cc"},
     {url = "https://files.pythonhosted.org/packages/8e/8a/397f18f067d95206eac75a89b38ec9c2ad59c4915ef59aae2ecfb17cce99/ansible-core-2.14.4.tar.gz", hash = "sha256:90b260bc264901d35fb1f0753f2b650813f54cfe6476540afbc6b25ef541ef14"},
+]
+"ansible-vault 2.1.0" = [
+    {url = "https://files.pythonhosted.org/packages/38/68/968aea6bc9894fb0e19aeaa03f6b284b573b5815f4f3d3a9daa9e519c3df/ansible-vault-2.1.0.tar.gz", hash = "sha256:5ce8fdb5470f1449b76bf07ae2abc56480dad48356ae405c85b686efb64dbd5e"},
 ]
 "astroid 2.15.3" = [
     {url = "https://files.pythonhosted.org/packages/5b/bc/c7d66f43e10d5f42512993fb27dc2ffbe48d8231f8dc15a5220893927554/astroid-2.15.3.tar.gz", hash = "sha256:44224ad27c54d770233751315fa7f74c46fa3ee0fab7beef1065f99f09897efe"},
@@ -627,6 +645,10 @@ content_hash = "sha256:d659f99d8a441a5158d6558c8e92b7154f422414ee4db944e50a49a4e
 "resolvelib 0.8.1" = [
     {url = "https://files.pythonhosted.org/packages/98/c0/46cfa3f56e43033b705965120058c018375600fa8fdb44c4e53d75820673/resolvelib-0.8.1-py2.py3-none-any.whl", hash = "sha256:d9b7907f055c3b3a2cfc56c914ffd940122915826ff5fb5b1de0c99778f4de98"},
     {url = "https://files.pythonhosted.org/packages/ac/20/9541749d77aebf66dd92e2b803f38a50e3a5c76e7876f45eb2b37e758d82/resolvelib-0.8.1.tar.gz", hash = "sha256:c6ea56732e9fb6fca1b2acc2ccc68a0b6b8c566d8f3e78e0443310ede61dbd37"},
+]
+"setuptools 67.7.1" = [
+    {url = "https://files.pythonhosted.org/packages/01/18/73f7ca619f72b22300493451350214d3a035e7fa8f17ce31db2da24fe0c9/setuptools-67.7.1.tar.gz", hash = "sha256:bb16732e8eb928922eabaa022f881ae2b7cdcfaf9993ef1f5e841a96d32b8e0c"},
+    {url = "https://files.pythonhosted.org/packages/47/6a/dfaf9838b6dd1f04537c0a66cf880dd24acd829f8a39d468c11fc0b7d8c6/setuptools-67.7.1-py3-none-any.whl", hash = "sha256:6f0839fbdb7e3cfef1fc38d7954f5c1c26bf4eebb155a55c9bf8faf997b9fb67"},
 ]
 "tomli 2.0.1" = [
     {url = "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
