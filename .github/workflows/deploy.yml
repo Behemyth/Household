@@ -19,7 +19,8 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-          playbook: playbook/site.yml
+          directory: playbook
+          playbook: site.yml
           vault_password: ${{secrets.VAULT_PASSWORD}}
           options: |
             --inventory inventory/hosts.yml

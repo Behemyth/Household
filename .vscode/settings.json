@@ -4,7 +4,6 @@
     "python.linting.pylintEnabled": true,
     "python.testing.pytestArgs": [
         "--hosts=ansible://all",
-        "--ansible-inventory=inventory",
     ],
     "python.formatting.provider": "black",
     "python.testing.unittestEnabled": false,

@@ -1,4 +1,4 @@
-- name: Server Installation
+- name: Cluster Installation
   hosts: all
 
   vars:

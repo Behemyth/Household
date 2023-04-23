@@ -1,0 +1,8 @@
+- name: Configure Router Node/Manager
+  hosts: manager
+  tasks:
+    - name: Service Start
+      ansible.builtin.service:
+        name: NetworkManager
+        state: started
+        enabled: true
