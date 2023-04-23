@@ -1,0 +1,10 @@
+- name: Server Installation
+  hosts: all
+
+  vars:
+    vault_name: behemyth-vault
+
+  tasks:
+    - name: Configure
+      ansible.builtin.import_role:
+        name: defaults
