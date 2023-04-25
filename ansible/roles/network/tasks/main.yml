@@ -1,0 +1,15 @@
+- name: Install NetworkManager
+  ansible.builtin.package:
+    name: network-manager
+    state: present
+
+- name: Service Start
+  ansible.builtin.service:
+    name: NetworkManager
+    state: started
+    enabled: true
+
+- name: Apply NetworkManager Config
+  template:
+    src: household.conf.j2
+    dest: /etc/NetworkManager/conf.d/household.conf

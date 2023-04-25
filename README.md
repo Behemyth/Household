@@ -71,12 +71,12 @@ ssh <username>@<hostname>
 
 ### /inventory
 
-### /playbook
+### /ansible
 
 Installing the stuff onto the nodes
 
 ```bash
-ansible-playbook playbooks/install.yml
+ansible-playbook ansible/install.yml
 ```
 
 ### /roles
