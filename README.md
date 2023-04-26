@@ -61,6 +61,8 @@ Log into Azure for key vault access
     - 443
     - 22
 
+- Add Static IPs to DNS
+
 ### Connect
 
 ```bash

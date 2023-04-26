@@ -11,22 +11,22 @@
         conn_name: bridge0
         ifname: bridge0
         type: bridge
-        method4: disabled
+        method4: shared
         state: present
 
     - name: Ethernet Connection 1
       community.general.nmcli:
-        conn_name: eth1
+        conn_name: Wired connection 1
         ifname: enp1s0
         type: ethernet
         ip4: 10.4.2.42/24
         gw4: 10.4.2.1
-        dns4: 10.4.2.1
+        dns4: 10.4.2.1 8.8.8.8
         state: present
 
     - name: Ethernet Connection 2
       community.general.nmcli:
-        conn_name: eth2
+        conn_name: Wired connection 2
         ifname: enp2s0
         type: ethernet
         master: bridge0
@@ -34,7 +34,7 @@
 
     - name: Ethernet Connection 3
       community.general.nmcli:
-        conn_name: eth3
+        conn_name: Wired connection 3
         ifname: enp3s0
         type: ethernet
         master: bridge0
@@ -42,7 +42,7 @@
 
     - name: Ethernet Connection 4
       community.general.nmcli:
-        conn_name: eth4
+        conn_name: Wired connection 4
         ifname: enp4s0
         type: ethernet
         master: bridge0
@@ -50,14 +50,11 @@
 
     - name: Ethernet Connection 5
       community.general.nmcli:
-        conn_name: eth5
+        conn_name: Wired connection 5
         ifname: enp5s0
         type: ethernet
         master: bridge0
         state: present
 
-    - name: Service Restart
-      ansible.builtin.service:
-        name: NetworkManager
-        state: restarted
-        enabled: true
+    - name: Reboot
+      ansible.builtin.reboot:
