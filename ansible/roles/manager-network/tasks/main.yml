@@ -1,0 +1,84 @@
+- name: Apply Network Config
+  ansible.builtin.template:
+    src: interfaces.conf.j2
+    dest: /etc/network/interfaces
+
+- name: Install NetworkManager
+  ansible.builtin.package:
+    name: network-manager
+    state: present
+
+- name: Apply NetworkManager Config
+  ansible.builtin.template:
+    src: networkmanager.conf.j2
+    dest: /etc/NetworkManager/conf.d/household.conf
+
+- name: Service Start
+  ansible.builtin.service:
+    name: NetworkManager
+    state: started
+    enabled: true
+
+- name: Set IP Forwarding
+  ansible.posix.sysctl:
+    name: net.ipv4.ip_forward
+    value: "1"
+    sysctl_set: true
+    state: present
+    reload: true
+
+- name: Bridge
+  community.general.nmcli:
+    conn_name: bridge0
+    ifname: bridge0
+    type: bridge
+    ip4: 10.42.0.0/24
+    state: present
+
+- name: Ethernet Connection 1
+  community.general.nmcli:
+    conn_name: Wired connection 1
+    ifname: enp1s0
+    type: ethernet
+    ip4: 10.4.2.42
+    gw4: 10.4.2.1
+    dns4: 10.4.2.1 8.8.8.8
+    state: present
+
+- name: Ethernet Connection 2
+  community.general.nmcli:
+    conn_name: Wired connection 2
+    ifname: enp2s0
+    type: bridge-slave
+    master: bridge0
+    state: present
+
+- name: Ethernet Connection 3
+  community.general.nmcli:
+    conn_name: Wired connection 3
+    ifname: enp3s0
+    type: bridge-slave
+    master: bridge0
+    state: present
+
+- name: Ethernet Connection 4
+  community.general.nmcli:
+    conn_name: Wired connection 4
+    ifname: enp4s0
+    type: bridge-slave
+    master: bridge0
+    state: present
+
+- name: Ethernet Connection 5
+  community.general.nmcli:
+    conn_name: Wired connection 5
+    ifname: enp5s0
+    type: bridge-slave
+    master: bridge0
+    state: present
+
+- name: Service Restart
+  ansible.builtin.service:
+    name: NetworkManager
+    state: restarted
+    enabled: true

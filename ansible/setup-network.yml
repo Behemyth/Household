@@ -1,0 +1,7 @@
+- name: Configure Network Setup
+  hosts: behemythic.com
+  become: true
+  tasks:
+    - name: Configure Manager Network
+      ansible.builtin.import_role:
+        name: manager-network

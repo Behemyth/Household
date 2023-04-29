@@ -48,20 +48,32 @@ Log into Azure for key vault access
     - Set `PasswordAuthentication no`
     - Restart
 
-### Github Setup
+### Network Setup
 
-- Generate key pair
-    -`ssh-keygen -t ed25519 -C "<email>" -f id_github`
-    -`ssh-copy-id -i id_github <username>@<hostname>`
-    - Add private key to Github Secrets
-
-### Router
-
-- Expose Ports and Forward to Server
+- Expose Ports and Forward to Manager: `mini-behemyth`
     - 443
     - 22
 
 - Add Static IPs to DNS
+    - `mini-behemyth` 10.4.2.42
+
+- Setup Static Worker Ips: 
+
+    | Hostname | IP Address | `mini-behemyth` Connection |
+    | :--- | :--- | :--- |
+    | mini-behemyth | 10.4.2.42 | Wired connection 1 |
+    | mini-wumpus | 10.42.0.10 | Wired connection ? |
+    | mini-mush | 10.42.0.11 | Wired connection ? |
+    | mini-mouse | 10.42.0.12 | Wired connection 2 |
+    | mini-sota | 10.42.0.13 | Wired connection ? |
+
+#### Worker Node Setup
+- Start network manager
+    - `sudo systemctl start NetworkManager.service`
+- Enable reboots startups
+    - `sudo systemctl enable NetworkManager.service`
+
+- Remove all interfaces except `Wired connection 1`
 
 ### Connect
 
@@ -71,20 +83,26 @@ ssh <username>@<hostname>
 
 ## Directory Structure
 
-### /inventory
-
-### /ansible
+### **/ansible**
 
 Installing the stuff onto the nodes
 
 ```bash
 ansible-playbook ansible/install.yml
 ```
+#### **/inventory**
 
-### /roles
+##### *hosts.yml*
+List of the devices
 
-Reusable crap
+#### **/roles**
 
-### /tests
+##### *manager-network*
+This is a role for setting up the manager network to all the worker nodes
 
-pytest tests verifying server infrastructure so that ansible is garunteed to connect
+##### *worker-network*
+Once the manual labor is done and the manager network is setup, this role modifies all the workers
+
+### **/tests**
+
+pytest tests verifying server infrastructure so that ansible is garunteed to connect and execute as intended
