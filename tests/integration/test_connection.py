@@ -1,30 +1,19 @@
 """Tests ansible inventory connections
 """
-from typing import Any
 
 import pytest
+import testinfra
 
 
 @pytest.mark.setup
 class TestConnection:
     """Setup verification"""
 
-    def test_connection(self, host: Any) -> None:
-        """Verifies that each host can be connected to
+    def test_mini_behemyth(self) -> None:
+        """Verifies that mini-behemyth is setup for subnet connections"""
 
-        Args:
-            host: The Testinfra host
-        """
-        assert host.user.exists
+        host = testinfra.get_host("ansible://mini-behemyth")
 
-    def test_internet(self, host: Any) -> None:
-        """Verifies that each host can access the outside world
-
-        Args:
-            host: The Testinfra host
-        """
-
-        google = host.addr("google.com")
-
-        assert google.is_resolvable
-        assert google.is_reachable
+        # Empty user gets the current user, 'ansible_user'
+        username = host.user().name
+        assert username == "asher"
