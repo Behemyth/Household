@@ -1,9 +1,11 @@
 """Tests ansible inventory connections
 """
-
 from typing import Any
 
+import pytest
 
+
+@pytest.mark.setup
 class TestConnection:
     """Setup verification"""
 

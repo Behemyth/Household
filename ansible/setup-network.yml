@@ -1,5 +1,5 @@
 - name: Configure Network Setup
-  hosts: behemythic.com
+  hosts: mini-behemyth
   become: true
   tasks:
     - name: Configure Manager Network

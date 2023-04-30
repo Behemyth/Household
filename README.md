@@ -4,7 +4,6 @@ Home server management.
 Contents:
 
 - [Development Setup ](#development-setup)  
-- [Server Setup ](#server-setup)  
 - [Directory Structure](#directory-structure)  
 
 ## Server Stuff I'm Using
@@ -27,7 +26,7 @@ pdm install
 
 Log into Azure for key vault access
 
-## Server Setup
+## First-time Server Setup
 
 ### SSH Setup
 - Create User on Server
@@ -62,18 +61,47 @@ Log into Azure for key vault access
     | Hostname | IP Address | `mini-behemyth` Connection |
     | :--- | :--- | :--- |
     | mini-behemyth | 10.4.2.42 | Wired connection 1 |
-    | mini-wumpus | 10.42.0.10 | Wired connection ? |
-    | mini-mush | 10.42.0.11 | Wired connection ? |
+    | mini-wumpus | 10.42.0.10 | Wired connection 3 |
+    | mini-mush | 10.42.0.11 | Wired connection 5 |
     | mini-mouse | 10.42.0.12 | Wired connection 2 |
-    | mini-sota | 10.42.0.13 | Wired connection ? |
+    | mini-sota | 10.42.0.13 | Wired connection 4 |
 
-#### Worker Node Setup
+#### Node Static IP Setup
+Do the following for each node
+
+- Remove default DHCP client first as it will prevent default DHCP setups
+    - For the workers:
+        - `sudo systemctl stop dhcpcd`
+        - `sudo systemctl disable dhcpcd`
+        - `sudo apt remove dhcpcd5`
+    - For mini-behemyth: 
+        - `sudo apt-get purge --auto-remove isc-dhcp-client`
+
 - Start network manager
     - `sudo systemctl start NetworkManager.service`
+
 - Enable reboots startups
     - `sudo systemctl enable NetworkManager.service`
 
-- Remove all interfaces except `Wired connection 1`
+- Remove all NetworkManager connections except `Wired connection 1`
+    - Set static IP 
+    - Set gateway
+    - Set method 'manual'
+
+- Setup NetworkManager restart plugin
+    - `sudo nano /etc/NetworkManager/conf.d/household.conf`
+    - `/etc/NetworkManager/conf.d/household.conf` contents:
+        ```
+        [ifupdown]
+        managed=true
+        ```
+
+- Reboot
+    - `sudo reboot`
+
+#### Manager Setup
+
+`pdm run ansible-playbook ansible/setup-network.yml -K`
 
 ### Connect
 

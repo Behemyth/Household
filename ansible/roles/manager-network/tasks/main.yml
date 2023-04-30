@@ -27,20 +27,24 @@
     state: present
     reload: true
 
-- name: Bridge
-  community.general.nmcli:
-    conn_name: bridge0
-    ifname: bridge0
-    type: bridge
-    ip4: 10.42.0.0/24
-    state: present
-
 - name: Ethernet Connection 1
   community.general.nmcli:
     conn_name: Wired connection 1
     ifname: enp1s0
     type: ethernet
-    ip4: 10.4.2.42
+    ip4:
+      - 10.4.2.42
+    gw4: 10.4.2.1
+    dns4: 10.4.2.1 8.8.8.8
+    state: present
+
+- name: Bridge
+  community.general.nmcli:
+    conn_name: bridge0
+    ifname: bridge0
+    type: bridge
+    ip4:
+      - 10.42.0.1/24
     gw4: 10.4.2.1
     dns4: 10.4.2.1 8.8.8.8
     state: present

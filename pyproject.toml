@@ -49,6 +49,9 @@ type-check = {shell = "mypy ."}
 
 [tool.pytest.ini_options]
 log_cli = true
+markers = [
+  "setup: Tests that should be run prior to any automation, verifying static IP setup",
+]
 testpaths = [
   "tests",
 ]
