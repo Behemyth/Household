@@ -18,6 +18,10 @@ class TestConnection:
         username = host.user().name
         assert username == "asher"
 
+        google = host.addr("google.com")
+        assert google.is_resolvable
+        assert google.is_reachable
+
     def test_mini_wumpus(self) -> None:
         """Verifies that mini-wumpus is setup via jumphost"""
 
@@ -26,6 +30,10 @@ class TestConnection:
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
         assert username == "synodic"
+
+        google = host.addr("google.com")
+        assert google.is_resolvable
+        assert google.is_reachable
 
     def test_mini_mush(self) -> None:
         """Verifies that mini-mush is setup via jumphost"""
@@ -36,6 +44,10 @@ class TestConnection:
         username = host.user().name
         assert username == "synodic"
 
+        google = host.addr("google.com")
+        assert google.is_resolvable
+        assert google.is_reachable
+
     def test_mini_sota(self) -> None:
         """Verifies that mini-sota is setup via jumphost"""
 
@@ -45,6 +57,10 @@ class TestConnection:
         username = host.user().name
         assert username == "synodic"
 
+        google = host.addr("google.com")
+        assert google.is_resolvable
+        assert google.is_reachable
+
     def test_mini_mouse(self) -> None:
         """Verifies that mini-mouse is setup via jumphost"""
 
@@ -53,3 +69,7 @@ class TestConnection:
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
         assert username == "synodic"
+
+        google = host.addr("google.com")
+        assert google.is_resolvable
+        assert google.is_reachable

@@ -40,12 +40,18 @@ Must be run through WSL, and not on the shared mount.
     - `ssh-keygen -t ed25519 -C "<email>"`
     - `ssh-copy-id <username>@<hostname>`
 
-- Expose Ports and Forward to Manager: `mini-behemyth`
+- Expose Ports and Forward to Manager from router: `mini-behemyth`
     - 443
     - 22
 
-- Add Static IPs to DNS
+- Add Static IPs to router DNS
     - `mini-behemyth` 10.4.2.42
+
+- Add Static Route from router
+    - Destination: `10.42.0.0`
+    - Gateway: `10.4.2.42`
+    - Netmask: `255.255.255.0`
+    - Metric: `0`
 
 - Setup Static Worker Ips: 
 

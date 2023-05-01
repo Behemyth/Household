@@ -1,0 +1,13 @@
+- name: Ethernet Connection 1
+  community.general.nmcli:
+    conn_name: Wired connection 1
+    ifname: enp1s0
+    type: ethernet
+    ip4:
+      - "{{ansible_host}}"
+    gw4: 10.42.0.1
+    dns4: ""
+    state: present
+
+- name: Download and Install Fan Software
+  shell: "curl https://download.argon40.com/argon1.sh | bash"

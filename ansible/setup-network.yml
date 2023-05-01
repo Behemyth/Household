@@ -1,7 +1,13 @@
 - name: Configure Network Setup
-  hosts: mini-behemyth
+  hosts: all
   become: true
   tasks:
     - name: Configure Manager Network
+      when: inventory_hostname in groups['manager']
       ansible.builtin.import_role:
         name: manager-network
+
+    - name: Configure Node Networks
+      when: inventory_hostname in groups['nodes']
+      ansible.builtin.import_role:
+        name: node-network
