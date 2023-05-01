@@ -1,0 +1,3 @@
+docker_distribution: raspbian
+ansible_user: synodic
+ansible_ssh_common_args: "-J asher@mini-behemyth"

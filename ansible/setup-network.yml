@@ -1,13 +1,15 @@
-- name: Configure Network Setup
-  hosts: all
+- name: Configure Manager Network Setup
+  hosts: manager
   become: true
   tasks:
     - name: Configure Manager Network
-      when: inventory_hostname in groups['manager']
       ansible.builtin.import_role:
         name: manager-network
-
+        
+- name: Configure Node Network Setup
+  hosts: nodes
+  become: true
+  tasks:
     - name: Configure Node Networks
-      when: inventory_hostname in groups['nodes']
       ansible.builtin.import_role:
         name: node-network
