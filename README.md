@@ -18,17 +18,15 @@ Contents:
 
 Must be run through WSL, and not on the shared mount.
 
-Install the python dependencies with the `pdm` tool
+- Install the python dependencies with the `pdm` tool
+    - `pdm install`
 
-```bash
-pdm install
-```
-
-Log into Azure for key vault access
+- Log into Azure for key vault access
+    - `TODO`
 
 ## First-time Server Setup
 
-### SSH Setup
+### Network Setup
 - Create User on Server
     - A part of the OS installation
     
@@ -38,16 +36,9 @@ Log into Azure for key vault access
     - `apt install sudo -y`
     - `su - <username>`
 
-- SSH Key Setup on Development Machine
+- SSH Key Setup on `mini-behemyth`
     - `ssh-keygen -t ed25519 -C "<email>"`
     - `ssh-copy-id <username>@<hostname>`
-
-- Disable SSH Passwords on Server
-    - Edit `/etc/ssh/sshd_config`
-    - Set `PasswordAuthentication no`
-    - Restart
-
-### Network Setup
 
 - Expose Ports and Forward to Manager: `mini-behemyth`
     - 443
@@ -86,7 +77,8 @@ Do the following for each node
 - Remove all NetworkManager connections except `Wired connection 1`
     - Set static IP 
     - Set gateway
-    - Set method 'manual'
+    - Set method `manual`
+        - Can be set to `auto` in some generated cases
 
 - Setup NetworkManager restart plugin
     - `sudo nano /etc/NetworkManager/conf.d/household.conf`
@@ -101,7 +93,43 @@ Do the following for each node
 
 #### Manager Setup
 
-`pdm run ansible-playbook ansible/setup-network.yml -K`
+- SSH Key Setup on `mini-behemyth`
+    - `ssh-keygen -t ed25519 -C "<email>"`
+
+- Enable password authentication temporarily on `mini-behemyth`
+    - `sudo nano /etc/ssh/sshd_config`
+    - Set `ChallengeResponseAuthentication yes`
+    - Set `PasswordAuthentication yes`
+    - `sudo service sshd restart`
+
+
+- For each worker:
+    - Enable password authentication temporarily
+        - `sudo nano /etc/ssh/sshd_config`
+        - Set `ChallengeResponseAuthentication yes`
+        - Set `PasswordAuthentication yes`
+        - `sudo service sshd restart`
+
+    - Copy the ID to the worker from `mini-behemyth`
+        - `ssh-copy-id <username>@<hostname>`
+
+    - Copy the ID to the worker from `behemyth`
+        - `ssh-copy-id -o ProxyJump=<username>@mini-behemyth <username>@<hostname>`
+
+    - Disable password authentication
+        - `sudo nano /etc/ssh/sshd_config`
+        - Set `ChallengeResponseAuthentication no`
+        - Set `PasswordAuthentication no`
+        - `sudo service sshd restart`
+
+- Disable password authentication for `mini-behemyth`
+    - `sudo nano /etc/ssh/sshd_config`
+    - Set `ChallengeResponseAuthentication no`
+    - Set `PasswordAuthentication no`
+    - `sudo service sshd restart`
+
+- Run the automated setup
+    - `pdm run ansible-playbook ansible/setup-network.yml -K`
 
 ### Connect
 
