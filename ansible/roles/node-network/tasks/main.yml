@@ -1,7 +1,7 @@
 - name: Ethernet Connection 1
   community.general.nmcli:
     conn_name: Wired connection 1
-    ifname: enp1s0
+    ifname: eth0
     type: ethernet
     ip4:
       - "{{ansible_host}}"
