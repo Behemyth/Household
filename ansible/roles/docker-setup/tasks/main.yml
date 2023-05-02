@@ -11,16 +11,16 @@
     force_apt_get: true
 
 - name: Download Docker
-  get_url:
+  ansible.builtin.get_url:
     url: https://get.docker.com
     validate_certs: false
     dest: "{{ script_directory }}/get-docker.sh"
-    mode: 0755
+    mode: "0755"
     force: true
 
 - name: Install Docker
   become: true
-  command: "{{ script_directory }}/get-docker.sh"
+  ansible.builtin.shell: "{{ script_directory }}/get-docker.sh"
 
 - name: Install Docker Python Module
   ansible.builtin.pip:
