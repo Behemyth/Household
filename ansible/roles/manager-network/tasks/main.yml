@@ -41,6 +41,13 @@
       - 10.4.2.42
     gw4: 10.4.2.1
     dns4: 10.4.2.1 8.8.8.8
+    routes4_extended:
+      - ip: 10.4.2.1
+        next_hop: 0.0.0.0
+        mtu: 101
+      - ip: 0.0.0.0/0
+        next_hop: 10.4.2.1
+        mtu: 101
     state: present
 
 - name: Bridge
@@ -52,6 +59,16 @@
       - 10.42.0.1/24
     gw4: 10.4.2.1
     dns4: 10.4.2.1 8.8.8.8
+    routes4_extended:
+      - ip: 10.4.2.1
+        next_hop: 0.0.0.0
+        mtu: 425
+      - ip: 10.42.0.0/24
+        next_hop: 0.0.0.0
+        mtu: 425
+      - ip: 0.0.0.0/0
+        next_hop: 10.4.2.1
+        mtu: 425
     state: present
 
 - name: Ethernet Connection 2

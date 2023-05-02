@@ -65,15 +65,6 @@ Must be run through WSL, and not on the shared mount.
 
 #### Node Static IP Setup
 Do the following for each node
-
-- Remove default DHCP client first as it will prevent default DHCP setups
-    - For the workers:
-        - `sudo systemctl stop dhcpcd`
-        - `sudo systemctl disable dhcpcd`
-        - `sudo apt remove dhcpcd5`
-    - For mini-behemyth: 
-        - `sudo apt-get purge --auto-remove isc-dhcp-client`
-
 - Start network manager
     - `sudo systemctl start NetworkManager.service`
 

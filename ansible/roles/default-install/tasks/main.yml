@@ -17,9 +17,3 @@
     name:
       - pipx
     state: present
-
-- name: Create Scripts Directory
-  ansible.builtin.file:
-    path: "{{ script_directory }}"
-    state: directory
-    mode: "0755"

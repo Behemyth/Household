@@ -7,6 +7,14 @@
       - "{{ansible_host}}"
     gw4: 10.42.0.1
     dns4: ""
+    routes4_extended:
+      - ip: 10.42.0.1
+        next_hop: 0.0.0.0
+        mtu: 100
+      - ip: 0.0.0.0/0
+        next_hop: 10.42.0.1
+        mtu: 100
+
     state: present
 
 - name: Download and Install Fan Software
