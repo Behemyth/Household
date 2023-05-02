@@ -10,12 +10,9 @@
     routes4_extended:
       - ip: 10.42.0.1
         next_hop: 0.0.0.0
-        mtu: 100
+        metric: 100
       - ip: 0.0.0.0/0
         next_hop: 10.42.0.1
-        mtu: 100
+        metric: 100
 
     state: present
-
-- name: Download and Install Fan Software
-  shell: "curl https://download.argon40.com/argon1.sh | bash"

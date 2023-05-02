@@ -1,9 +1,0 @@
-- name: Reboot Nodes
-  become: true
-  when: inventory_hostname in groups["nodes"]
-  ansible.builtin.reboot:
-
-- name: Reboot Manager
-  become: true
-  when: inventory_hostname in groups["manager"]
-  ansible.builtin.reboot:

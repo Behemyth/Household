@@ -5,7 +5,8 @@
     - name: Configure Manager Network
       ansible.builtin.import_role:
         name: manager-network
-        
+
+
 - name: Configure Node Network Setup
   hosts: nodes
   become: true
@@ -13,3 +14,19 @@
     - name: Configure Node Networks
       ansible.builtin.import_role:
         name: node-network
+
+- name: Reboot Nodes
+  hosts: nodes
+  become: true
+  tasks:
+    - name: Reboot Nodes
+      become: true
+      ansible.builtin.reboot:
+
+- name: Reboot Manager
+  hosts: manager
+  become: true
+  tasks:
+    - name: Reboot Manager
+      become: true
+      ansible.builtin.reboot:
