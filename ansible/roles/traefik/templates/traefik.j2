@@ -1,0 +1,26 @@
+api:
+  dashboard: true
+
+providers:
+  docker:
+    swarmMode: true
+    exposedByDefault: false
+
+entryPoints:
+  web:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  websecure:
+    address: :443
+
+certificatesResolvers:
+  le:
+    acme:
+      email: asher.norland@gmail.com
+      storage: /certs/acme.json
+      tlschallenge: true

@@ -40,9 +40,10 @@ Must be run through WSL, and not on the shared mount.
     - `ssh-keygen -t ed25519 -C "<email>"`
     - `ssh-copy-id <username>@<hostname>`
 
-- Expose Ports and Forward to Manager from router: `mini-behemyth`
-    - 443
-    - 22
+- Expose Ports and Forward to `mini-behemyth` from router
+    - 443 (HTTPS)
+    - 80 (HTTP)
+    - 22 (SSH)
 
 - Add Static IPs to router DNS
     - `mini-behemyth` 10.4.2.42
@@ -138,7 +139,7 @@ ssh <username>@<hostname>
 
 ### **/ansible**
 
-Installing the stuff onto the nodes
+Installing the stuff onto the workers
 
 ```bash
 ansible-playbook ansible/install.yml

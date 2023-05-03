@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.10
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      # Add Docker as a volume to allow Traefik to read containers
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Certificate data
+      - /etc/traefik/certs:/certs
+      # Configuration data
+      - /etc/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+    networks:
+      - traefik-public
+    deploy:
+      labels:
+        - traefik.enable=true
+
+        # Dashboard domain
+        - traefik.http.routers.api.rule=Host(`traefik.behemythic.com`)
+        - traefik.http.routers.api.service=api@internal
+
+        # TLS
+        - traefik.http.routers.blog.tls=true
+        - traefik.http.routers.blog.tls.certresolver=le
+
+        # Port to use inside a docker service
+        - traefik.http.services.traefik-public.loadbalancer.server.port=8080
+      mode: global
+      placement:
+        constraints: [ node.role == manager ]
+
+networks:
+  traefik-public:
+    driver: overlay
+    attachable: true
+    name: traefik-public

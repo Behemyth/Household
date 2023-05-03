@@ -9,8 +9,33 @@
       ansible.builtin.import_role:
         name: docker-setup
 
-- name: Node Installation
-  hosts: nodes
+- name: Manager Installation
+  hosts: mini-behemyth
   tasks:
-    - name: Download and Install Fan Software
-      ansible.builtin.shell: "curl https://download.argon40.com/argon1.sh | bash"
+    - name: Register Swarm
+      community.docker.docker_swarm:
+        state: present
+      register: swarm_info
+
+    - name: Setup Traefik
+      ansible.builtin.import_role:
+        name: traefik
+
+- name: Node Installation
+  hosts: workers
+  tasks:
+    - name: Download Fan Software
+      ansible.builtin.get_url:
+        url: https://download.argon40.com/argon1.sh
+        dest: /tmp/argon1.sh
+        mode: "0775"
+
+    - name: Install Fan Software
+      ansible.builtin.command: /tmp/argon1.sh
+
+    - name: Join swarm as worker node
+      community.docker.docker_swarm:
+        state: join 
+        advertise_addr: "{{ inventory_hostname }}"
+        join_token: "{{ hostvars['mini-behemyth']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+        remote_addrs: [ '10.42.0.1:2377' ]

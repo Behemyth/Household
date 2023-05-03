@@ -1,5 +1,5 @@
 - name: Configure Manager Network Setup
-  hosts: manager
+  hosts: mini-behemyth
   become: true
   tasks:
     - name: Configure Manager Network
@@ -8,7 +8,7 @@
 
 
 - name: Configure Node Network Setup
-  hosts: nodes
+  hosts: workers
   become: true
   tasks:
     - name: Configure Node Networks
@@ -16,7 +16,7 @@
         name: node-network
 
 - name: Reboot Nodes
-  hosts: nodes
+  hosts: workers
   become: true
   tasks:
     - name: Reboot Nodes
@@ -24,7 +24,7 @@
       ansible.builtin.reboot:
 
 - name: Reboot Manager
-  hosts: manager
+  hosts: mini-behemyth
   become: true
   tasks:
     - name: Reboot Manager

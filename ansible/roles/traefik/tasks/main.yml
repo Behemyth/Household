@@ -1,0 +1,28 @@
+- name: Verify Stack Directory
+  ansible.builtin.file:
+    path: "/home/{{ansible_user}}/docker"
+    state: directory
+
+- name: Verify Config Directory
+  ansible.builtin.file:
+    path: "/etc/traefik"
+    state: directory
+
+- name: Create Stack File
+  ansible.builtin.template:
+    src: traefik-stack.j2
+    dest: /home/{{ansible_user}}/docker/traefik-stack.yml
+    mode: "0775"
+
+- name: Create Config File
+  ansible.builtin.template:
+    src: traefik.j2
+    dest: /etc/traefik/traefik.yml
+    mode: "0775"
+
+- name: Deploy the Stack
+  community.docker.docker_stack:
+    state: present
+    name: traefik
+    compose:
+      - /home/{{ansible_user}}/docker/traefik-stack.yml
