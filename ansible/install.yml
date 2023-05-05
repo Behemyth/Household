@@ -17,6 +17,14 @@
         state: present
       register: swarm_info
 
+    # Requirements for docker_stack
+    - name: Install Python Packages
+      ansible.builtin.pip:
+        name:
+          - jsondiff
+          - pyyaml
+        state: present
+
     - name: Setup Traefik
       ansible.builtin.import_role:
         name: traefik

@@ -24,10 +24,6 @@ services:
         - traefik.http.routers.api.rule=Host(`traefik.behemythic.com`)
         - traefik.http.routers.api.service=api@internal
 
-        # TLS
-        - traefik.http.routers.blog.tls=true
-        - traefik.http.routers.blog.tls.certresolver=le
-
         # Port to use inside a docker service
         - traefik.http.services.traefik-public.loadbalancer.server.port=8080
       mode: global
