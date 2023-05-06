@@ -1,0 +1,7 @@
+- name: Gather Packages
+  become: true
+  ansible.builtin.apt:
+    state: present
+    pkg:
+      - cephadm
+    update_cache: true

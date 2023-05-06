@@ -1,11 +1,17 @@
 - name: Configure Manager Network Setup
+  hosts: all
+  tasks:
+    - name: Configure Shared Network
+      ansible.builtin.import_role:
+        name: network
+
+- name: Configure Manager Network Setup
   hosts: mini-behemyth
   become: true
   tasks:
     - name: Configure Manager Network
       ansible.builtin.import_role:
         name: manager-network
-
 
 - name: Configure Node Network Setup
   hosts: workers

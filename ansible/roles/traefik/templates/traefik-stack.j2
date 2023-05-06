@@ -18,7 +18,7 @@ services:
     deploy:
       # For Swarm mode, service labels are used https://doc.traefik.io/traefik/providers/docker/#routing-configuration-with-labels_1
       labels:
-        traefik.enable: true
+        traefik.enable: "true"
 
         # Dashboard domain
         traefik.http.routers.traefik.rule: Host(`traefik.behemythic.com`)

@@ -9,10 +9,13 @@ Contents:
 ## Server Stuff I'm Using
 
 - Docker
-- Gluster
+- Ceph
 - Traefik
 - Portainer
-- HAProxy
+
+## TODO List
+
+- Replace Docker Swarm with Kubernetes
 
 ## Development Setup 
 
@@ -40,10 +43,7 @@ Must be run through WSL, and not on the shared mount.
     - `ssh-keygen -t ed25519 -C "<email>"`
     - `ssh-copy-id <username>@<hostname>`
 
-- Expose Ports and Forward to `mini-behemyth` from router
-    - 443 (HTTPS)
-    - 80 (HTTP)
-    - 22 (SSH)
+- Create DMZ to `mini-behemyth` from router
 
 - Add Static IPs to router DNS
     - `mini-behemyth` 10.4.2.42

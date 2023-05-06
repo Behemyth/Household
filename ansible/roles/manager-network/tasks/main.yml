@@ -1,12 +1,7 @@
 - name: Apply Network Config
   ansible.builtin.template:
-    src: interfaces.conf.j2
+    src: interfaces.j2
     dest: /etc/network/interfaces
-
-- name: Apply Hosts
-  ansible.builtin.template:
-    src: hosts.conf.j2
-    dest: /etc/hosts
 
 - name: Install NetworkManager
   ansible.builtin.package:
@@ -15,7 +10,7 @@
 
 - name: Apply NetworkManager Config
   ansible.builtin.template:
-    src: networkmanager.conf.j2
+    src: networkmanager.j2
     dest: /etc/NetworkManager/conf.d/household.conf
 
 - name: Service Start

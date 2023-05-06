@@ -1,0 +1,5 @@
+- name: Apply Hosts
+  become: true
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: /etc/hosts

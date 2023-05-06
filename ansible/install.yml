@@ -7,7 +7,7 @@
 
     - name: Setup Docker
       ansible.builtin.import_role:
-        name: docker-setup
+        name: docker
 
 - name: Manager Installation
   hosts: mini-behemyth
@@ -25,9 +25,18 @@
           - pyyaml
         state: present
 
+    - name: Setup Ceph
+      ansible.builtin.import_role:
+        name: ceph
+
     - name: Setup Traefik
       ansible.builtin.import_role:
         name: traefik
+
+    - name: Setup Portainer
+      ansible.builtin.import_role:
+        name: portainer
+
 
 - name: Node Installation
   hosts: workers
