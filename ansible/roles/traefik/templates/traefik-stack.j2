@@ -18,16 +18,17 @@ services:
     deploy:
       # For Swarm mode, service labels are used https://doc.traefik.io/traefik/providers/docker/#routing-configuration-with-labels_1
       labels:
-        - traefik.enable=true
+        traefik.enable: true
 
         # Dashboard domain
-        - traefik.http.routers.traefik.rule=Host(`traefik.behemythic.com`)
-        - traefik.http.routers.traefik.entrypoints=websecure
-        - traefik.http.routers.traefik.tls.certresolver=le
-        - traefik.http.routers.traefik.service=api@internal
+        traefik.http.routers.traefik.rule: Host(`traefik.behemythic.com`)
+        traefik.http.routers.traefik.entrypoints: websecure
+        traefik.http.routers.traefik.tls.certresolver: le
+        traefik.http.routers.traefik.service: api@internal
 
         # Port to use inside a docker service
-        - traefik.http.services.traefik.loadbalancer.server.port=8080
+        traefik.http.services.traefik.loadbalancer.server.port: 8080
+
       mode: global
       placement:
         constraints: [ node.role == manager ]
