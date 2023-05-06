@@ -11,7 +11,7 @@
     force_apt_get: true
 
 - name: Check For Docker
-  ansible.builtin.command: which docker
+  ansible.builtin.command: command -v docker
   failed_when: false
   changed_when: false
   check_mode: false

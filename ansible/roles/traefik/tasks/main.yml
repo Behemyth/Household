@@ -10,6 +10,12 @@
     path: "/etc/traefik"
     state: directory
 
+- name: Verify Certificate Directory
+  become: true
+  ansible.builtin.file:
+    path: "/etc/traefik/certs"
+    state: directory
+
 - name: Create Stack File
   become: true
   ansible.builtin.template:

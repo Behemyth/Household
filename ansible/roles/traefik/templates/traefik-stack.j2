@@ -3,7 +3,6 @@ version: '3.8'
 services:
   traefik:
     image: traefik:v2.10
-    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -17,15 +16,18 @@ services:
     networks:
       - traefik-public
     deploy:
+      # For Swarm mode, service labels are used https://doc.traefik.io/traefik/providers/docker/#routing-configuration-with-labels_1
       labels:
         - traefik.enable=true
 
         # Dashboard domain
-        - traefik.http.routers.api.rule=Host(`traefik.behemythic.com`)
-        - traefik.http.routers.api.service=api@internal
+        - traefik.http.routers.traefik.rule=Host(`traefik.behemythic.com`)
+        - traefik.http.routers.traefik.entrypoints=websecure
+        - traefik.http.routers.traefik.tls.certresolver=le
+        - traefik.http.routers.traefik.service=api@internal
 
         # Port to use inside a docker service
-        - traefik.http.services.traefik-public.loadbalancer.server.port=8080
+        - traefik.http.services.traefik.loadbalancer.server.port=8080
       mode: global
       placement:
         constraints: [ node.role == manager ]
@@ -33,5 +35,4 @@ services:
 networks:
   traefik-public:
     driver: overlay
-    attachable: true
     name: traefik-public
