@@ -1,0 +1,15 @@
+- name: Verify Mountpoint
+  become: true
+  ansible.builtin.file:
+    path: /data/nfs-mount
+    state: directory
+    mode: "0777"
+
+- name: mount network share
+  become: true
+  ansible.posix.mount:
+    src: 10.42.0.1:/data/nfs-storage
+    path: /data/nfs-mount
+    fstype: nfs
+    opts: nolock,soft,rw,nfsvers=4
+    state: mounted

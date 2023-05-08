@@ -45,8 +45,10 @@ Must be run through WSL, and not on the shared mount.
 
 - Create DMZ to `mini-behemyth` from router
 
-- Add Static IPs to router DNS
-    - `mini-behemyth` 10.4.2.42
+- Forward ports to `mini-behemyth`
+    - 60
+    - 22
+    - 443
 
 - Add Static Route from router
     - Destination: `10.42.0.0`

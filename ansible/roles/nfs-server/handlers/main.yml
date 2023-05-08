@@ -1,0 +1,3 @@
+- name: reload-nfs
+  become: true
+  command: exportfs -ra

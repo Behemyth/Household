@@ -25,18 +25,17 @@
           - pyyaml
         state: present
 
-    - name: Setup Ceph
-      ansible.builtin.import_role:
-        name: ceph
-
     - name: Setup Traefik
       ansible.builtin.import_role:
         name: traefik
 
-    - name: Setup Portainer
+    - name: Setup NFS Server
       ansible.builtin.import_role:
-        name: portainer
+        name: nfs-server
 
+    - name: Setup NFS Client
+      ansible.builtin.import_role:
+        name: nfs-client
 
 - name: Node Installation
   hosts: workers
@@ -66,3 +65,14 @@
         advertise_addr: "{{ inventory_hostname }}"
         join_token: "{{ hostvars['mini-behemyth']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
         remote_addrs: [ '10.42.0.1:2377' ]
+
+    - name: Setup NFS Client
+      ansible.builtin.import_role:
+        name: nfs-client
+
+- name: Cluster Stacks
+  hosts: mini-behemyth
+  tasks:
+    - name: Setup Portainer
+      ansible.builtin.import_role:
+        name: portainer

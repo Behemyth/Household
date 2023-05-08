@@ -1,0 +1,27 @@
+- name: Verify Config Directory
+  become: true
+  ansible.builtin.file:
+    path: /data/nfs-storage
+    state: directory
+
+- name: Ensure NFS Server Package
+  become: true
+  ansible.builtin.apt:
+    name:
+      - nfs-kernel-server
+    state: present
+
+- name: Apply Exports
+  become: true
+  ansible.builtin.template:
+    src: exports.j2
+    dest: /etc/exports
+    mode: "0775"
+  notify: reload-nfs
+
+- name: Ensure NFS Service
+  become: true
+  ansible.builtin.service:
+    name: nfs-kernel-server
+    state: started
+    enabled: yes

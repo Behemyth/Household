@@ -9,6 +9,7 @@
       - software-properties-common
       - gnupg
       - python3-venv
+      - nfs-common
     update_cache: true
     state: present
 

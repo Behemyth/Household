@@ -29,7 +29,8 @@ services:
         # Port to use inside a docker service
         traefik.http.services.traefik.loadbalancer.server.port: 8080
 
-      mode: global
+      mode: replicated
+      replicas: 1
       placement:
         constraints: [ node.role == manager ]
 
