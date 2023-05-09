@@ -15,6 +15,9 @@ requires-python = ">=3.10"
 dependencies = [
   "ansible[azure]>=7.4.0",
   "ansible-vault>=2.1",
+  "azure==4.0.0",
+  "requests",
+  "msrest",
 ]
 
 [project.license-files]

@@ -17,7 +17,6 @@
         state: present
       register: swarm_info
 
-    # Requirements for docker_stack
     - name: Install Python Packages
       ansible.builtin.pip:
         name:
@@ -36,6 +35,7 @@
     - name: Setup NFS Client
       ansible.builtin.import_role:
         name: nfs-client
+
 
 - name: Node Installation
   hosts: workers

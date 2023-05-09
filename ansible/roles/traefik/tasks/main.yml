@@ -10,6 +10,18 @@
     path: "/etc/traefik"
     state: directory
 
+- name: Verify Dynamic Config Directory
+  become: true
+  ansible.builtin.file:
+    path: "/etc/traefik/dynamic"
+    state: directory
+
+- name: Verify Secret Directory
+  become: true
+  ansible.builtin.file:
+    path: "/etc/traefik/secrets"
+    state: directory
+
 - name: Verify Certificate Directory
   become: true
   ansible.builtin.file:
@@ -23,11 +35,32 @@
     dest: /home/{{ansible_user}}/docker/traefik-stack.yml
     mode: "0775"
 
-- name: Create Config File
+- name: Create Traefik Config File
   become: true
   ansible.builtin.template:
     src: traefik.j2
     dest: /etc/traefik/traefik.yml
+    mode: "0775"
+
+- name: Create Dynamic Traefik Config File
+  become: true
+  ansible.builtin.template:
+    src: traefik-dynamic.j2
+    dest: /etc/traefik/dynamic/traefik.yml
+    mode: "0775"
+
+- name: Create Auth Config File
+  become: true
+  ansible.builtin.template:
+    src: auth.j2
+    dest: /etc/traefik/secrets/auth.secret
+    mode: "0775"
+
+- name: Create DNS Secrete File
+  become: true
+  ansible.builtin.template:
+    src: dns.j2
+    dest: /etc/traefik/secrets/google_domains_access_token.secret
     mode: "0775"
 
 - name: Deploy the Stack

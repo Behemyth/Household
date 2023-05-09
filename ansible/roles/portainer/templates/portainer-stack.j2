@@ -27,7 +27,7 @@ services:
 
   portainer:
     image: portainer/portainer-ce:latest
-    command: -H tcp://tasks.portainer-agent:9001 --tlsskipverify
+    command: -H tcp://tasks.portainer-agent:9001
 
     ports:
       - 9000:9000
@@ -42,12 +42,16 @@ services:
     deploy:
       labels:
         traefik.enable: "true"
+        traefik.docker.network: traefik-public
+
         traefik.http.routers.portainer.rule: Host(`portainer.behemythic.com`)
-        traefik.http.services.portainer.loadbalancer.server.port: 9000
         traefik.http.routers.portainer.entrypoints: websecure
         traefik.http.routers.portainer.tls.certresolver: le
         traefik.http.routers.portainer.service: portainer
-        traefik.docker.network: traefik-public
+
+        traefik.http.routers.portainer.middlewares: forward-auth@file
+
+        traefik.http.services.portainer.loadbalancer.server.port: 9000
 
       mode: replicated
       replicas: 1

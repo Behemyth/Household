@@ -25,7 +25,7 @@ Must be run through WSL, and not on the shared mount.
     - `pdm install`
 
 - Log into Azure for key vault access
-    - `TODO`
+    - `az login --service-principal --username <client-id> --password <client-secret> --tenant <tenant-id>`
 
 ## First-time Server Setup
 

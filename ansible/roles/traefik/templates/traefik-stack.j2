@@ -1,11 +1,21 @@
 version: '3.8'
 
+secrets:
+  google_domains_access_token:
+    file: "/etc/traefik/secrets/google_domains_access_token.secret"
+  auth_config:
+    file: "/etc/traefik/secrets/auth.secret"
+
 services:
   traefik:
     image: traefik:v2.10
     ports:
       - 80:80
       - 443:443
+    secrets:
+      - google_domains_access_token
+    environment:
+      - GOOGLE_DOMAINS_ACCESS_TOKEN_FILE=/run/secrets/google_domains_access_token
     volumes:
       # Add Docker as a volume to allow Traefik to read containers
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -13,6 +23,7 @@ services:
       - /etc/traefik/certs:/certs
       # Configuration data
       - /etc/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - /etc/traefik/dynamic:/etc/traefik/dynamic:ro
     networks:
       - traefik-public
     deploy:
@@ -25,6 +36,7 @@ services:
         traefik.http.routers.traefik.entrypoints: websecure
         traefik.http.routers.traefik.tls.certresolver: le
         traefik.http.routers.traefik.service: api@internal
+        traefik.http.routers.traefik.middlewares: forward-auth@file
 
         # Port to use inside a docker service
         traefik.http.services.traefik.loadbalancer.server.port: 8080
@@ -33,6 +45,32 @@ services:
       replicas: 1
       placement:
         constraints: [ node.role == manager ]
+
+  traefik-forward-auth:
+    image: thomseddon/traefik-forward-auth:latest
+    secrets:
+      - auth_config
+    environment:
+      - CONFIG=/run/secrets/auth_config
+    volumes:
+      # Configuration data
+      - /etc/traefik/auth.ini:/etc/traefik/auth.ini:ro
+    networks:
+      - traefik-public
+    labels:
+
+      traefik.enable: "true"
+      traefik.docker.network: traefik_public
+
+      traefik.http.routers.auth.rule: Host(`auth.behemythic.com`)
+      traefik.http.routers.auth.entrypoints: websecure
+      traefik.http.routers.auth.tls.certresolver: le
+      traefik.http.routers.auth.tls.domains.main: behemythic.com
+      traefik.http.routers.auth.tls.domains.sans: "*.behemythic.com"
+      traefik.http.routers.auth.service: traefik-forward-auth
+      traefik.http.routers.auth.middlewares: forward-auth@file
+
+      traefik.http.services.traefik-forward-auth.loadbalancer.server.port: 4181
 
 networks:
   traefik-public:
