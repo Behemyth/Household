@@ -6,3 +6,36 @@ http:
         authResponseHeaders:
           - X-Forwarded-User
         trustForwardHeader: true
+
+    rate-limit:
+      rateLimit:
+        average: 100
+        burst: 50
+
+    https-redirect:
+      redirectScheme:
+        scheme: https
+        permanent: true
+        port: "443"
+
+    secure-headers:
+      headers:
+        hostsProxyHeaders:
+          - X-Forwarded-Host
+        browserXssFilter: true
+        stsSeconds: 63072000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        forceSTSHeader: true
+
+    compress-responses:
+      compress: {}
+
+    auth-chain:
+      chain:
+        middlewares:
+          - rate-limit
+          - https-redirect
+          - secure-headers
+          - forward-auth
+          - compress-responses
