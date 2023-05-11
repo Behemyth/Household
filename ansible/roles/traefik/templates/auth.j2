@@ -6,21 +6,30 @@ providers.generic-oauth.client-id={{
     lookup(
         'azure.azcollection.azure_keyvault_secret',
         'behemythic-oauth-client-id',
-        vault_url='https://behemyth-vault.vault.azure.net/'
+        vault_url='https://behemyth-vault.vault.azure.net/',
+        client_id=azure.client,
+        secret=azure.secret,
+        tenant_id=azure.tenant
     )
     }}
 providers.generic-oauth.client-secret={{
     lookup(
         'azure.azcollection.azure_keyvault_secret',
         'behemythic-oauth-client-secret',
-        vault_url='https://behemyth-vault.vault.azure.net/'
+        vault_url='https://behemyth-vault.vault.azure.net/',
+        client_id=azure.client,
+        secret=azure.secret,
+        tenant_id=azure.tenant
     )
     }}
 secret={{
     lookup(
         'azure.azcollection.azure_keyvault_secret',
         'traefik-auth-secret',
-        vault_url='https://behemyth-vault.vault.azure.net/'
+        vault_url='https://behemyth-vault.vault.azure.net/',
+        client_id=azure.client,
+        secret=azure.secret,
+        tenant_id=azure.tenant
     )
     }}
 cookie-domain=behemythic.com

@@ -11,6 +11,8 @@
 
 - name: Manager Installation
   hosts: mini-behemyth
+  vars_files:
+    - vars/azure.yml
   tasks:
     - name: Register Swarm
       community.docker.docker_swarm:
@@ -76,3 +78,7 @@
     - name: Setup Portainer
       ansible.builtin.import_role:
         name: portainer
+
+    - name: Setup Artifactory
+      ansible.builtin.import_role:
+        name: artifactory

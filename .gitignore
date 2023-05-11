@@ -25,3 +25,6 @@ __pypackages__/
 !.vscode/launch.json
 !.vscode/extensions.json
 .pdm-python
+
+# Secret Files
+ansible/vars/azure.yml

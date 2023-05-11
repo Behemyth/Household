@@ -65,8 +65,6 @@ services:
       traefik.http.routers.auth.rule: Host(`auth.behemythic.com`)
       traefik.http.routers.auth.entrypoints: websecure
       traefik.http.routers.auth.tls.certresolver: le
-      traefik.http.routers.auth.tls.domains.main: behemythic.com
-      traefik.http.routers.auth.tls.domains.sans: "*.behemythic.com"
       traefik.http.routers.auth.service: traefik-forward-auth
       traefik.http.routers.auth.middlewares: auth-chain@file
 

@@ -1,6 +1,9 @@
 api:
   dashboard: true
 
+log:
+  level: DEBUG
+
 providers:
   docker:
     swarmMode: true
@@ -8,6 +11,7 @@ providers:
   # Enable dynamic configuration
   file:
     directory: /etc/traefik/dynamic
+    watch: true
 
 entryPoints:
   web:
@@ -20,11 +24,17 @@ entryPoints:
           permanent: true
   websecure:
     address: :443
+    http:
+      tls:
+        certResolver: le
+        domains:
+          - main: behemythic.com
+            sans: "*.behemythic.com"
 
 certificatesResolvers:
   le:
     acme:
       email: asher.norland@gmail.com
       storage: /certs/acme.json
-      dnschallenge:
-        provider: googledomains
+      dnsChallenge:
+        provider: "googledomains"
