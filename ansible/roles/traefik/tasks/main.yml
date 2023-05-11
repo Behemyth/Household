@@ -31,7 +31,7 @@
 - name: Create Stack File
   become: true
   ansible.builtin.template:
-    src: traefik-stack.j2
+    src: stack.j2
     dest: /home/{{ansible_user}}/docker/traefik-stack.yml
     mode: "0775"
 
@@ -56,7 +56,7 @@
     dest: /etc/traefik/secrets/auth.secret
     mode: "0775"
 
-- name: Create DNS Secrete File
+- name: Create DNS Secret File
   become: true
   ansible.builtin.template:
     src: dns.j2

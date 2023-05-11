@@ -14,7 +14,7 @@
 - name: Create Stack File
   become: true
   ansible.builtin.template:
-    src: portainer-stack.j2
+    src: stack.j2
     dest: /home/{{ansible_user}}/docker/portainer-stack.yml
     mode: "0775"
 
