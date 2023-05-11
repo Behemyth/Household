@@ -5,7 +5,7 @@
     state: directory
     mode: "0777"
 
-- name: mount network share
+- name: Mount Network File System
   become: true
   ansible.posix.mount:
     src: 10.42.0.1:/data/nfs-storage
