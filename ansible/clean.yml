@@ -1,0 +1,32 @@
+- name: Remove Stacks
+  hosts: mini-behemyth
+  tasks:
+    - name: Remove Portainer
+      community.docker.docker_stack:
+        state: absent
+        name: portainer
+        prune: true
+
+    - name: Remove Artifactory
+      community.docker.docker_stack:
+        state: absent
+        name: artifactory
+        prune: true
+
+    - name: Remove Traefik
+      community.docker.docker_stack:
+        state: absent
+        name: traefik
+        prune: true
+
+    - name: Gather Image Details
+      community.docker.docker_host_info:
+        images: yes
+        verbose_output: yes
+      register: image_info
+
+    - name: Remove All Images
+      community.docker.docker_image:
+        name: "{{ item }}"
+        state: absent
+      loop: "{{ image_info.images | map(attribute='Id') | list }}"
