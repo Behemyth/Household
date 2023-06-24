@@ -7,7 +7,7 @@ http:
   middlewares:
     forward-auth:
       forwardAuth:
-        address: https://traefik-forward-auth:4181
+        address: http://traefik-forward-auth:4181
         authResponseHeaders:
           - X-Forwarded-User
         trustForwardHeader: true
@@ -38,8 +38,4 @@ http:
     auth-chain:
       chain:
         middlewares:
-          - rate-limit
-          - https-redirect
-          - secure-headers
           - forward-auth
-          - compress-responses

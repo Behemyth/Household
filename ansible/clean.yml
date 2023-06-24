@@ -21,8 +21,8 @@
 
     - name: Gather Image Details
       community.docker.docker_host_info:
-        images: yes
-        verbose_output: yes
+        images: true
+        verbose_output: true
       register: image_info
 
     - name: Sleep For Removed Stacks
