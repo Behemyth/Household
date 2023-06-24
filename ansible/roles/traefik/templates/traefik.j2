@@ -25,11 +25,14 @@ entryPoints:
   websecure:
     address: :443
     http:
+      # "If a TLS section (i.e. any of its fields) is user-defined, then the default configuration does not apply at all.""
       tls:
         certResolver: le
         domains:
           - main: behemythic.com
             sans: "*.behemythic.com"
+      middlewares:
+        - auth-chain@file
 
 certificatesResolvers:
   le:

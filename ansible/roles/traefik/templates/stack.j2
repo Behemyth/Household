@@ -34,9 +34,7 @@ services:
         # Dashboard domain
         traefik.http.routers.traefik.rule: Host(`traefik.behemythic.com`)
         traefik.http.routers.traefik.entrypoints: websecure
-        traefik.http.routers.traefik.tls.certresolver: le
         traefik.http.routers.traefik.service: api@internal
-        traefik.http.routers.traefik.middlewares: auth-chain@file
 
         # Port to use inside a docker service
         traefik.http.services.traefik.loadbalancer.server.port: 8080
@@ -64,9 +62,7 @@ services:
 
       traefik.http.routers.auth.rule: Host(`auth.behemythic.com`)
       traefik.http.routers.auth.entrypoints: websecure
-      traefik.http.routers.auth.tls.certresolver: le
       traefik.http.routers.auth.service: traefik-forward-auth
-      traefik.http.routers.auth.middlewares: auth-chain@file
 
       traefik.http.services.traefik-forward-auth.loadbalancer.server.port: 4181
 

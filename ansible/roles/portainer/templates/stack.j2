@@ -46,11 +46,7 @@ services:
 
         traefik.http.routers.portainer.rule: Host(`portainer.behemythic.com`)
         traefik.http.routers.portainer.entrypoints: websecure
-        traefik.http.routers.portainer.tls.certresolver: le
         traefik.http.routers.portainer.service: portainer
-
-        traefik.http.routers.portainer.middlewares: auth-chain@file
-
         traefik.http.services.portainer.loadbalancer.server.port: 9000
 
       mode: replicated
