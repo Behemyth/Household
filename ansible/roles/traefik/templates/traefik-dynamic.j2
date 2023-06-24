@@ -1,8 +1,13 @@
+tls:
+  options:
+    default:
+      minVersion: VersionTLS13
+
 http:
   middlewares:
     forward-auth:
       forwardAuth:
-        address: http://traefik-forward-auth:4181
+        address: https://traefik-forward-auth:4181
         authResponseHeaders:
           - X-Forwarded-User
         trustForwardHeader: true

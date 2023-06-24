@@ -25,6 +25,11 @@
         verbose_output: yes
       register: image_info
 
+    - name: Sleep For Removed Stacks
+      ansible.builtin.wait_for:
+        timeout: 10
+      delegate_to: localhost
+
     - name: Remove All Images
       community.docker.docker_image:
         name: "{{ item }}"
