@@ -5,22 +5,7 @@
 groups = ["default", "lint", "test"]
 strategy = ["cross_platform"]
 lock_version = "4.4.1"
-content_hash = "sha256:53f6b38037f0d13fa364919e0658d376633139cbe64c5531ca10a8a0bbaab12b"
-
-[[package]]
-name = "adal"
-version = "1.2.7"
-summary = "Note: This library is already replaced by MSAL Python, available here: https://pypi.org/project/msal/ .ADAL Python remains available here as a legacy. The ADAL for Python library makes it easy for python application to authenticate to Azure Active Directory (AAD) in order to access AAD protected web resources."
-dependencies = [
-    "PyJWT<3,>=1.0.0",
-    "cryptography>=1.1.0",
-    "python-dateutil<3,>=2.1.0",
-    "requests<3,>=2.0.0",
-]
-files = [
-    {file = "adal-1.2.7-py2.py3-none-any.whl", hash = "sha256:2a7451ed7441ddbc57703042204a3e30ef747478eea022c70f789fc7f084bc3d"},
-    {file = "adal-1.2.7.tar.gz", hash = "sha256:d74f45b81317454d96e982fd1c50e6fb5c99ac2223728aea8764433a39f566f1"},
-]
+content_hash = "sha256:a36c86baa2239b64ab73fbd9181a5ff665dcd1f390f1f8b4cc88ba13f3937308"
 
 [[package]]
 name = "ansible"
@@ -90,71 +75,102 @@ files = [
 
 [[package]]
 name = "azure-common"
-version = "1.1.11"
+version = "1.1.28"
 summary = "Microsoft Azure Client Library for Python (Common)"
-dependencies = [
-    "azure-nspkg>=2.0.0",
-]
 files = [
-    {file = "azure-common-1.1.11.zip", hash = "sha256:a60e37117684a168022af2c5e537448ad878d4ad8e45f147512eae2102f856af"},
-    {file = "azure_common-1.1.11-py2.py3-none-any.whl", hash = "sha256:9f158d0b1d4500af829b46dab238b52b32f3978c4ed269b9fead6554ebba4876"},
+    {file = "azure-common-1.1.28.zip", hash = "sha256:4ac0cd3214e36b6a1b6a442686722a5d8cc449603aa833f3f0f40bda836704a3"},
+    {file = "azure_common-1.1.28-py2.py3-none-any.whl", hash = "sha256:5c12d3dcf4ec20599ca6b0d3e09e86e146353d443e7fcc050c9a19c1f9df20ad"},
 ]
 
 [[package]]
 name = "azure-core"
-version = "1.26.4"
+version = "1.30.1"
 requires_python = ">=3.7"
 summary = "Microsoft Azure Core Library for Python"
 dependencies = [
-    "requests>=2.18.4",
+    "requests>=2.21.0",
     "six>=1.11.0",
-    "typing-extensions>=4.3.0",
+    "typing-extensions>=4.6.0",
 ]
 files = [
-    {file = "azure-core-1.26.4.zip", hash = "sha256:075fe06b74c3007950dd93d49440c2f3430fd9b4a5a2756ec8c79454afc989c6"},
-    {file = "azure_core-1.26.4-py3-none-any.whl", hash = "sha256:d9664b4bc2675d72fba461a285ac43ae33abb2967014a955bf136d9703a2ab3c"},
+    {file = "azure-core-1.30.1.tar.gz", hash = "sha256:26273a254131f84269e8ea4464f3560c731f29c0c1f69ac99010845f239c1a8f"},
+    {file = "azure_core-1.30.1-py3-none-any.whl", hash = "sha256:7c5ee397e48f281ec4dd773d67a0a47a0962ed6fa833036057f9ea067f688e74"},
 ]
 
 [[package]]
 name = "azure-identity"
-version = "1.7.0"
+version = "1.16.0"
+requires_python = ">=3.8"
 summary = "Microsoft Azure Identity Library for Python"
 dependencies = [
-    "azure-core<2.0.0,>=1.11.0",
+    "azure-core>=1.23.0",
     "cryptography>=2.5",
-    "msal-extensions~=0.3.0",
-    "msal<2.0.0,>=1.12.0",
-    "six>=1.12.0",
+    "msal-extensions>=0.3.0",
+    "msal>=1.24.0",
 ]
 files = [
-    {file = "azure-identity-1.7.0.zip", hash = "sha256:3faaecb645e3b2300648a4a452458ec0e31e13d9dc928e710992e43ef4694205"},
-    {file = "azure_identity-1.7.0-py2.py3-none-any.whl", hash = "sha256:12a9cff44aecfef295254fe2ad591b49262c2dfbe51f476423cacae6bfa258d2"},
+    {file = "azure-identity-1.16.0.tar.gz", hash = "sha256:6ff1d667cdcd81da1ceab42f80a0be63ca846629f518a922f7317a7e3c844e1b"},
+    {file = "azure_identity-1.16.0-py3-none-any.whl", hash = "sha256:722fdb60b8fdd55fa44dc378b8072f4b419b56a5e54c0de391f644949f3a826f"},
 ]
 
 [[package]]
 name = "azure-keyvault"
-version = "1.1.0"
-summary = "Microsoft Azure Key Vault Client Library for Python"
+version = "4.2.0"
+summary = "Microsoft Azure Key Vault Client Libraries for Python"
 dependencies = [
-    "azure-common~=1.1",
-    "azure-nspkg>=2.0.0",
-    "cryptography>=2.1.4",
-    "msrest>=0.5.0",
-    "msrestazure<2.0.0,>=0.4.32",
-    "requests>=2.18.4",
+    "azure-keyvault-certificates~=4.4",
+    "azure-keyvault-keys~=4.5",
+    "azure-keyvault-secrets~=4.4",
 ]
 files = [
-    {file = "azure-keyvault-1.1.0.zip", hash = "sha256:37a8e5f376eb5a304fcd066d414b5d93b987e68f9212b0c41efa37d429aadd49"},
-    {file = "azure_keyvault-1.1.0-py2.py3-none-any.whl", hash = "sha256:dec5334cde846849dfe7896f2e98f17b4f4d75c316a4d30e7171ce71ca20713d"},
+    {file = "azure-keyvault-4.2.0.zip", hash = "sha256:731add108a3e29ab4fd501a3c477256c286c34d0996b383fb6a3945462933761"},
+    {file = "azure_keyvault-4.2.0-py2.py3-none-any.whl", hash = "sha256:16b29039244cbe8b940c98a0d795626d76d2a579cb9b8c559983ad208082c0de"},
 ]
 
 [[package]]
-name = "azure-nspkg"
-version = "3.0.2"
-summary = "Microsoft Azure Namespace Package [Internal]"
+name = "azure-keyvault-certificates"
+version = "4.8.0"
+requires_python = ">=3.8"
+summary = "Microsoft Azure Key Vault Certificates Client Library for Python"
+dependencies = [
+    "azure-core<2.0.0,>=1.29.5",
+    "isodate>=0.6.1",
+    "typing-extensions>=4.0.1",
+]
 files = [
-    {file = "azure-nspkg-3.0.2.zip", hash = "sha256:e7d3cea6af63e667d87ba1ca4f8cd7cb4dfca678e4c55fc1cedb320760e39dd0"},
-    {file = "azure_nspkg-3.0.2-py3-none-any.whl", hash = "sha256:31a060caca00ed1ebd369fc7fe01a56768c927e404ebc92268f4d9d636435e28"},
+    {file = "azure-keyvault-certificates-4.8.0.tar.gz", hash = "sha256:c561273e4402c25114873486c98bfa1b2c47886229d4100e87daf100ee047728"},
+    {file = "azure_keyvault_certificates-4.8.0-py3-none-any.whl", hash = "sha256:6466b8ce33b628d7336e5f4fba3e18fb9a42f1342f19a7e4029f69b1b2fa1198"},
+]
+
+[[package]]
+name = "azure-keyvault-keys"
+version = "4.9.0"
+requires_python = ">=3.8"
+summary = "Microsoft Azure Key Vault Keys Client Library for Python"
+dependencies = [
+    "azure-core<2.0.0,>=1.29.5",
+    "cryptography>=2.1.4",
+    "isodate>=0.6.1",
+    "typing-extensions>=4.0.1",
+]
+files = [
+    {file = "azure-keyvault-keys-4.9.0.tar.gz", hash = "sha256:08632dcd6ece28657204e9a256ad64369fe2b0e385ed43349f932f007d89f774"},
+    {file = "azure_keyvault_keys-4.9.0-py3-none-any.whl", hash = "sha256:05eff85600f2f288a38e5c818ff77c5121840d327e66188cfa7ad333defb545b"},
+]
+
+[[package]]
+name = "azure-keyvault-secrets"
+version = "4.8.0"
+requires_python = ">=3.8"
+summary = "Microsoft Azure Key Vault Secrets Client Library for Python"
+dependencies = [
+    "azure-core<2.0.0,>=1.29.5",
+    "isodate>=0.6.1",
+    "typing-extensions>=4.0.1",
+]
+files = [
+    {file = "azure-keyvault-secrets-4.8.0.tar.gz", hash = "sha256:5636c0a1d8a20e3c5799cb3ccffd4ebf3f0d1acb7cae9526861833af8b0fe814"},
+    {file = "azure_keyvault_secrets-4.8.0-py3-none-any.whl", hash = "sha256:e5898c87cef95e54a8c4aa48cdbf4717ee30543a10b793c95bd57a476554a893"},
 ]
 
 [[package]]
@@ -419,16 +435,17 @@ files = [
 
 [[package]]
 name = "msal"
-version = "1.22.0"
+version = "1.28.0"
+requires_python = ">=3.7"
 summary = "The Microsoft Authentication Library (MSAL) for Python library enables your app to access the Microsoft Cloud by supporting authentication of users with Microsoft Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industry standard OAuth2 and OpenID Connect."
 dependencies = [
     "PyJWT[crypto]<3,>=1.0.0",
-    "cryptography<43,>=0.6",
+    "cryptography<45,>=0.6",
     "requests<3,>=2.0.0",
 ]
 files = [
-    {file = "msal-1.22.0-py2.py3-none-any.whl", hash = "sha256:9120b7eafdf061c92f7b3d744e5f325fca35873445fa8ffebb40b1086a13dd58"},
-    {file = "msal-1.22.0.tar.gz", hash = "sha256:8a82f5375642c1625c89058018430294c109440dce42ea667d466c2cab520acd"},
+    {file = "msal-1.28.0-py3-none-any.whl", hash = "sha256:3064f80221a21cd535ad8c3fafbb3a3582cd9c7e9af0bb789ae14f726a0ca99b"},
+    {file = "msal-1.28.0.tar.gz", hash = "sha256:80bbabe34567cb734efd2ec1869b2d98195c927455369d8077b3c542088c5c9d"},
 ]
 
 [[package]]
@@ -460,20 +477,6 @@ dependencies = [
 files = [
     {file = "msrest-0.7.1-py3-none-any.whl", hash = "sha256:21120a810e1233e5e6cc7fe40b474eeb4ec6f757a15d7cf86702c369f9567c32"},
     {file = "msrest-0.7.1.zip", hash = "sha256:6e7661f46f3afd88b75667b7187a92829924446c7ea1d169be8c4bb7eeb788b9"},
-]
-
-[[package]]
-name = "msrestazure"
-version = "0.6.4"
-summary = "AutoRest swagger generator Python client runtime. Azure-specific module."
-dependencies = [
-    "adal<2.0.0,>=0.6.0",
-    "msrest<2.0.0,>=0.6.0",
-    "six",
-]
-files = [
-    {file = "msrestazure-0.6.4-py2.py3-none-any.whl", hash = "sha256:3de50f56147ef529b31e099a982496690468ecef33f0544cb0fa0cfe1e1de5b9"},
-    {file = "msrestazure-0.6.4.tar.gz", hash = "sha256:a06f0dabc9a6f5efe3b6add4bd8fb623aeadacf816b7a35b0f89107e0544d189"},
 ]
 
 [[package]]
@@ -653,19 +656,6 @@ files = [
 ]
 
 [[package]]
-name = "python-dateutil"
-version = "2.8.2"
-requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
-summary = "Extensions to the standard Python datetime module"
-dependencies = [
-    "six>=1.5",
-]
-files = [
-    {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
-    {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
-]
-
-[[package]]
 name = "pywin32"
 version = "306"
 summary = "Python for Window Extensions"
@@ -774,12 +764,12 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.5.0"
-requires_python = ">=3.7"
-summary = "Backported and Experimental Type Hints for Python 3.7+"
+version = "4.11.0"
+requires_python = ">=3.8"
+summary = "Backported and Experimental Type Hints for Python 3.8+"
 files = [
-    {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
-    {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
+    {file = "typing_extensions-4.11.0-py3-none-any.whl", hash = "sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a"},
+    {file = "typing_extensions-4.11.0.tar.gz", hash = "sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0"},
 ]
 
 [[package]]

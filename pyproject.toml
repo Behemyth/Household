@@ -13,13 +13,13 @@ dynamic = ["version"]
 requires-python = ">=3.12"
 
 dependencies = [
-  "ansible[azure]>=7.4.0",
+  "ansible[azure]>=9.5.1",
   "ansible-vault>=2.1",
-  "requests",
-  "azure-common==1.1.11",
-  "azure-identity==1.7.0",
-  "azure-keyvault==1.1.0",
-  "msrest==0.7.1",
+  "requests>=2.31.0",
+  "azure-common>=1.1.28",
+  "azure-identity>=1.16.0",
+  "azure-keyvault>=4.2.0",
+  "msrest>=0.7.1",
 ]
 
 [project.license-files]
