@@ -1,1 +1,1 @@
-﻿
+"Household server configuration"

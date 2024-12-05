@@ -21,6 +21,7 @@ dependencies = [
   "azure-keyvault>=4.2.0",
   "msrest>=0.7.1",
   "pyyaml>=6.0.2",
+  "pydantic>=2.10.3",
 ]
 
 [project.urls]
@@ -31,7 +32,6 @@ repository = "https://github.com/Behemyth/Household"
 lint = [
   "ruff>=0.8.1",
   "mypy>=1.13",
-  "isort>=5.13.2",
 ]
 test = [
   "pytest>=8.3.4",
@@ -100,11 +100,10 @@ update = ["--update-all"]
 source = "scm"
 
 [tool.pdm.scripts]
-analyze = {shell = "pylint --verbose household tests"}
-format = {shell = "black --check --verbose ."}
-lint = {composite = ["analyze", "format", "sort-imports", "type-check"]}
-sort-imports = {shell = "isort --check-only --diff --verbose ."}
-test = {shell = "pytest"}
+analyze = {shell = "ruff check household tests"}
+format = {shell = "ruff format"}
+lint = {composite = ["analyze", "format", "type-check"]}
+test = {shell = "pytest --cov=household --verbose tests"}
 type-check = {shell = "mypy ."}
 
 [build-system]
