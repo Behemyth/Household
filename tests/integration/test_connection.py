@@ -1,4 +1,3 @@
-# type: ignore
 """Tests ansible inventory connections"""
 
 import pytest
