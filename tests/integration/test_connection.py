@@ -1,5 +1,4 @@
-"""Tests ansible inventory connections
-"""
+"""Tests ansible inventory connections"""
 
 import pytest
 import testinfra
@@ -9,67 +8,67 @@ import testinfra
 class TestConnection:
     """Setup verification"""
 
-    def test_mini_behemyth(self) -> None:
+    @staticmethod
+    def test_mini_behemyth() -> None:
         """Verifies that mini-behemyth is setup for subnet connections"""
-
-        host = testinfra.get_host("ansible://mini-behemyth")
+        host = testinfra.get_host('ansible://mini-behemyth')
 
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
-        assert username == "asher"
+        assert username == 'asher'
 
-        google = host.addr("google.com")
+        google = host.addr('google.com')
         assert google.is_resolvable
         assert google.is_reachable
 
-    def test_mini_wumpus(self) -> None:
+    @staticmethod
+    def test_mini_wumpus() -> None:
         """Verifies that mini-wumpus is setup via jumphost"""
-
-        host = testinfra.get_host("ansible://mini-wumpus")
+        host = testinfra.get_host('ansible://mini-wumpus')
 
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
-        assert username == "synodic"
+        assert username == 'synodic'
 
-        google = host.addr("google.com")
+        google = host.addr('google.com')
         assert google.is_resolvable
         assert google.is_reachable
 
-    def test_mini_mush(self) -> None:
+    @staticmethod
+    def test_mini_mush() -> None:
         """Verifies that mini-mush is setup via jumphost"""
-
-        host = testinfra.get_host("ansible://mini-mush")
+        host = testinfra.get_host('ansible://mini-mush')
 
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
-        assert username == "synodic"
+        assert username == 'synodic'
 
-        google = host.addr("google.com")
+        google = host.addr('google.com')
         assert google.is_resolvable
         assert google.is_reachable
 
-    def test_mini_sota(self) -> None:
+    @staticmethod
+    def test_mini_sota() -> None:
         """Verifies that mini-sota is setup via jumphost"""
-
-        host = testinfra.get_host("ansible://mini-sota")
+        host = testinfra.get_host('ansible://mini-sota')
 
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
-        assert username == "synodic"
+        assert username == 'synodic'
 
-        google = host.addr("google.com")
+        google = host.addr('google.com')
         assert google.is_resolvable
         assert google.is_reachable
 
-    def test_mini_mouse(self) -> None:
+    @staticmethod
+    def test_mini_mouse() -> None:
         """Verifies that mini-mouse is setup via jumphost"""
-
-        host = testinfra.get_host("ansible://mini-mouse")
+        host = testinfra.get_host('ansible://mini-mouse')
 
         # Empty user gets the current user, 'ansible_user'
         username = host.user().name
-        assert username == "synodic"
+        assert username == 'synodic'
 
-        google = host.addr("google.com")
+        google = host.addr('google.com')
         assert google.is_resolvable
         assert google.is_reachable
