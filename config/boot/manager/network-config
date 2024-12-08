@@ -28,23 +28,55 @@ network:
   ethernets:
     eth0:
       dhcp4: true
-      optional: true
-
-#  wifis:
-#    wlan0:
-#      dhcp4: true
-#      optional: true
-#      access-points:
-#        myhomewifi:
-#          password: "S3kr1t"
-#        myworkwifi:
-#          password: "correct battery horse staple"
-#        workssid:
-#          auth:
-#            key-management: eap
-#            method: peap
-#            identity: "me@example.com"
-#            password: "passw0rd"
-#            ca-certificate: /etc/my_ca.pem
-
-#      regulatory-domain: GB
+      dhcp6: false
+      optional: false
+      addresses:
+      - 10.4.2.42/24
+      gateway4: 10.4.2.1
+      nameservers:
+        addresses: [10.4.2.1 8.8.8.8]
+      # static routes
+      routes:
+        - to: 10.4.2.1/24
+          via: 0.0.0.0
+          metric: 101
+        - to: 0.0.0.0/0
+          via: 10.4.2.1
+          metric: 101
+    eth1:
+      dhcp4: true
+      dhcp6: false
+      optional: false
+    eth2:
+      dhcp4: true
+      dhcp6: false
+      optional: false
+    eth3:
+      dhcp4: true
+      dhcp6: false
+      optional: false
+    eth4:
+      dhcp4: true
+      dhcp6: false
+      optional: false
+  bridges:
+    bridge0:
+      interfaces: [eth1, eth2, eth3, eth4]
+      dhcp4: true
+      dhcp6: false
+      optional: false
+      addresses:
+      - 10.42.0.1/24
+      gateway4: 10.4.2.1
+      nameservers:
+        addresses: [10.4.2.1 8.8.8.8]
+      routes:
+      - to: 10.4.2.1
+        via: 0.0.0.0
+        metric: 425
+      - to: 10.42.0.0/24
+        via: 0.0.0.0
+        metric: 425
+      - to: 0.0.0.0/0
+        via: 10.4.2.1
+        metric: 425
