@@ -1,13 +1,6 @@
 #cloud-config
 hostname: <TODO>
 manage_etc_hosts: true
-packages:
-- avahi-daemon
-apt:
-  conf: |
-    Acquire {
-      Check-Date "false";
-    };
 
 users:
 - name: <TODO>
@@ -21,8 +14,6 @@ users:
 
 
 timezone: America/New_York
-runcmd:
-- localectl set-x11-keymap "us" pc105
-- setupcon -k --force || true
+locale: en_US.UTF-8
 
 

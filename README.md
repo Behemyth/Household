@@ -40,15 +40,10 @@ Must be run through WSL, and not on the shared mount.
 ## First-time Server Setup
 
 ### Network Setup
-- Create User on Server
-    - A part of the OS installation
-    
-- User Permissions on Server
-    - `su -`
-    - `apt update`
-    - `apt install sudo -y`
-    - `su - <username>`
 
+- Install the manager OS with the instruction described in [Machine Setup](#machine-setup)
+    
+**This section can be replaced with ansible**
 - SSH Key Setup on `mini-behemyth`
     - `ssh-keygen -t ed25519 -C "<email>"`
     - `ssh-copy-id <username>@<hostname>`
@@ -75,31 +70,6 @@ Must be run through WSL, and not on the shared mount.
     | mini-mush | 10.42.0.11 | Wired connection 5 |
     | mini-mouse | 10.42.0.12 | Wired connection 2 |
     | mini-sota | 10.42.0.13 | Wired connection 4 |
-
-#### Node Static IP Setup
-Do the following for each node
-- Start network manager
-    - `sudo systemctl start NetworkManager.service`
-
-- Enable reboots startups
-    - `sudo systemctl enable NetworkManager.service`
-
-- Remove all NetworkManager connections except `Wired connection 1`
-    - Set static IP 
-    - Set gateway
-    - Set method `manual`
-        - Can be set to `auto` in some generated cases
-
-- Setup NetworkManager restart plugin
-    - `sudo nano /etc/NetworkManager/conf.d/household.conf`
-    - `/etc/NetworkManager/conf.d/household.conf` contents:
-        ```
-        [ifupdown]
-        managed=true
-        ```
-
-- Reboot
-    - `sudo reboot`
 
 #### Manager Setup
 
@@ -138,9 +108,6 @@ Do the following for each node
     - Set `PasswordAuthentication no`
     - `sudo service sshd restart`
 
-- Run the automated setup
-    - `pdm run ansible-playbook ansible/setup-network.yml -K`
-
 ### Connect
 
 ```bash
@@ -163,12 +130,4 @@ List of the devices
 
 #### **/roles**
 
-##### *manager-network*
-This is a role for setting up the manager network to all the worker nodes
-
-##### *worker-network*
-Once the manual labor is done and the manager network is setup, this role modifies all the workers
-
 ### **/tests**
-
-pytest tests verifying server infrastructure so that ansible is garunteed to connect and execute as intended
