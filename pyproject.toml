@@ -10,10 +10,10 @@ readme = "README.md"
 
 dynamic = ["version"]
 
-requires-python = ">=3.13"
+requires-python = ">=3.12" # Pinned to Ubuntu 24 version
 
 dependencies = [
-  "ansible[azure]>=11.1.0",
+  "ansible>=11.1.0",
   "ansible-vault>=2.1",
   "requests>=2.32.3",
   "azure-common>=1.1.28",
@@ -37,7 +37,7 @@ test = [
   "pytest>=8.3.4",
   "pytest-cov>=6.0.0",
   "pytest-mock>=3.14.0",
-  "pytest-testinfra>=10.1.0",
+  "pytest-testinfra[ansible]>=10.1.0",
 ]
 
 [tool.pytest.ini_options]
@@ -53,9 +53,6 @@ testpaths = [
 exclude = "__pypackages__"
 plugins = ["pydantic.mypy"]
 strict = true
-
-[tool.isort]
-profile = "black"
 
 [tool.ruff]
 line-length = 120

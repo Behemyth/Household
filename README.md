@@ -21,7 +21,16 @@ Contents:
 
 Must be run through WSL, and not on the shared mount.
 
+- Clone the repository to a directory of choice
+    - `git clone https://github.com/Behemyth/Household.git`
+
+- Setup pipx and pdm if they are not already on the distribution
+    - `sudo apt install pipx`
+    - `pipx ensurepath`
+    - `pipx install pdm`
+
 - Install the python dependencies with the `pdm` tool
+    - Set the git repository as the current directory
     - `pdm install`
 
 - Log into Azure for key vault access
