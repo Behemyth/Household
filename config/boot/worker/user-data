@@ -1,0 +1,28 @@
+#cloud-config
+hostname: <TODO>
+manage_etc_hosts: true
+packages:
+- avahi-daemon
+apt:
+  conf: |
+    Acquire {
+      Check-Date "false";
+    };
+
+users:
+- name: <TODO>
+  groups: users,adm,dialout,audio,netdev,video,plugdev,cdrom,games,input,gpio,spi,i2c,render,sudo
+  shell: /bin/bash
+  lock_passwd: false
+  passwd: <TODO>
+  ssh_authorized_keys:
+    - <TODO>
+  sudo: ALL=(ALL) NOPASSWD:ALL
+
+
+timezone: America/New_York
+runcmd:
+- localectl set-x11-keymap "us" pc105
+- setupcon -k --force || true
+
+

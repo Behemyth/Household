@@ -3,6 +3,7 @@ Home server management.
 
 Contents:
 
+- [Machine Setup ](#machine-setup)  
 - [Development Setup ](#development-setup)  
 - [Directory Structure](#directory-structure)  
 
@@ -13,9 +14,9 @@ Contents:
 - Traefik
 - Portainer
 
-## TODO List
+## Machine Setup 
 
-- Replace Docker Swarm with Kubernetes
+Follow the steps listed in [the boot configuration files](/config/boot/README.md). 
 
 ## Development Setup 
 
@@ -24,7 +25,7 @@ Must be run through WSL, and not on the shared mount.
 - Clone the repository to a directory of choice
     - `git clone https://github.com/Behemyth/Household.git`
 
-- Setup pipx and pdm if they are not already on the distribution
+- Setup `pipx` and `pdm` if they are not already on the distribution
     - `sudo apt install pipx`
     - `pipx ensurepath`
     - `pipx install pdm`
