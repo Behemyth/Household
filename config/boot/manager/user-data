@@ -1,19 +1,21 @@
 #cloud-config
-hostname: <TODO>
+hostname: { { ds.meta_data.hostname } }
 manage_etc_hosts: true
 
 users:
-- name: <TODO>
-  groups: users,adm,dialout,audio,netdev,video,plugdev,cdrom,games,input,gpio,spi,i2c,render,sudo
-  shell: /bin/bash
-  lock_passwd: false
-  passwd: <TODO>
-  ssh_authorized_keys:
-    - <TODO>
-  sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: synodic
+    groups: users,adm,dialout,audio,netdev,video,plugdev,cdrom,games,input,gpio,spi,i2c,render,sudo
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_pwauth: false
+    ssh_authorized_keys:
+      - { { ds.meta_data.host_ssh_public } }
+    sudo: ALL=(ALL) NOPASSWD:ALL
 
+ssh_keys:
+  ed25519_private: { { ds.meta_data.shh_private } }
+  ed25519_public: { { ds.meta_data.shh_public } }
 
-timezone: America/New_York
-locale: en_US.UTF-8
-
-
+ssh_deletekeys: false
+package_update: true
+package_upgrade: true

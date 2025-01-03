@@ -16,11 +16,20 @@ Contents:
 
 ## Machine Setup 
 
+- SSH Key Setup on the host if you don't already have one
+    - `ssh-keygen -t ed25519`
+    - The public key will be used for the worker and manager configuration
+
+- SSH Key Setup for `mini-behemyth`
+    - `ssh-keygen -t ed25519 -f manager-ssh`
+    - The public and private key will be used for the manager configuration
+    - The public key will be used for the worker configuration
+
 Follow the steps listed in [the boot configuration files](/config/boot/README.md). 
 
 ## Development Setup 
 
-Must be run through WSL, and not on the shared mount.
+**Must be run through WSL**, and **not** on the shared mount.
 
 - Clone the repository to a directory of choice
     - `git clone https://github.com/Behemyth/Household.git`
@@ -43,11 +52,6 @@ Must be run through WSL, and not on the shared mount.
 
 - Install the manager OS with the instruction described in [Machine Setup](#machine-setup)
     
-**This section can be replaced with ansible**
-- SSH Key Setup on `mini-behemyth`
-    - `ssh-keygen -t ed25519 -C "<email>"`
-    - `ssh-copy-id <username>@<hostname>`
-
 - Create DMZ to `mini-behemyth` from router
 
 - Forward ports to `mini-behemyth`
@@ -66,47 +70,10 @@ Must be run through WSL, and not on the shared mount.
     | Hostname | IP Address | `mini-behemyth` Connection |
     | :--- | :--- | :--- |
     | mini-behemyth | 10.4.2.42 | Wired connection 1 |
-    | mini-wumpus | 10.42.0.10 | Wired connection 3 |
-    | mini-mush | 10.42.0.11 | Wired connection 5 |
-    | mini-mouse | 10.42.0.12 | Wired connection 2 |
-    | mini-sota | 10.42.0.13 | Wired connection 4 |
-
-#### Manager Setup
-
-- SSH Key Setup on `mini-behemyth`
-    - `ssh-keygen -t ed25519 -C "<email>"`
-
-- Enable password authentication temporarily on `mini-behemyth`
-    - `sudo nano /etc/ssh/sshd_config`
-    - Set `ChallengeResponseAuthentication yes`
-    - Set `PasswordAuthentication yes`
-    - `sudo service sshd restart`
-
-
-- For each worker:
-    - Enable password authentication temporarily
-        - `sudo nano /etc/ssh/sshd_config`
-        - Set `ChallengeResponseAuthentication yes`
-        - Set `PasswordAuthentication yes`
-        - `sudo service sshd restart`
-
-    - Copy the ID to the worker from `mini-behemyth`
-        - `ssh-copy-id <username>@<hostname>`
-
-    - Copy the ID to the worker from `behemyth`
-        - `ssh-copy-id -o ProxyJump=<username>@mini-behemyth <username>@<hostname>`
-
-    - Disable password authentication
-        - `sudo nano /etc/ssh/sshd_config`
-        - Set `ChallengeResponseAuthentication no`
-        - Set `PasswordAuthentication no`
-        - `sudo service sshd restart`
-
-- Disable password authentication for `mini-behemyth`
-    - `sudo nano /etc/ssh/sshd_config`
-    - Set `ChallengeResponseAuthentication no`
-    - Set `PasswordAuthentication no`
-    - `sudo service sshd restart`
+    | mini-wumpus | 10.42.0.10 | Wired connection 2 |
+    | mini-mush | 10.42.0.11 | Wired connection 3 |
+    | mini-mouse | 10.42.0.12 | Wired connection 4 |
+    | mini-sota | 10.42.0.13 | Wired connection 5 |
 
 ### Connect
 

@@ -1,10 +1,12 @@
 # Machine Setup
 
-We provide [network-config](#network-config) and [user-data](#user-data) files which `cloud-init` uses to config the OS on its first boot. Depending on if your configuring the [manager]() or [worker]() you can find the repspective files that you should place next to the OS image in subdirectories to this README.
+We provide [network-config](#network-config) and [user-data](#user-data) files which `cloud-init` uses to config the OS on its first boot. Depending on if your configuring the [manager]() or [worker]() you can find the respective files that you should place next to the OS image in subdirectories to this README.
 
-`cloud-init` is a standard most OSs/VMs have. Verify that the one your installing does as well
+`cloud-init` is a standard most OSs/VMs have. Verify that the one your installing does as well.
 
-**Make sure to replace information marked <TODO> with the proper configuration for your machine**
+The file `meta-data.yaml.template` contains the variables that you should manually replace. These variables are defined in jinja format but we do not use jinja for 
+
+Below is the default description Ubuntu gives for each file.
 
 ## `network-config`
 
