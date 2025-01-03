@@ -1,5 +1,5 @@
 #cloud-config
-hostname: { { ds.meta_data.hostname } }
+hostname: synodic
 manage_etc_hosts: true
 
 users:

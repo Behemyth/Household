@@ -27,8 +27,6 @@ network:
 
   ethernets:
     eth0:
-      dhcp4: true
-      dhcp6: false
       optional: false
       addresses:
         - 10.4.2.42/24
@@ -44,26 +42,16 @@ network:
           via: 10.4.2.1
           metric: 101
     eth1:
-      dhcp4: true
-      dhcp6: false
       optional: false
     eth2:
-      dhcp4: true
-      dhcp6: false
       optional: false
     eth3:
-      dhcp4: true
-      dhcp6: false
       optional: false
     eth4:
-      dhcp4: true
-      dhcp6: false
       optional: false
   bridges:
     bridge0:
       interfaces: [eth1, eth2, eth3, eth4]
-      dhcp4: true
-      dhcp6: false
       optional: false
       addresses:
         - 10.42.0.1/24

@@ -3,8 +3,6 @@ network:
 
   ethernets:
     eth0:
-      dhcp4: true
-      dhcp6: false
       optional: false
       addresses:
         - <TODO>
