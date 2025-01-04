@@ -2,9 +2,7 @@
 autoinstall:
   version: 1
   network:
-    network:
     version: 2
-
     # The manger device interfaces are enp1s0, enp2s0,... enp5s0
     ethernets:
       enp1s0:
@@ -12,49 +10,28 @@ autoinstall:
         addresses:
           - 10.4.2.42/24
         nameservers:
-          addresses: [10.42.0.1 10.4.2.1 8.8.8.8 8.8.4.4]
+          addresses:
+            - 10.4.2.1
+            - 8.8.8.8
+            - 8.8.4.4
         routes:
           - to: default
-            via: 10.4.2.1
-            metric: 3
-          - to: 10.4.2.1/24
-            via: 0.0.0.0
-            metric: 1
-          - to: 10.42.0.1/24
-            via: 0.0.0.0
-            metric: 0
-          - to: 0.0.0.0/0
             via: 10.4.2.1
             metric: 2
       switchports:
         match:
           name: enp*
-        optional: false
+        optional: true
     bridges:
       bridge0:
         interfaces: [switchports]
         optional: false
         addresses:
           - 10.42.0.1/24
-        nameservers:
-          addresses: [10.42.0.1 10.4.2.1 8.8.8.8 8.8.4.4]
-        routes:
-          - to: default
-            via: 10.4.2.1
-            metric: 3
-          - to: 10.4.2.1/24
-            via: 0.0.0.0
-            metric: 1
-          - to: 10.42.0.1/24
-            via: 0.0.0.0
-            metric: 0
-          - to: 0.0.0.0/0
-            via: 10.4.2.1
-            metric: 2
   ssh:
     install-server: yes
     authorized-keys:
-      - $key
+      - { { ds.meta_data.host_ssh_public } }
     allow-pw: no
   user-data:
     hostname: synodic
