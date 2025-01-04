@@ -2,18 +2,21 @@ network:
   version: 2
 
   ethernets:
+    # This is the interface name of the rpi5
     eth0:
       optional: false
       addresses:
         - <TODO>
-      gateway4: 10.42.0.1
       nameservers:
-        addresses: []
-      # static routes
+        # We use Google's DNS servers and the manager to resolve DNS
+        addresses: [10.42.0.1 8.8.8.8 8.8.4.4]
       routes:
+        - to: default
+          via: 10.42.0.1
+          metric: 2
         - to: 10.42.0.1
           via: 0.0.0.0
-          metric: 100
+          metric: 1
         - to: 0.0.0.0/0
           via: 10.42.0.1
-          metric: 100
+          metric: 2

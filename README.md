@@ -25,7 +25,7 @@ Contents:
     - The public and private key will be used for the manager configuration
     - The public key will be used for the worker configuration
 
-Follow the steps listed in [the boot configuration files](/config/boot/README.md). 
+Follow the steps listed in [the boot configuration files](/config/boot/README.md) for either the manager or workers. 
 
 ## Development Setup 
 
@@ -50,30 +50,25 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
 ### Network Setup
 
-- Install the manager OS with the instruction described in [Machine Setup](#machine-setup)
+- Install the OSs with the instruction described in [Machine Setup](#machine-setup)
     
 - Create DMZ to `mini-behemyth` from router
 
-- Forward ports to `mini-behemyth`
-    - 60
-    - 22
-    - 443
-
 - Add Static Route from router
-    - Destination: `10.42.0.0`
+    - Destination: `10.42.0.1`
     - Gateway: `10.4.2.42`
     - Netmask: `255.255.255.0`
     - Metric: `0`
 
 - Setup Static Worker Ips: 
 
-    | Hostname | IP Address | `mini-behemyth` Connection |
+    | Hostname | IP Address | `mini-behemyth` Interface Name |
     | :--- | :--- | :--- |
-    | mini-behemyth | 10.4.2.42 | Wired connection 1 |
-    | mini-wumpus | 10.42.0.10 | Wired connection 2 |
-    | mini-mush | 10.42.0.11 | Wired connection 3 |
-    | mini-mouse | 10.42.0.12 | Wired connection 4 |
-    | mini-sota | 10.42.0.13 | Wired connection 5 |
+    | mini-behemyth | 10.4.2.42 | enp1s0 |
+    | mini-wumpus | 10.42.0.10 | enp2s0 |
+    | mini-mush | 10.42.0.11 | enp3s0 |
+    | mini-mouse | 10.42.0.12 | enp4s0 |
+    | mini-sota | 10.42.0.13 | enp5s0 |
 
 ### Connect
 

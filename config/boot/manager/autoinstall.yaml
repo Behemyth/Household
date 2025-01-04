@@ -1,0 +1,80 @@
+#cloud-config
+autoinstall:
+  version: 1
+  network:
+    network:
+    version: 2
+
+    # The manger device interfaces are enp1s0, enp2s0,... enp5s0
+    ethernets:
+      enp1s0:
+        optional: false
+        addresses:
+          - 10.4.2.42/24
+        nameservers:
+          addresses: [10.42.0.1 10.4.2.1 8.8.8.8 8.8.4.4]
+        routes:
+          - to: default
+            via: 10.4.2.1
+            metric: 3
+          - to: 10.4.2.1/24
+            via: 0.0.0.0
+            metric: 1
+          - to: 10.42.0.1/24
+            via: 0.0.0.0
+            metric: 0
+          - to: 0.0.0.0/0
+            via: 10.4.2.1
+            metric: 2
+      switchports:
+        match:
+          name: enp*
+        optional: false
+    bridges:
+      bridge0:
+        interfaces: [switchports]
+        optional: false
+        addresses:
+          - 10.42.0.1/24
+        nameservers:
+          addresses: [10.42.0.1 10.4.2.1 8.8.8.8 8.8.4.4]
+        routes:
+          - to: default
+            via: 10.4.2.1
+            metric: 3
+          - to: 10.4.2.1/24
+            via: 0.0.0.0
+            metric: 1
+          - to: 10.42.0.1/24
+            via: 0.0.0.0
+            metric: 0
+          - to: 0.0.0.0/0
+            via: 10.4.2.1
+            metric: 2
+  ssh:
+    install-server: yes
+    authorized-keys:
+      - $key
+    allow-pw: no
+  user-data:
+    hostname: synodic
+    manage_etc_hosts: true
+
+    users:
+      - name: synodic
+        groups: users,admin,wheel
+        shell: /bin/bash
+        lock_passwd: true
+        ssh_authorized_keys:
+          - { { ds.meta_data.host_ssh_public } }
+        sudo: ALL=(ALL) NOPASSWD:ALL
+
+    ssh_keys:
+      ed25519_private: { { ds.meta_data.shh_private } }
+      ed25519_public: { { ds.meta_data.shh_public } }
+
+    ssh_pwauth: false
+    ssh_deletekeys: false
+    no_ssh_fingerprints: true
+    ssh:
+      emit_keys_to_console: false

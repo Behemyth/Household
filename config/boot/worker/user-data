@@ -4,14 +4,17 @@ manage_etc_hosts: true
 
 users:
   - name: synodic
-    groups: users,adm,dialout,audio,netdev,video,plugdev,cdrom,games,input,gpio,spi,i2c,render,sudo
+    groups: users,admin,wheel
     shell: /bin/bash
     lock_passwd: true
-    ssh_pwauth: false
     ssh_authorized_keys:
       - { { ds.meta_data.host_ssh_public } }
       - { { ds.meta_data.manager_ssh_public } }
     sudo: ALL=(ALL) NOPASSWD:ALL
 
-package_update: true
-package_upgrade: true
+ssh_pwauth: false
+ssh_deletekeys: false
+no_ssh_fingerprints: true
+
+ssh:
+  emit_keys_to_console: false
