@@ -52,6 +52,8 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
 - Install the OSs with the instruction described in [Machine Setup](#machine-setup)
     
+- Add a static DHCP entry for `mini-behemyth`. This gives the benefit of hostname discovery with a consistent ip address.
+
 - Create DMZ to `mini-behemyth` from router. In essence, forwarding all ports.
 
 - Add Static Route from router
@@ -64,7 +66,7 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
     | Hostname | IP Address | `mini-behemyth` Interface Name |
     | :--- | :--- | :--- |
-    | mini-behemyth | 10.4.2.42 | enp1s0 |
+    | mini-behemyth | 10.42.0.1 | enp1s0 |
     | mini-wumpus | 10.42.0.10 | enp2s0 |
     | mini-mush | 10.42.0.11 | enp3s0 |
     | mini-mouse | 10.42.0.12 | enp4s0 |
