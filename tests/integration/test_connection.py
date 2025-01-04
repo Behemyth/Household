@@ -29,8 +29,7 @@ class TestConnection:
         external_host = host.get_host(host_name)
 
         # Empty user gets the current user, 'ansible_user'
-        username = external_host.user.name
-        assert username == 'synodic'
+        assert external_host.user('synodic').exists
 
         google = external_host.addr('google.com')
         assert google.is_resolvable
