@@ -55,3 +55,10 @@ autoinstall:
     no_ssh_fingerprints: true
     ssh:
       emit_keys_to_console: false
+    runcmd:
+      # Enable IP forwarding that is persistent across reboots
+      - [
+          "sh",
+          "-c",
+          "echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf",
+        ]
