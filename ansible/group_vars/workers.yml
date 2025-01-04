@@ -1,2 +1,2 @@
 ansible_user: synodic
-ansible_ssh_common_args: "-J asher@mini-behemyth"
+ansible_ssh_common_args: "-J synodic@mini-behemyth"

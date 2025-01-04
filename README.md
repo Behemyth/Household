@@ -52,7 +52,7 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
 - Install the OSs with the instruction described in [Machine Setup](#machine-setup)
     
-- Create DMZ to `mini-behemyth` from router
+- Create DMZ to `mini-behemyth` from router. In essence, forwarding all ports.
 
 - Add Static Route from router
     - Destination: `10.42.0.1`
