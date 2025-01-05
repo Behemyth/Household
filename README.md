@@ -43,9 +43,6 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
     - Set the git repository as the current directory
     - `pdm install`
 
-- Log into Azure for key vault access
-    - `az login --service-principal --username <client-id> --password <client-secret> --tenant <tenant-id>`
-
 ## First-time Server Setup
 
 ### Network Setup
