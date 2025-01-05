@@ -34,7 +34,7 @@ test = [
   "pytest-cov>=6.0.0",
   "pytest-mock>=3.14.0",
   "ansible-dev-tools>=4.3.0",
-  "molecule-plugins[docker]>=23.6.0",  
+  "molecule-plugins[docker]>=23.6.0",
   "pytest-testinfra[ansible]>=10.1.0",
 ]
 
@@ -96,8 +96,9 @@ source = "scm"
 
 [tool.pdm.scripts]
 analyze = {shell = "ruff check household tests"}
+ansible-lint = {shell = "ansible-lint"}
 format = {shell = "ruff format"}
-lint = {composite = ["analyze", "format", "type-check"]}
+lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 test = {shell = "pytest --cov=household --verbose tests"}
 type-check = {shell = "mypy ."}
 
