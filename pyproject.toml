@@ -18,7 +18,6 @@ dependencies = [
   "requests>=2.32.3",
   "pyyaml>=6.0.2",
   "pydantic>=2.10.3",
-  "ansible-dev-tools>=4.3.0",
 ]
 
 [project.urls]
@@ -34,6 +33,8 @@ test = [
   "pytest>=8.3.4",
   "pytest-cov>=6.0.0",
   "pytest-mock>=3.14.0",
+  "ansible-dev-tools>=4.3.0",
+  "molecule-plugins[docker]>=23.6.0",  
   "pytest-testinfra[ansible]>=10.1.0",
 ]
 
