@@ -8,5 +8,6 @@
     },
     "yaml.schemas": {
         "https://json.schemastore.org/github-workflow.json": "file:///home/behemyth/projects/Household/.github/workflows/deploy.yml"
-    }
+    },
+    "ansible.python.interpreterPath": "${workspaceFolder}/.venv/bin/python"
 }
