@@ -8,4 +8,4 @@ Add `autoinstall` to the kernel command to bypass the "Continue with autoinstall
 
 ## Worker Setup
 
-Ubuntu Server for Raspberry Pi is chosen for the workers. Using Raspberry Pi Imager, two files will be written to the USB root, `network-config` and `user-data`. Fill in and replace the files with the ones found in `/worker`
+Raspberry Pi Lite OS
