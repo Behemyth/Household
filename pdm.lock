@@ -5,7 +5,7 @@
 groups = ["default", "lint", "test"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:5e3b30c542ab9434ee21ddbb644cdf60988dd778fdb604e6dff7f71cea08a2d1"
+content_hash = "sha256:9b5bfccf13d423a130d48248bcd2a9c7499a020bfbf3f1f7b7539d241a316bdb"
 
 [[metadata.targets]]
 requires_python = ">=3.12"
@@ -44,7 +44,7 @@ name = "ansible-builder"
 version = "3.1.0"
 requires_python = ">=3.9"
 summary = "\"A tool for building Ansible Execution Environments\""
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "PyYAML",
     "bindep",
@@ -61,7 +61,7 @@ name = "ansible-compat"
 version = "24.10.0"
 requires_python = ">=3.9"
 summary = "Ansible compatibility goodies"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "PyYAML",
     "ansible-core>=2.14",
@@ -80,7 +80,7 @@ name = "ansible-core"
 version = "2.18.1"
 requires_python = ">=3.11"
 summary = "Radically simple IT automation"
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 dependencies = [
     "PyYAML>=5.1",
     "cryptography",
@@ -98,7 +98,7 @@ name = "ansible-creator"
 version = "24.12.1"
 requires_python = ">=3.10"
 summary = "A CLI tool for scaffolding Ansible Content."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "Jinja2>=3.1.2",
     "PyYAML",
@@ -114,7 +114,7 @@ name = "ansible-dev-environment"
 version = "24.12.0"
 requires_python = ">=3.10"
 summary = "A pip-like ansible collection installer."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ansible-builder",
     "pyyaml",
@@ -130,7 +130,7 @@ name = "ansible-dev-tools"
 version = "24.12.0"
 requires_python = ">=3.10"
 summary = "Ansible Developtment Tools kit bundles all tools needed for content creation and testing."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ansible-builder",
     "ansible-creator>=24.10.1",
@@ -153,7 +153,7 @@ name = "ansible-lint"
 version = "24.12.2"
 requires_python = ">=3.10"
 summary = "Checks playbooks for practices and behavior that could potentially be improved"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ansible-compat>=24.10.0",
     "ansible-core>=2.13.0",
@@ -181,7 +181,7 @@ name = "ansible-navigator"
 version = "24.12.0"
 requires_python = ">=3.10"
 summary = "A text-based user interface (TUI) for the Red Hat Ansible Automation Platform"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ansible-builder>=3.0.0",
     "ansible-lint>=6.19.0",
@@ -203,7 +203,7 @@ name = "ansible-runner"
 version = "2.4.0"
 requires_python = ">=3.9"
 summary = "\"Consistent Ansible Python API and CLI with container and process isolation runtime capabilities\""
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "importlib-metadata<6.3,>=4.6; python_version < \"3.10\"",
     "packaging",
@@ -220,7 +220,7 @@ files = [
 name = "ansible-sign"
 version = "0.1.1"
 summary = "Ansible content validation library and CLI"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "distlib",
     "importlib-metadata; python_version < \"3.8\"",
@@ -249,7 +249,7 @@ name = "attrs"
 version = "24.3.0"
 requires_python = ">=3.8"
 summary = "Classes Without Boilerplate"
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "attrs-24.3.0-py3-none-any.whl", hash = "sha256:ac96cd038792094f438ad1f6ff80837353805ac950cd2aa0e0625ef19850c308"},
     {file = "attrs-24.3.0.tar.gz", hash = "sha256:8f5c07333d543103541ba7be0e2ce16eeee8130cb0b3f9238ab904ce1e85baff"},
@@ -259,7 +259,7 @@ files = [
 name = "bindep"
 version = "2.11.0"
 summary = "Binary dependency utility"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "Parsley",
     "distro<1.7.0; python_version < \"3.6\"",
@@ -278,7 +278,7 @@ name = "black"
 version = "24.10.0"
 requires_python = ">=3.9"
 summary = "The uncompromising code formatter."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "click>=8.0.0",
     "mypy-extensions>=0.4.3",
@@ -300,7 +300,7 @@ name = "bracex"
 version = "2.5.post1"
 requires_python = ">=3.8"
 summary = "Bash style brace expander."
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "bracex-2.5.post1-py3-none-any.whl", hash = "sha256:13e5732fec27828d6af308628285ad358047cec36801598368cb28bc631dbaf6"},
     {file = "bracex-2.5.post1.tar.gz", hash = "sha256:12c50952415bfa773d2d9ccb8e79651b8cdb1f31a42f6091b804f6ba2b4a66b6"},
@@ -311,7 +311,7 @@ name = "cachetools"
 version = "5.5.0"
 requires_python = ">=3.7"
 summary = "Extensible memoizing collections and decorators"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "cachetools-5.5.0-py3-none-any.whl", hash = "sha256:02134e8439cdc2ffb62023ce1debca2944c3f289d66bb17ead3ab3dede74b292"},
     {file = "cachetools-5.5.0.tar.gz", hash = "sha256:2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a"},
@@ -333,7 +333,7 @@ name = "cffi"
 version = "1.17.1"
 requires_python = ">=3.8"
 summary = "Foreign Function Interface for Python calling C code."
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 dependencies = [
     "pycparser",
 ]
@@ -348,7 +348,7 @@ name = "chardet"
 version = "5.2.0"
 requires_python = ">=3.7"
 summary = "Universal encoding detector for Python 3"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "chardet-5.2.0-py3-none-any.whl", hash = "sha256:e1cf59446890a00105fe7b7912492ea04b6e6f06d4b742b2c788469e34c82970"},
     {file = "chardet-5.2.0.tar.gz", hash = "sha256:1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7"},
@@ -372,7 +372,7 @@ name = "click"
 version = "8.1.8"
 requires_python = ">=3.7"
 summary = "Composable command line interface toolkit"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "colorama; platform_system == \"Windows\"",
     "importlib-metadata; python_version < \"3.8\"",
@@ -386,7 +386,7 @@ files = [
 name = "click-help-colors"
 version = "0.9.4"
 summary = "Colorization of help messages in Click"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "click<9,>=7.0",
 ]
@@ -400,7 +400,7 @@ name = "colorama"
 version = "0.4.6"
 requires_python = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 summary = "Cross-platform colored terminal text."
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -442,7 +442,7 @@ name = "cryptography"
 version = "44.0.0"
 requires_python = "!=3.9.0,!=3.9.1,>=3.7"
 summary = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 dependencies = [
     "cffi>=1.12; platform_python_implementation != \"PyPy\"",
 ]
@@ -456,7 +456,7 @@ files = [
 name = "distlib"
 version = "0.3.9"
 summary = "Distribution utilities"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "distlib-0.3.9-py2.py3-none-any.whl", hash = "sha256:47f8c22fd27c27e25a65601af709b38e4f0a45ea4fc2e710f65755fa8caaaf87"},
     {file = "distlib-0.3.9.tar.gz", hash = "sha256:a60f20dea646b8a33f3e7772f74dc0b2d0772d2837ee1342a00645c81edf9403"},
@@ -467,7 +467,7 @@ name = "distro"
 version = "1.9.0"
 requires_python = ">=3.6"
 summary = "Distro - an OS platform information API"
-groups = ["lint"]
+groups = ["default"]
 marker = "python_version >= \"3.6\""
 files = [
     {file = "distro-1.9.0-py3-none-any.whl", hash = "sha256:7bffd925d65168f85027d8da9af6bddab658135b840670a223589bc0c8ef02b2"},
@@ -479,7 +479,7 @@ name = "enrich"
 version = "1.2.7"
 requires_python = ">=3.6"
 summary = "enrich"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "rich>=9.5.1",
 ]
@@ -493,7 +493,7 @@ name = "execnet"
 version = "2.1.1"
 requires_python = ">=3.8"
 summary = "execnet: rapid multi-Python deployment"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "execnet-2.1.1-py3-none-any.whl", hash = "sha256:26dee51f1b80cebd6d0ca8e74dd8745419761d3bef34163928cbebbdc4749fdc"},
     {file = "execnet-2.1.1.tar.gz", hash = "sha256:5189b52c6121c24feae288166ab41b32549c7e2348652736540b9e6e7d4e72e3"},
@@ -504,7 +504,7 @@ name = "filelock"
 version = "3.16.1"
 requires_python = ">=3.8"
 summary = "A platform independent file lock."
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "filelock-3.16.1-py3-none-any.whl", hash = "sha256:2082e5703d51fbf98ea75855d9d5527e33d8ff23099bec374a134febee6946b0"},
     {file = "filelock-3.16.1.tar.gz", hash = "sha256:c249fbfcd5db47e5e2d6d62198e565475ee65e4831e2561c8e313fa7eb961435"},
@@ -526,7 +526,7 @@ name = "importlib-metadata"
 version = "8.5.0"
 requires_python = ">=3.8"
 summary = "Read metadata from Python packages"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "typing-extensions>=3.6.4; python_version < \"3.8\"",
     "zipp>=3.20",
@@ -541,7 +541,7 @@ name = "iniconfig"
 version = "2.0.0"
 requires_python = ">=3.7"
 summary = "brain-dead simple config-ini parsing"
-groups = ["lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
@@ -552,7 +552,7 @@ name = "jinja2"
 version = "3.1.5"
 requires_python = ">=3.7"
 summary = "A very fast and expressive template engine."
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 dependencies = [
     "MarkupSafe>=2.0",
 ]
@@ -566,7 +566,7 @@ name = "jsonschema"
 version = "4.23.0"
 requires_python = ">=3.8"
 summary = "An implementation of JSON Schema validation for Python"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "attrs>=22.2.0",
     "importlib-resources>=1.4.0; python_version < \"3.9\"",
@@ -585,7 +585,7 @@ name = "jsonschema-specifications"
 version = "2024.10.1"
 requires_python = ">=3.9"
 summary = "The JSON Schema meta-schemas and vocabularies, exposed as a Registry"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "referencing>=0.31.0",
 ]
@@ -598,7 +598,7 @@ files = [
 name = "lockfile"
 version = "0.12.2"
 summary = "Platform-independent file locking module"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "lockfile-0.12.2-py2.py3-none-any.whl", hash = "sha256:6c3cb24f344923d30b2785d5ad75182c8ea7ac1b6171b08657258ec7429d50fa"},
     {file = "lockfile-0.12.2.tar.gz", hash = "sha256:6aed02de03cba24efabcd600b30540140634fc06cfa603822d508d5361e9f799"},
@@ -609,7 +609,7 @@ name = "markdown-it-py"
 version = "3.0.0"
 requires_python = ">=3.8"
 summary = "Python port of markdown-it. Markdown parsing, done right!"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "mdurl~=0.1",
 ]
@@ -623,7 +623,7 @@ name = "markupsafe"
 version = "3.0.2"
 requires_python = ">=3.9"
 summary = "Safely add untrusted strings to HTML/XML markup."
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "MarkupSafe-3.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e17c96c14e19278594aa4841ec148115f9c7615a47382ecb6b82bd8fea3ab0c8"},
     {file = "MarkupSafe-3.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:15ab75ef81add55874e7ab7055e9c397312385bd9ced94920f2802310c930396"},
@@ -636,7 +636,7 @@ name = "mdurl"
 version = "0.1.2"
 requires_python = ">=3.7"
 summary = "Markdown URL utilities"
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
     {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
@@ -647,7 +647,7 @@ name = "molecule"
 version = "24.12.0"
 requires_python = ">=3.10"
 summary = "Molecule aids in the development and testing of Ansible roles"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "Jinja2>=2.11.3",
     "PyYAML>=5.1",
@@ -690,7 +690,7 @@ name = "mypy-extensions"
 version = "1.0.0"
 requires_python = ">=3.5"
 summary = "Type system extensions for programs checked with the mypy type checker."
-groups = ["lint"]
+groups = ["default", "lint"]
 files = [
     {file = "mypy_extensions-1.0.0-py3-none-any.whl", hash = "sha256:4392f6c0eb8a5668a69e23d168ffa70f0be9ccfd32b5cc2d26a34ae5b844552d"},
     {file = "mypy_extensions-1.0.0.tar.gz", hash = "sha256:75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782"},
@@ -701,7 +701,7 @@ name = "onigurumacffi"
 version = "1.4.1"
 requires_python = ">=3.9"
 summary = "python cffi bindings for the oniguruma regex engine"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "cffi>=1",
 ]
@@ -715,7 +715,7 @@ name = "packaging"
 version = "24.2"
 requires_python = ">=3.8"
 summary = "Core utilities for Python packages"
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "packaging-24.2-py3-none-any.whl", hash = "sha256:09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759"},
     {file = "packaging-24.2.tar.gz", hash = "sha256:c228a6dc5e932d346bc5739379109d49e8853dd8223571c7c5b55260edc0b97f"},
@@ -725,7 +725,7 @@ files = [
 name = "parsley"
 version = "1.3"
 summary = "Parsing and pattern matching made easy."
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "Parsley-1.3-py2.py3-none-any.whl", hash = "sha256:c3bc417b8c7e3a96c87c0f2f751bfd784ed5156ffccebe2f84330df5685f8dc3"},
     {file = "Parsley-1.3.tar.gz", hash = "sha256:9444278d47161d5f2be76a767809a3cbe6db4db822f46a4fd7481d4057208d41"},
@@ -736,7 +736,7 @@ name = "pathspec"
 version = "0.12.1"
 requires_python = ">=3.8"
 summary = "Utility library for gitignore style pattern matching of file paths."
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "pathspec-0.12.1-py3-none-any.whl", hash = "sha256:a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08"},
     {file = "pathspec-0.12.1.tar.gz", hash = "sha256:a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712"},
@@ -747,7 +747,7 @@ name = "pbr"
 version = "6.1.0"
 requires_python = ">=2.6"
 summary = "Python Build Reasonableness"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "pbr-6.1.0-py2.py3-none-any.whl", hash = "sha256:a776ae228892d8013649c0aeccbb3d5f99ee15e005a4cbb7e61d55a067b28a2a"},
     {file = "pbr-6.1.0.tar.gz", hash = "sha256:788183e382e3d1d7707db08978239965e8b9e4e5ed42669bf4758186734d5f24"},
@@ -757,7 +757,7 @@ files = [
 name = "pexpect"
 version = "4.9.0"
 summary = "Pexpect allows easy control of interactive console applications."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ptyprocess>=0.5",
 ]
@@ -771,7 +771,7 @@ name = "platformdirs"
 version = "4.3.6"
 requires_python = ">=3.8"
 summary = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "platformdirs-4.3.6-py3-none-any.whl", hash = "sha256:73e575e1408ab8103900836b97580d5307456908a03e92031bab39e4554cc3fb"},
     {file = "platformdirs-4.3.6.tar.gz", hash = "sha256:357fb2acbc885b0419afd3ce3ed34564c13c9b95c89360cd9563f73aa5e2b907"},
@@ -782,7 +782,7 @@ name = "pluggy"
 version = "1.5.0"
 requires_python = ">=3.8"
 summary = "plugin and hook calling mechanisms for python"
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "pluggy-1.5.0-py3-none-any.whl", hash = "sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669"},
     {file = "pluggy-1.5.0.tar.gz", hash = "sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1"},
@@ -792,7 +792,7 @@ files = [
 name = "ptyprocess"
 version = "0.7.0"
 summary = "Run a subprocess in a pseudo terminal"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "ptyprocess-0.7.0-py2.py3-none-any.whl", hash = "sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"},
     {file = "ptyprocess-0.7.0.tar.gz", hash = "sha256:5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220"},
@@ -803,7 +803,7 @@ name = "pycparser"
 version = "2.22"
 requires_python = ">=3.8"
 summary = "C parser in Python"
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "pycparser-2.22-py3-none-any.whl", hash = "sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc"},
     {file = "pycparser-2.22.tar.gz", hash = "sha256:491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6"},
@@ -845,7 +845,7 @@ name = "pygments"
 version = "2.18.0"
 requires_python = ">=3.8"
 summary = "Pygments is a syntax highlighting package written in Python."
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "pygments-2.18.0-py3-none-any.whl", hash = "sha256:b8e6aca0523f3ab76fee51799c488e38782ac06eafcf95e7ba832985c8e7b13a"},
     {file = "pygments-2.18.0.tar.gz", hash = "sha256:786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199"},
@@ -856,7 +856,7 @@ name = "pyproject-api"
 version = "1.8.0"
 requires_python = ">=3.8"
 summary = "API to interact with the python pyproject.toml based projects"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "packaging>=24.1",
     "tomli>=2.0.1; python_version < \"3.11\"",
@@ -871,7 +871,7 @@ name = "pytest"
 version = "8.3.4"
 requires_python = ">=3.8"
 summary = "pytest: simple powerful testing with Python"
-groups = ["lint", "test"]
+groups = ["default", "test"]
 dependencies = [
     "colorama; sys_platform == \"win32\"",
     "exceptiongroup>=1.0.0rc8; python_version < \"3.11\"",
@@ -890,7 +890,7 @@ name = "pytest-ansible"
 version = "24.12.0"
 requires_python = ">=3.10"
 summary = "Plugin for pytest to simplify calling ansible modules from tests or fixtures"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ansible-compat>=4.1.11",
     "ansible-core>=2.14",
@@ -966,7 +966,7 @@ name = "pytest-xdist"
 version = "3.6.1"
 requires_python = ">=3.8"
 summary = "pytest xdist plugin for distributed testing, most importantly across multiple CPUs"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "execnet>=2.1",
     "pytest>=7.0.0",
@@ -981,7 +981,7 @@ name = "python-daemon"
 version = "3.1.2"
 requires_python = ">=3.7"
 summary = "Library to implement a well-behaved Unix daemon process."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "lockfile>=0.10",
 ]
@@ -994,7 +994,7 @@ files = [
 name = "python-gnupg"
 version = "0.5.3"
 summary = "A wrapper for the Gnu Privacy Guard (GPG or GnuPG)"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "python-gnupg-0.5.3.tar.gz", hash = "sha256:290d8ddb9cd63df96cfe9284b9b265f19fd6e145e5582dc58fd7271f026d0a47"},
     {file = "python_gnupg-0.5.3-py2.py3-none-any.whl", hash = "sha256:2f8a4c6f63766feca6cc1416408f8b84e1b914fe7b54514e570fc5cbe92e9248"},
@@ -1005,7 +1005,7 @@ name = "pyyaml"
 version = "6.0.2"
 requires_python = ">=3.8"
 summary = "YAML parser and emitter for Python"
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:80bab7bfc629882493af4aa31a4cfa43a4c57c83813253626916b8c7ada83476"},
     {file = "PyYAML-6.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:70b189594dbe54f75ab3a1acec5f1e3faa7e8cf2f1e08d9b561cb41b845f69d5"},
@@ -1017,7 +1017,7 @@ name = "referencing"
 version = "0.35.1"
 requires_python = ">=3.8"
 summary = "JSON Referencing + Python"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "attrs>=22.2.0",
     "rpds-py>=0.7.0",
@@ -1048,7 +1048,7 @@ files = [
 name = "resolvelib"
 version = "1.0.1"
 summary = "Resolve abstract dependencies into concrete ones"
-groups = ["default", "lint", "test"]
+groups = ["default", "test"]
 files = [
     {file = "resolvelib-1.0.1-py2.py3-none-any.whl", hash = "sha256:d2da45d1a8dfee81bdd591647783e340ef3bcb104b54c383f70d422ef5cc7dbf"},
     {file = "resolvelib-1.0.1.tar.gz", hash = "sha256:04ce76cbd63fded2078ce224785da6ecd42b9564b1390793f64ddecbe997b309"},
@@ -1059,7 +1059,7 @@ name = "rich"
 version = "13.9.4"
 requires_python = ">=3.8.0"
 summary = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "markdown-it-py>=2.2.0",
     "pygments<3.0.0,>=2.13.0",
@@ -1075,7 +1075,7 @@ name = "rpds-py"
 version = "0.22.3"
 requires_python = ">=3.9"
 summary = "Python bindings to Rust's persistent data structures (rpds)"
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "rpds_py-0.22.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e67ba3c290821343c192f7eae1d8fd5999ca2dc99994114643e2f2d3e6138b15"},
     {file = "rpds_py-0.22.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:009de23c9c9ee54bf11303a966edf4d9087cd43a6003672e6aa7def643d06518"},
@@ -1088,7 +1088,7 @@ name = "ruamel-yaml"
 version = "0.18.8"
 requires_python = ">=3.7"
 summary = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "ruamel-yaml-clib>=0.2.7; platform_python_implementation == \"CPython\" and python_version < \"3.13\"",
 ]
@@ -1102,7 +1102,7 @@ name = "ruamel-yaml-clib"
 version = "0.2.12"
 requires_python = ">=3.9"
 summary = "C version of reader, parser and emitter for ruamel.yaml derived from libyaml"
-groups = ["lint"]
+groups = ["default"]
 marker = "platform_python_implementation == \"CPython\" and python_version < \"3.13\""
 files = [
     {file = "ruamel.yaml.clib-0.2.12-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:95c3829bb364fdb8e0332c9931ecf57d9be3519241323c5274bd82f709cebc0c"},
@@ -1126,7 +1126,7 @@ name = "setuptools"
 version = "75.6.0"
 requires_python = ">=3.9"
 summary = "Easily download, build, install, upgrade, and uninstall Python packages"
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "setuptools-75.6.0-py3-none-any.whl", hash = "sha256:ce74b49e8f7110f9bf04883b730f4765b774ef3ef28f722cce7c273d253aaf7d"},
     {file = "setuptools-75.6.0.tar.gz", hash = "sha256:8199222558df7c86216af4f84c30e9b34a61d8ba19366cc914424cdbd28252f6"},
@@ -1137,7 +1137,7 @@ name = "subprocess-tee"
 version = "0.4.2"
 requires_python = ">=3.8"
 summary = "subprocess-tee"
-groups = ["default", "lint"]
+groups = ["default"]
 files = [
     {file = "subprocess_tee-0.4.2-py3-none-any.whl", hash = "sha256:21942e976715af4a19a526918adb03a8a27a8edab959f2d075b777e3d78f532d"},
     {file = "subprocess_tee-0.4.2.tar.gz", hash = "sha256:91b2b4da3aae9a7088d84acaf2ea0abee3f4fd9c0d2eae69a9b9122a71476590"},
@@ -1148,7 +1148,7 @@ name = "tox"
 version = "4.23.2"
 requires_python = ">=3.8"
 summary = "tox is a generic virtualenv management and test command line tool"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "cachetools>=5.5",
     "chardet>=5.2",
@@ -1172,7 +1172,7 @@ name = "tox-ansible"
 version = "24.12.0"
 requires_python = ">=3.10"
 summary = "A radical approach to testing ansible content"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "pytest",
     "pytest-ansible>=3.1.0",
@@ -1201,7 +1201,7 @@ name = "tzdata"
 version = "2024.2"
 requires_python = ">=2"
 summary = "Provider of IANA time zone data"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "tzdata-2024.2-py2.py3-none-any.whl", hash = "sha256:a48093786cdcde33cad18c2555e8532f34422074448fbc874186f0abd79565cd"},
     {file = "tzdata-2024.2.tar.gz", hash = "sha256:7d85cc416e9382e69095b7bdf4afd9e3880418a2413feec7069d533d6b4e31cc"},
@@ -1223,7 +1223,7 @@ name = "virtualenv"
 version = "20.28.1"
 requires_python = ">=3.8"
 summary = "Virtual Python Environment builder"
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "distlib<1,>=0.3.7",
     "filelock<4,>=3.12.2",
@@ -1240,7 +1240,7 @@ name = "wcmatch"
 version = "10.0"
 requires_python = ">=3.8"
 summary = "Wildcard/glob file name matcher."
-groups = ["default", "lint"]
+groups = ["default"]
 dependencies = [
     "bracex>=2.1.1",
 ]
@@ -1254,7 +1254,7 @@ name = "yamllint"
 version = "1.35.1"
 requires_python = ">=3.8"
 summary = "A linter for YAML files."
-groups = ["lint"]
+groups = ["default"]
 dependencies = [
     "pathspec>=0.5.3",
     "pyyaml",
@@ -1269,7 +1269,7 @@ name = "zipp"
 version = "3.21.0"
 requires_python = ">=3.9"
 summary = "Backport of pathlib-compatible object wrapper for zip files"
-groups = ["lint"]
+groups = ["default"]
 files = [
     {file = "zipp-3.21.0-py3-none-any.whl", hash = "sha256:ac1bbe05fd2991f160ebce24ffbac5f6d11d83dc90891255885223d42b3cd931"},
     {file = "zipp-3.21.0.tar.gz", hash = "sha256:2c9958f6430a2040341a52eb608ed6dd93ef4392e02ffe219417c1b28b5dd1f4"},
