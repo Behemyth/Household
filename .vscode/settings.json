@@ -6,8 +6,5 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
     },
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///home/behemyth/projects/Household/.github/workflows/deploy.yml"
-    },
-    "ansible.python.interpreterPath": "/home/asher/projects/Household/.venv/bin/python"
+    "ansible.python.interpreterPath": "/home/asher/.ansible/collections/ansible_collections/synodic/infra/.venv/bin/python",
 }

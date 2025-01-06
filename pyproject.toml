@@ -1,6 +1,6 @@
 [project]
 description = "Home server package"
-name = "household"
+name = "infra"
 
 authors = [
   {name = "Asher Norland", email = "asher.norland@gmail.com"},
@@ -96,8 +96,8 @@ source = "scm"
 
 [tool.pdm.scripts]
 analyze = {cmd = "ruff check tests"}
-ansible-lint = {cmd = "ansible-lint collections"}
-dev = {cmd = "molecule converge"}
+ansible-lint = {cmd = "ansible-lint"}
+dev = {cmd = "molecule converge extensions"}
 format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 test = {cmd = "pytest --verbose tests"}

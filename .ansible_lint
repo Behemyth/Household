@@ -5,4 +5,4 @@ mock_roles:
 exclude_paths:
   - .github
   - tests
-  - collections/ansible_collections/synodic/household/extensions
+  - extensions
