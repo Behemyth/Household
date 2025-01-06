@@ -2,8 +2,16 @@
 driver:
   name: docker
 platforms:
-  - name: instance
-    image: ubuntu:24.04
+  - name: manager
+    image: ubuntu:24.10
+  - name: worker-1
+    image: balenalib/raspberry-pi-node
+  - name: worker-2
+    image: balenalib/raspberry-pi-node
+  - name: worker-3
+    image: balenalib/raspberry-pi-node
+  - name: worker-4
+    image: balenalib/raspberry-pi-node
 provisioner:
   name: ansible
   lint:

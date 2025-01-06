@@ -13,7 +13,7 @@ dynamic = ["version"]
 requires-python = ">=3.12" # Pinned to Ubuntu 24 version
 
 dependencies = [
-  "ansible-core>=2.18.1",
+  "ansible>=11.1.0", # Full ansible for vscode extension
   "ansible-vault>=2.1",
   "pydantic>=2.10.3",
   "pyyaml>=6.0.2",
