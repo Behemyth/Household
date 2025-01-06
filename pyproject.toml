@@ -31,7 +31,6 @@ lint = [
 ]
 test = [
   "pytest>=8.3.4",
-  "pytest-cov>=6.0.0",
   "pytest-mock>=3.14.0",
   "ansible-dev-tools>=4.3.0",
   "molecule-plugins[docker]>=23.6.0",
@@ -95,14 +94,14 @@ update = ["--update-all"]
 source = "scm"
 
 [tool.pdm.scripts]
-analyze = {cmd = "ruff check household tests"}
+analyze = {cmd = "ruff check tests"}
 ansible-lint = {cmd = "ansible-lint collections"}
 dev = {cmd = "molecule converge"}
 format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 test-molecule.cmd = "molecule test"
 test-molecule.working_dir = "collections/ansible_collections/synodic/household/extensions"
-test-pytest = {cmd = "pytest --cov=household --verbose tests"}
+test-pytest = {cmd = "pytest--verbose tests"}
 type-check = {cmd = "mypy ."}
 
 [build-system]
