@@ -101,6 +101,7 @@ dev = {cmd = "molecule converge extensions"}
 format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 test = {cmd = "pytest --verbose tests"}
+test-molecule = {cmd = "molecule test extensions"}
 type-check = {cmd = "mypy ."}
 
 [build-system]

@@ -6,3 +6,7 @@ exclude_paths:
   - .github
   - tests
   - extensions
+  - config
+
+skip_list:
+  - galaxy[no-changelog]
