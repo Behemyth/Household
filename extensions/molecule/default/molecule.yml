@@ -1,26 +1,22 @@
 ---
 driver:
-  name: vagrant
-  provider:
-    name: hyperv
+  name: docker
 platforms:
   - name: manager
-    box: gutehall/ubuntu24-10
-    memory: 4096
-    cpus: 2
-    interfaces:
-      - network_name: private_network
-        ip: 192.168.50.20
-        guest: 80
-        host: 8080
+    image: ubuntu:rolling
+    pre_build_image: true
   - name: worker-1
-    image: balenalib/raspberry-pi-node
+    image: debian:latest
+    pre_build_image: true
   - name: worker-2
-    image: balenalib/raspberry-pi-node
+    image: debian:latest
+    pre_build_image: true
   - name: worker-3
-    image: balenalib/raspberry-pi-node
+    image: debian:latest
+    pre_build_image: true
   - name: worker-4
-    image: balenalib/raspberry-pi-node
+    image: debian:latest
+    pre_build_image: true
 provisioner:
   name: ansible
   lint:

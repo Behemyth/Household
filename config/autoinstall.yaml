@@ -74,6 +74,12 @@ autoinstall:
     ssh:
       emit_keys_to_console: false
 
+    # Enable ipv4 forwarding
+    write_files:
+      - path: /etc/sysctl.d/enabled_ipv4_forwarding.conf
+        content: |
+          net.ipv4.conf.all.forwarding=1
+
     # The final action in cloud-init
     power_state:
       delay: 5
