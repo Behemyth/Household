@@ -1,8 +1,0 @@
-- name: Cluster Update
-  hosts: all
-  tasks:
-    - name: Update System Dependencies
-      become: true
-      ansible.builtin.apt:
-        upgrade: true
-        update_cache: true

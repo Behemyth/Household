@@ -5,5 +5,12 @@
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
-        name: foo.bar.my_role
+        name: synodic.household.init_manager
         tasks_from: main.yml
+    - name: Set IP Forwarding
+      ansible.posix.sysctl:
+        name: net.ipv4.ip_forward
+        value: "1"
+        sysctl_set: true
+        state: present
+        reload: true

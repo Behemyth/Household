@@ -96,10 +96,12 @@ source = "scm"
 
 [tool.pdm.scripts]
 analyze = {shell = "ruff check household tests"}
-ansible-lint = {shell = "ansible-lint"}
+ansible-lint = {shell = "ansible-lint collections"}
+dev = {shell = "molecule converge"}
 format = {shell = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
-test = {shell = "pytest --cov=household --verbose tests"}
+test-molecule = {shell = "molecule test"}
+test-pytest = {shell = "pytest --cov=household --verbose tests"}
 type-check = {shell = "mypy ."}
 
 [build-system]
