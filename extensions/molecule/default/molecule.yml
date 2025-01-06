@@ -1,8 +1,16 @@
 ---
 driver:
-  name: default
+  name: docker
 platforms:
   - name: instance
-    # you might want to add your own variables here based on what provisioning
-    # you are doing like:
-    # image: quay.io/centos/centos:stream8
+    image: ubuntu:24.04
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  # inventory:
+  #   links:
+  #     hosts: inventory.yml
+
+verifier:
+  name: ansible
