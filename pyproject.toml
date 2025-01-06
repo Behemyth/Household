@@ -95,14 +95,15 @@ update = ["--update-all"]
 source = "scm"
 
 [tool.pdm.scripts]
-analyze = {shell = "ruff check household tests"}
-ansible-lint = {shell = "ansible-lint collections"}
-dev = {shell = "molecule converge"}
-format = {shell = "ruff format"}
+analyze = {cmd = "ruff check household tests"}
+ansible-lint = {cmd = "ansible-lint collections"}
+dev = {cmd = "molecule converge"}
+format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
-test-molecule = {shell = "molecule test"}
-test-pytest = {shell = "pytest --cov=household --verbose tests"}
-type-check = {shell = "mypy ."}
+test-molecule.cmd = "molecule test"
+test-molecule.working_dir = "collections/ansible_collections/synodic/household/extensions"
+test-pytest = {cmd = "pytest --cov=household --verbose tests"}
+type-check = {cmd = "mypy ."}
 
 [build-system]
 build-backend = "pdm.backend"
