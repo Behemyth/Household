@@ -4,7 +4,7 @@ Home server management.
 **Note: This repository expects to be cloned into a specific directory. Due to `ansible` I am unable to easily bypass this requirement.**
 
 **TODO: Bypass the vscode-ansible extension requiring absolute paths**
-`git clone https://github.com/Behemyth/Household.git ~/.ansible/collections/ansible_collections/synodic/infra`
+`git clone https://github.com/Behemyth/Household.git ~/ansible/collections/ansible_collections/synodic/infra`
 
 Contents:
 

@@ -25,7 +25,7 @@ repository = "https://github.com/Behemyth/Household"
 
 [dependency-groups]
 lint = [
-  "ansible_lint>=24.12.2",
+  "ansible-lint>=24.12.2",
   "ruff>=0.8.5",
   "mypy>=1.14",
 ]
@@ -33,9 +33,8 @@ test = [
   "molecule>=24.12.0",
   "pytest>=8.3.4",
   "pytest-mock>=3.14.0",
-  "pytest_ansible>=24.12.0",
+  "pytest-ansible>=24.12.0",
   "molecule-plugins[docker]>=23.6.0",
-  "pytest-testinfra[ansible]>=10.1.0",
 ]
 
 [tool.pytest.ini_options]
@@ -97,11 +96,13 @@ source = "scm"
 [tool.pdm.scripts]
 analyze = {cmd = "ruff check tests"}
 ansible-lint = {cmd = "ansible-lint"}
-dev = {cmd = "molecule converge extensions"}
+dev.cmd = "molecule converge extensions"
+dev.working_dir = "extensions"
 format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 test = {cmd = "pytest --verbose tests"}
-test-molecule = {cmd = "molecule test extensions"}
+test-molecule.cmd = "molecule test"
+test-molecule.working_dir = "extensions"
 type-check = {cmd = "mypy ."}
 
 [build-system]
