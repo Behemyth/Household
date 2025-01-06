@@ -1,12 +1,8 @@
 # Household
 Home server management.
+___
 
-**Note: This repository expects to be cloned into a specific directory. Due to `ansible` I am unable to easily bypass this requirement.**
-
-**TODO: Bypass the vscode-ansible extension requiring absolute paths**
-`git clone https://github.com/Behemyth/Household.git ~/ansible/collections/ansible_collections/synodic/infra`
-
-Contents:
+## Contents:
 
 - [Machine Setup ](#machine-setup)  
 - [Development Setup ](#development-setup)  
@@ -36,8 +32,13 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
 **Must be run through WSL**, and **not** on the shared mount.
 
-- Clone the repository to a directory of choice
-    - `git clone https://github.com/Behemyth/Household.git`
+- Clone the repository
+    - `git clone ansible/collections/ansible_collections/synodic/infra`
+
+**Note: This repository expects to be cloned into a specific directory. Due to `ansible` I am unable to easily bypass this requirement.**
+
+**TODO: Bypass the vscode-ansible extension requiring absolute paths**
+
 
 - Setup `pipx` and `pdm` if they are not already on the distribution
     - `sudo apt install pipx`
@@ -47,6 +48,12 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 - Install the python dependencies with the `pdm` tool
     - Set the git repository as the current directory
     - `pdm install`
+
+- Install `virtualbox` on Windows
+
+- Install `vagrant` within WSL
+    - See external site for installation instructions
+    - https://developer.hashicorp.com/vagrant/docs/other/wsl
 
 ## First-time Server Setup
 

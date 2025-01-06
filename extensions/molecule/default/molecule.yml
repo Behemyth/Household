@@ -1,9 +1,18 @@
 ---
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: hyperv
 platforms:
   - name: manager
-    image: ubuntu:24.10
+    box: gutehall/ubuntu24-10
+    memory: 4096
+    cpus: 2
+    interfaces:
+      - network_name: private_network
+        ip: 192.168.50.20
+        guest: 80
+        host: 8080
   - name: worker-1
     image: balenalib/raspberry-pi-node
   - name: worker-2
@@ -16,9 +25,6 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
-  # inventory:
-  #   links:
-  #     hosts: inventory.yml
 
 verifier:
-  name: ansible
+  name: testinfra
