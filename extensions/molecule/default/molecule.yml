@@ -11,7 +11,7 @@ driver:
 
 platforms:
   - name: manager
-    image: ubuntu:rolling
+    image: geerlingguy/docker-ubuntu2404-ansible
     pre_build_image: true
     groups:
       - managers

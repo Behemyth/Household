@@ -1,8 +1,8 @@
 ---
 - name: Test new role from within this playbook
-  hosts: all
+  hosts: managers
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
-        name: synodic.infra.init_manager
+        name: synodic.infra.update_manager
         tasks_from: main.yml
