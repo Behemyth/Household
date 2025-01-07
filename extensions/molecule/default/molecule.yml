@@ -13,6 +13,9 @@ platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2404-ansible:latest
     pre_build_image: true
+    # Expose this repository to the container
+    volumes:
+      -
     groups:
       - managers
 
