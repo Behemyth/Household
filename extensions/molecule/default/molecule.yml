@@ -46,6 +46,8 @@ provisioner:
     name: ansible-lint
   scenario:
     name: default
+  playbooks:
+    converge: converge.yml
 
 verifier:
   name: ansible

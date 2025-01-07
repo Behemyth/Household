@@ -1,5 +1,6 @@
 ---
 - name: Initialize Self
+  # We target ourselves when running the playbook because we are started via cloud-init
   hosts: localhost
   tasks:
     - name: Init as Manager
