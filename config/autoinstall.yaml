@@ -21,7 +21,7 @@ autoinstall:
           source: git@github.com:Behemyth/Household.git
       run_ansible:
         - playbook_dir: /home/ansible/household
-          playbook_name: ansible/installation.yml
+          playbook_name: playbooks/init.yml
           forks: 1
   network:
     version: 2

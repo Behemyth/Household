@@ -4,6 +4,6 @@
   tasks:
     - name: Run playbook from manager
       ansible.builtin.command:
-        cmd: ansible-playbook playbooks/init.yml
+        cmd: ansible-playbook /home/ansible/household/playbooks/init.yml
       become: true
       changed_when: true
