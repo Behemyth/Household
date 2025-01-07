@@ -7,6 +7,3 @@ exclude_paths:
   - tests
   - extensions
   - config
-
-skip_list:
-  - galaxy[no-changelog]

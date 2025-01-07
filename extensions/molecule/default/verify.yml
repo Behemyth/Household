@@ -1,0 +1,14 @@
+---
+- name: Verify Manager
+  hosts: managers
+
+  tasks:
+    - name: Perform DNS lookup
+      ansible.builtin.set_fact:
+        dns_result: "{{ lookup('community.general.dig', 'www.google.com.', '127.0.0.1') }}"
+
+    - name: Verify DNS lookup
+      ansible.builtin.assert:
+        that: dns_result is defined and dns_result != ""
+        fail_msg: "Could not lookup DNS for 'www.google.com'"
+        success_msg: "DNS lookup result: {{ dns_result }}"

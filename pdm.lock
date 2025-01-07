@@ -5,7 +5,7 @@
 groups = ["default", "lint", "test"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:0d92399d96a868511111ab674f86d1829f2212f5d2c2ce5099abad4bea23a76d"
+content_hash = "sha256:fa036579a5bc4dcdcdb7eac279bc070d345f5c8a319d52ccfa7c567228671461"
 
 [[metadata.targets]]
 requires_python = ">=3.12"
@@ -30,7 +30,7 @@ name = "ansible"
 version = "11.1.0"
 requires_python = ">=3.11"
 summary = "Radically simple IT automation"
-groups = ["default", "test"]
+groups = ["default"]
 dependencies = [
     "ansible-core~=2.18.1",
 ]
@@ -652,36 +652,6 @@ dependencies = [
 files = [
     {file = "pytest-mock-3.14.0.tar.gz", hash = "sha256:2719255a1efeceadbc056d6bf3df3d1c5015530fb40cf347c0f9afac88410bd0"},
     {file = "pytest_mock-3.14.0-py3-none-any.whl", hash = "sha256:0b72c38033392a5f4621342fe11e9219ac11ec9d375f8e2a0c164539e0d70f6f"},
-]
-
-[[package]]
-name = "pytest-testinfra"
-version = "10.1.1"
-requires_python = ">=3.9"
-summary = "Test infrastructures"
-groups = ["test"]
-dependencies = [
-    "pytest>=6",
-]
-files = [
-    {file = "pytest-testinfra-10.1.1.tar.gz", hash = "sha256:a876f1453a01b58d94d9d936dd50344c2c01ac7880a2b41d15bdf233aed9cf1f"},
-    {file = "pytest_testinfra-10.1.1-py3-none-any.whl", hash = "sha256:b990dc7d77b49a1bba24818fbff49b6171d8c46d606fb5ca86b937de690d7062"},
-]
-
-[[package]]
-name = "pytest-testinfra"
-version = "10.1.1"
-extras = ["ansible"]
-requires_python = ">=3.9"
-summary = "Test infrastructures"
-groups = ["test"]
-dependencies = [
-    "ansible",
-    "pytest-testinfra==10.1.1",
-]
-files = [
-    {file = "pytest-testinfra-10.1.1.tar.gz", hash = "sha256:a876f1453a01b58d94d9d936dd50344c2c01ac7880a2b41d15bdf233aed9cf1f"},
-    {file = "pytest_testinfra-10.1.1-py3-none-any.whl", hash = "sha256:b990dc7d77b49a1bba24818fbff49b6171d8c46d606fb5ca86b937de690d7062"},
 ]
 
 [[package]]

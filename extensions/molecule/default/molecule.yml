@@ -1,32 +1,47 @@
 ---
+dependency:
+  enabled: true
+  name: galaxy
+  options:
+    requirements-file: requirements.yml
+    role-file: requirements.yml
 driver:
   name: docker
 platforms:
   - name: manager
     image: ubuntu:rolling
     pre_build_image: true
+    groups:
+      - managers
+
   - name: worker-1
     image: debian:latest
     pre_build_image: true
+    groups:
+      - workers
+
   - name: worker-2
     image: debian:latest
     pre_build_image: true
+    groups:
+      - workers
+
   - name: worker-3
     image: debian:latest
     pre_build_image: true
+    groups:
+      - workers
+
   - name: worker-4
     image: debian:latest
     pre_build_image: true
+    groups:
+      - workers
+
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 
 verifier:
-  name: testinfra
-  options:
-    # pytest-ansible conflicts testinfra
-    p: "no:pytest-ansible"
-
-    # Avoids the top-level config that disables testinfra
-    c: "."
+  name: ansible
