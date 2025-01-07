@@ -24,3 +24,9 @@ provisioner:
 
 verifier:
   name: testinfra
+  options:
+    # pytest-ansible conflicts testinfra
+    p: "no:pytest-ansible"
+
+    # Avoids the top-level config that disables testinfra
+    c: "."

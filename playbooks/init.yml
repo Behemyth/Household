@@ -1,16 +1,8 @@
 ---
 - name: Test new role from within this playbook
   hosts: localhost
-  gather_facts: false
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
         name: synodic.infra.init_manager
         tasks_from: main.yml
-    # - name: Set IP Forwarding
-    #   ansible.posix.sysctl:
-    #     name: net.ipv4.ip_forward
-    #     value: "1"
-    #     sysctl_set: true
-    #     state: present
-    #     reload: true

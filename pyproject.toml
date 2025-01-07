@@ -34,10 +34,13 @@ test = [
   "pytest>=8.3.4",
   "pytest-mock>=3.14.0",
   "pytest-ansible>=24.12.0",
-  "molecule-plugins[vagrant]>=23.6.0",
+  "pytest-testinfra[ansible]>=10.1.1",
+  "molecule-plugins[docker]>=23.6.0",
 ]
 
 [tool.pytest.ini_options]
+# Disable testinfra pytest11 plugin to avoid conflicts with pytest-ansible
+addopts = "-p no:pytest11.testinfra"
 log_cli = true
 markers = [
   "setup: Tests that should be run prior to any automation, verifying static IP setup",
