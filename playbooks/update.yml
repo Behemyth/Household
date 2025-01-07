@@ -1,6 +1,6 @@
 ---
 - name: Test new role from within this playbook
-  hosts: managers
+  hosts: all
   tasks:
     - name: Testing role
       ansible.builtin.include_role:
