@@ -15,7 +15,7 @@ platforms:
     pre_build_image: true
     # Expose this repository to the container using the same directory as the cloud-init config
     volumes:
-      - ../../..:/home/ansible/household/:ro
+      - ~/ansible/collections/ansible_collections/synodic/infra:/home/ansible/household:ro
     groups:
       - managers
 

@@ -1,9 +1,3 @@
 ---
 - name: Converge
-  hosts: manager
-  tasks:
-    - name: Run playbook from manager
-      ansible.builtin.command:
-        cmd: ansible-playbook /home/ansible/household/playbooks/init.yml
-      become: true
-      changed_when: true
+  ansible.builtin.import_playbook: synodic.infra.init

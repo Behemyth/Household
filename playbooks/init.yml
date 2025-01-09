@@ -1,9 +1,8 @@
 ---
 - name: Initialize Self
-  # We target ourselves when running the playbook because we are started via cloud-init
-  hosts: localhost
+  hosts: managers
   tasks:
     - name: Init as Manager
       ansible.builtin.include_role:
-        name: synodic.infra.init_manager
+        name: init_manager
         tasks_from: main.yml

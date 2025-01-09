@@ -30,6 +30,7 @@ lint = [
   "mypy>=1.14",
 ]
 test = [
+  "dnspython>=2.7.0", # For molecule verification
   "molecule>=24.12.0",
   "pytest>=8.3.4",
   "pytest-mock>=3.14.0",
@@ -96,7 +97,9 @@ source = "scm"
 [tool.pdm.scripts]
 analyze = {cmd = "ruff check tests"}
 ansible-lint = {cmd = "ansible-lint"}
-dev.cmd = "molecule converge extensions"
+destroy.cmd = "molecule destroy"
+destroy.working_dir = "extensions"
+dev.cmd = "molecule converge"
 dev.working_dir = "extensions"
 format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
