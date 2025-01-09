@@ -1,3 +1,4 @@
 managers:
   hosts:
     manager-1:
+      ansible_host: 10.4.2.42
