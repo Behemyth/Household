@@ -8,35 +8,49 @@ dependency:
 
 driver:
   name: docker
-
+  networks:
+    - name: manager_network
+      driver: bridge
+    - name: worker_network
+      driver: overlay
 platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2404-ansible:latest
     pre_build_image: true
+    network:
+      - manager_network
     groups:
       - managers
 
   - name: worker-1
-    image: debian:latest
+    image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
+    network:
+      - worker_network
     groups:
       - workers
 
   - name: worker-2
-    image: debian:latest
+    image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
+    network:
+      - worker_network
     groups:
       - workers
 
   - name: worker-3
-    image: debian:latest
+    image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
+    network:
+      - worker_network
     groups:
       - workers
 
   - name: worker-4
-    image: debian:latest
+    image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
+    network:
+      - worker_network
     groups:
       - workers
 
