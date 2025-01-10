@@ -9,16 +9,20 @@ dependency:
 driver:
   name: docker
   networks:
-    - name: manager_network
-      driver: bridge
-    - name: worker_network
-      driver: overlay
+    - name: host_network
+      driver: host
+    - name: cluster_network
+      driver: macvlan
+      ipam:
+        config:
+          - subnet: 10.42.0.0/24
+            gateway: 10.42.0.1
 platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2404-ansible:latest
     pre_build_image: true
     network:
-      - manager_network
+      - host_network
     groups:
       - managers
 
@@ -26,7 +30,7 @@ platforms:
     image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
     network:
-      - worker_network
+      - cluster_network
     groups:
       - workers
 
@@ -34,7 +38,7 @@ platforms:
     image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
     network:
-      - worker_network
+      - cluster_network
     groups:
       - workers
 
@@ -42,7 +46,7 @@ platforms:
     image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
     network:
-      - worker_network
+      - cluster_network
     groups:
       - workers
 
@@ -50,7 +54,7 @@ platforms:
     image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
     network:
-      - worker_network
+      - cluster_network
     groups:
       - workers
 
