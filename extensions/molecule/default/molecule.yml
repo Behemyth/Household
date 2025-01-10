@@ -21,6 +21,8 @@ platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2404-ansible:latest
     pre_build_image: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     network:
       - host_network
     groups:

@@ -2,3 +2,45 @@
 - name: Task is running from within the role
   ansible.builtin.debug:
     msg: "This is a task from init_manager."
+
+- name: Install DHCP server
+  ansible.builtin.apt:
+    name: kea
+    state: present
+    update_cache: true
+
+- name: Configure Kea DHCP server
+  ansible.builtin.copy:
+    dest: /etc/kea/kea-dhcp4.conf
+    mode: "0644"
+    content: |
+      {
+        "Dhcp4": {
+          "interfaces-config": {
+            "interfaces": [ "eth0" ]
+          },
+          "lease-database": {
+            "type": "memfile",
+            "persist": true,
+            "name": "/var/lib/kea/dhcp4.leases"
+          },
+          "subnet4": [
+            {
+              "subnet": "10.42.0.0/24",
+              "pools": [
+                { "pool": "10.42.0.10 - 10.42.0.100" }
+              ],
+              "option-data": [
+                { "name": "routers", "data": "10.42.0.1" },
+                { "name": "domain-name-servers", "data": "8.8.8.8, 8.8.4.4" }
+              ]
+            }
+          ]
+        }
+      }
+
+- name: Start and enable DHCP server
+  ansible.builtin.systemd:
+    name: kea-dhcp4-server
+    enabled: true
+    state: started

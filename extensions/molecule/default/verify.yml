@@ -12,3 +12,18 @@
         that: dns_result is defined and dns_result != ""
         fail_msg: "Could not lookup DNS for 'www.google.com'"
         success_msg: "DNS lookup result: {{ dns_result }}"
+
+- name: Verify Workers
+  hosts: workers
+  tasks:
+    - name: Check IP address assigned by DHCP
+      ansible.builtin.command: ip -4 addr show eth0
+      changed_when: true
+      register: ip_output
+
+    - name: Verify IP address
+      ansible.builtin.assert:
+        that:
+          - "'inet 10.42.0.' in ip_output.stdout"
+        fail_msg: "Worker {{ inventory_hostname }} did not receive an IP address from the DHCP server"
+        success_msg: "Worker {{ inventory_hostname }} received an IP address from the DHCP server"
