@@ -13,8 +13,9 @@ platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2404-ansible:latest
     pre_build_image: true
-    network:
-      - host_network
+    # Give a read only volume of our repository location, mimicking autoinstall.yml
+    volume:
+      - /home/asher/ansible/collections/ansible_collections/synodic/infra:/home/ansible/household/:ro
     groups:
       - managers
 

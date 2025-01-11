@@ -2,8 +2,14 @@
 - name: Converge
   hosts: managers
   tasks:
+    - name: Debug print the current directory
+      ansible.builtin.debug:
+        msg: "Current directory is {{ lookup('env', 'PWD') }}"
+
     - name: Run the playbook as a command
       ansible.builtin.command:
-        cmd: ansible-playbook playbooks/autoinstall.yml
+        # This should match the 'run_ansible:' command in config/autoinstall.yml
+        cmd: ansible-playbook autoinstall.yml
+        chdir: "/home/ansible/household/playbooks"
       changed_when: true
       register: command_result
