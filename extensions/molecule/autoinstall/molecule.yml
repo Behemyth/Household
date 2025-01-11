@@ -11,11 +11,9 @@ driver:
 
 platforms:
   - name: manager
-    image: geerlingguy/docker-ubuntu2404-ansible:latest
+    image: ubuntu:oracular
     pre_build_image: true
     # Give a read only volume of our repository location, mimicking autoinstall.yml
-    volume:
-      - /home/asher/ansible/collections/ansible_collections/synodic/infra:/home/ansible/household/:ro
     groups:
       - managers
 
@@ -26,7 +24,6 @@ provisioner:
   scenario:
     name: autoinstall
   playbooks:
-    prepare: ../resources/playbooks/prepare.yml
     verify: ../resources/playbooks/verify.yml
 verifier:
   name: ansible

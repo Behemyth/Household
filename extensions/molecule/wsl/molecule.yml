@@ -19,7 +19,7 @@ driver:
             gateway: 10.42.0.1
 platforms:
   - name: manager
-    image: geerlingguy/docker-ubuntu2404-ansible:latest
+    image: ubuntu:oracular
     pre_build_image: true
     network:
       - host_network
@@ -27,7 +27,7 @@ platforms:
       - managers
 
   - name: worker-1
-    image: geerlingguy/docker-debian12-ansible:latest
+    image: debian:bookworm
     pre_build_image: true
     network:
       - cluster_network
@@ -35,7 +35,7 @@ platforms:
       - workers
 
   - name: worker-2
-    image: geerlingguy/docker-debian12-ansible:latest
+    image: debian:bookworm
     pre_build_image: true
     network:
       - cluster_network
@@ -43,7 +43,7 @@ platforms:
       - workers
 
   - name: worker-3
-    image: geerlingguy/docker-debian12-ansible:latest
+    image: debian:bookworm
     pre_build_image: true
     network:
       - cluster_network
@@ -51,7 +51,7 @@ platforms:
       - workers
 
   - name: worker-4
-    image: geerlingguy/docker-debian12-ansible:latest
+    image: debian:bookworm
     pre_build_image: true
     network:
       - cluster_network
@@ -65,7 +65,6 @@ provisioner:
   scenario:
     name: wsl
   playbooks:
-    prepare: ../resources/playbooks/prepare.yml
     verify: ../resources/playbooks/verify.yml
 
 verifier:
