@@ -23,7 +23,7 @@ provisioner:
   lint:
     name: ansible-lint
   scenario:
-    name: default
+    name: autoinstall
   playbooks:
     prepare: ../resources/playbooks/prepare.yml
     verify: ../resources/playbooks/verify.yml

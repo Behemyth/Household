@@ -1,6 +1,6 @@
 ---
 - name: Initialize Managers
-  hosts: managers
+  hosts: localhost
   tasks:
     - name: Init as Manager
       ansible.builtin.include_role:

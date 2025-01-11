@@ -1,3 +1,9 @@
 ---
 - name: Converge
-  ansible.builtin.import_playbook: synodic.infra.cloud_init
+  hosts: managers
+  tasks:
+    - name: Run the playbook as a command
+      ansible.builtin.command:
+        cmd: ansible-playbook playbooks/autoinstall.yml
+      changed_when: true
+      register: command_result
