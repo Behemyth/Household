@@ -1,0 +1,16 @@
+---
+- name: Initialize Managers
+  hosts: managers
+  tasks:
+    - name: Init as Manager
+      ansible.builtin.include_role:
+        name: init_manager
+        tasks_from: main.yml
+
+- name: Initialize Workers
+  hosts: workers
+  tasks:
+    - name: Init as Worker
+      ansible.builtin.include_role:
+        name: init_worker
+        tasks_from: main.yml

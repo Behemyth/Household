@@ -1,0 +1,31 @@
+---
+dependency:
+  enabled: true
+  name: galaxy
+  options:
+    requirements-file: requirements.yml
+    role-file: requirements.yml
+
+driver:
+  name: docker
+
+platforms:
+  - name: manager
+    image: geerlingguy/docker-ubuntu2404-ansible:latest
+    pre_build_image: true
+    network:
+      - host_network
+    groups:
+      - managers
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  scenario:
+    name: default
+  playbooks:
+    prepare: ../resources/playbooks/prepare.yml
+    verify: ../resources/playbooks/verify.yml
+verifier:
+  name: ansible

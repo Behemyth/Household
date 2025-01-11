@@ -8,6 +8,19 @@ bootcmd:
 autoinstall:
   version: 1
   updates: all
+  ansible:
+    package_name: ansible-core
+    install_method: pip
+    run_user: synodic
+    ansible_config:
+    setup_controller:
+      repositories:
+        - path: /home/ansible/household/
+          source: git@github.com:Behemyth/Household.git
+      run_ansible:
+        - playbook_dir: /home/ansible/household
+          playbook_name: playbooks/init.yml
+          forks: 1
   network:
     version: 2
     # The manger device interfaces are enp1s0, enp2s0,... enp5s0

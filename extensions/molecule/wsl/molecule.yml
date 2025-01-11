@@ -21,8 +21,6 @@ platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2404-ansible:latest
     pre_build_image: true
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     network:
       - host_network
     groups:
@@ -65,9 +63,11 @@ provisioner:
   lint:
     name: ansible-lint
   scenario:
-    name: default
+    name: wsl
   playbooks:
-    converge: converge.yml
+    converge: ../resources/playbooks/converge.yml
+    prepare: ../resources/playbooks/prepare.yml
+    verify: ../resources/playbooks/verify.yml
 
 verifier:
   name: ansible
