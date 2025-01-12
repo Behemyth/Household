@@ -1,0 +1,62 @@
+- name: Install Kea packages
+  ansible.builtin.apt:
+    pkg:
+      - kea
+    state: present
+
+- name: Enable the DHCP service
+  ansible.builtin.service:
+    name: kea-dhcp4-server
+    enabled: true
+
+- name: Enable the DDNS service
+  ansible.builtin.service:
+    name: kea-dhcp-ddns-server
+    enabled: true
+
+- name: Enable the control agent
+  ansible.builtin.service:
+    name: kea-ctrl-agent
+    enabled: true
+
+- name: Configure Kea DHCP server
+  ansible.builtin.template:
+    src: kea-dhcp4.conf.j2
+    dest: /etc/kea/kea-dhcp4.conf
+    validate: kea-dhcp4 -t %s
+    mode: "0640"
+  notify:
+    - Reload kea-dhcp4
+
+- name: Configure DDNS server
+  ansible.builtin.template:
+    src: kea-dhcp-ddns.conf.j2
+    dest: /etc/kea/kea-dhcp-ddns.conf
+    validate: kea-dhcp-ddns -t %s
+    mode: "0640"
+  notify:
+    - Reload kea-dhcp-ddns
+
+- name: Configure Kea control agent
+  ansible.builtin.template:
+    src: kea-ctrl-agent.conf.j2
+    dest: /etc/kea/kea-ctrl-agent.conf
+    validate: kea-ctrl-agent -t %s
+    mode: "0640"
+  notify:
+    - Reload kea-ctrl-agent
+
+- name: Start the DHCP service
+  ansible.builtin.service:
+    name: kea-dhcp4-server
+    state: started
+
+- name: Start the DDNS service
+  ansible.builtin.service:
+    name: kea-dhcp-ddns-server
+    state: started
+
+- name: Start the control agent
+  ansible.builtin.service:
+    name: kea-ctrl-agent
+    state: started
