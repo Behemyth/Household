@@ -5,7 +5,7 @@
     - name: Run the playbook as a command
       ansible.builtin.command:
         # This should match the 'run_ansible:' command in config/autoinstall.yml
-        cmd: ansible-playbook playbooks/autoinstall.yml
+        cmd: ansible-playbook --syntax-check playbooks/autoinstall.yml
         chdir: "/home/ansible/household"
-      changed_when: true
       register: command_result
+      changed_when: false

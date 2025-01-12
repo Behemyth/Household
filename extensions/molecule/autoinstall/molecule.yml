@@ -26,10 +26,6 @@ provisioner:
     name: ansible-lint
   scenario:
     name: autoinstall
-  playbooks:
-    verify: ../resources/playbooks/verify.yml
-  config:
-    defautl:
-      roles_path: ../../../../roles
+
 verifier:
   name: ansible

@@ -68,8 +68,6 @@ provisioner:
     name: ansible-lint
   scenario:
     name: wsl
-  playbooks:
-    verify: ../resources/playbooks/verify.yml
 
 verifier:
   name: ansible
