@@ -15,10 +15,8 @@ platforms:
     pre_build_image: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    command: /sbin/init
-    tmpfs:
-      - /tmp
-      - /run
+    capabilities:
+      - SYS_ADMIN
     groups:
       - managers
 

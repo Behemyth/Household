@@ -21,12 +21,10 @@ platforms:
   - name: manager
     image: geerlingguy/docker-ubuntu2204-ansible:latest
     pre_build_image: true
-    command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /tmp
-      - /run
+    capabilities:
+      - SYS_ADMIN
     network:
       - host_network
     groups:

@@ -4,12 +4,6 @@
   gather_facts: true
   become: true
   tasks:
-    - name: Add the user expected by autoinstall.yml
-      ansible.builtin.user:
-        name: synodic
-        shell: /bin/bash
-        groups: users,admin,wheel
-
     # Our cloud-init script will have already enabled IPv4 forwarding
     - name: Enable IPv4 forwarding
       ansible.posix.sysctl:
