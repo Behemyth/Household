@@ -11,6 +11,17 @@
         state: present
         reload: true
 
+    - name: Install the rsync package
+      ansible.builtin.apt:
+        name: rsync
+        state: present
+
+    - name: Create the destination folder
+      ansible.builtin.file:
+        path: /home/ansible/household
+        state: directory
+        mode: "0755"
+
     - name: Copy the repository to where autoinstall.yml expects it
       ansible.posix.synchronize:
         src: /home/asher/ansible/collections/ansible_collections/synodic/infra/
