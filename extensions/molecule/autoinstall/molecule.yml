@@ -11,7 +11,7 @@ driver:
 
 platforms:
   - name: manager
-    image: geerlingguy/docker-ubuntu2404-ansible:latest
+    image: ubuntu:oracular
     pre_build_image: true
     # Give a read only volume of our repository location, mimicking autoinstall.yml
     groups:
