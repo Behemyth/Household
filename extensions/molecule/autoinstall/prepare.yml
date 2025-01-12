@@ -15,6 +15,7 @@
       ansible.builtin.apt:
         name: rsync
         state: present
+        update_cache: true
 
     - name: Create the destination folder
       ansible.builtin.file:
