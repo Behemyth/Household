@@ -104,7 +104,7 @@ dev.working_dir = "extensions"
 format = {cmd = "ruff format"}
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 test = {cmd = "pytest --verbose tests"}
-test-molecule.cmd = "molecule test --all --parallel"
+test-molecule.cmd = "molecule --debug test --all"
 test-molecule.working_dir = "extensions"
 type-check = {cmd = "mypy ."}
 
