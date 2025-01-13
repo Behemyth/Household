@@ -22,11 +22,9 @@ platforms:
     image: geerlingguy/docker-ubuntu2204-ansible:latest
     pre_build_image: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
+    privileged: true
     network:
       - host_network
     groups:

@@ -60,3 +60,27 @@
   ansible.builtin.service:
     name: kea-ctrl-agent
     state: started
+  # DEBUG CODE
+  register: result
+  failed_when: result.failed
+  ignore_errors: true
+
+- name: Debug kea-ctrl-agent status
+  ansible.builtin.shell: systemctl status kea-ctrl-agent.service
+  register: status_output
+  when: result.failed
+  
+- name: Print kea-ctrl-agent status
+  ansible.builtin.debug:
+    msg: "{{ status_output.stdout }}"
+  when: result.failed
+
+- name: Debug kea-ctrl-agent journal
+  ansible.builtin.shell: journalctl -xeu kea-ctrl-agent.service
+  register: journal_output
+  when: result.failed
+
+- name: Print kea-ctrl-agent journal
+  ansible.builtin.debug:
+    msg: "{{ journal_output.stdout }}"
+  when: result.failed
