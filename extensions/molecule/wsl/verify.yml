@@ -1,7 +1,6 @@
 ---
-- name: Verify Manager
+- name: Verify manager network setup
   hosts: managers
-
   tasks:
     - name: Perform DNS lookup
       ansible.builtin.set_fact:
@@ -13,7 +12,7 @@
         fail_msg: "Could not lookup DNS for 'www.google.com'"
         success_msg: "DNS lookup result: {{ dns_result }}"
 
-- name: Verify Workers
+- name: Verify worker network setup
   hosts: workers
   tasks:
     - name: Check IP address assigned by DHCP
