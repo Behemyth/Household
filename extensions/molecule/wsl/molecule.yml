@@ -68,6 +68,9 @@ provisioner:
     name: ansible-lint
   scenario:
     name: wsl
+  config_options:
+    defaults:
+      stdout_callback: yaml
 
 verifier:
   name: ansible

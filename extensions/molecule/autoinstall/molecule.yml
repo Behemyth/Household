@@ -26,6 +26,9 @@ provisioner:
     name: ansible-lint
   scenario:
     name: autoinstall
+  config_options:
+    defaults:
+      stdout_callback: yaml
 
 verifier:
   name: ansible

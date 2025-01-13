@@ -4,40 +4,32 @@
       - kea
     state: present
 
-- name: Enable the DHCP service
-  ansible.builtin.service:
-    name: kea-dhcp4-server
-    enabled: true
-
-- name: Enable the DDNS service
-  ansible.builtin.service:
-    name: kea-dhcp-ddns-server
-    enabled: true
-
-- name: Configure Kea DHCP server
+- name: Configure DHCP server
   ansible.builtin.template:
     src: kea-dhcp4.conf.j2
     dest: /etc/kea/kea-dhcp4.conf
     validate: kea-dhcp4 -t %s
+    owner: _kea
+    group: _kea
     mode: "0640"
-  notify:
-    - Reload kea-dhcp4
 
 - name: Configure DDNS server
   ansible.builtin.template:
     src: kea-dhcp-ddns.conf.j2
     dest: /etc/kea/kea-dhcp-ddns.conf
     validate: kea-dhcp-ddns -t %s
+    owner: _kea
+    group: _kea
     mode: "0640"
-  notify:
-    - Reload kea-dhcp-ddns
 
-- name: Start the DHCP service
+- name: Enable and start the DHCP service
   ansible.builtin.service:
     name: kea-dhcp4-server
+    enabled: true
     state: started
 
-- name: Start the DDNS service
+- name: Enable and start the DDNS service
   ansible.builtin.service:
     name: kea-dhcp-ddns-server
+    enabled: true
     state: started
