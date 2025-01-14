@@ -65,6 +65,7 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
 - Create DMZ to `mini-behemyth` from router. In essence, forwarding all ports.
 
+**NOTE** I recently removed the static route from the router.
 - Add Static Route from router
     - Destination: `10.42.0.0`
     - Gateway: `10.4.2.42`
