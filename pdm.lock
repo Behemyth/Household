@@ -41,21 +41,20 @@ files = [
 
 [[package]]
 name = "ansible-compat"
-version = "24.10.0"
-requires_python = ">=3.9"
+version = "25.0.0"
+requires_python = ">=3.10"
 summary = "Ansible compatibility goodies"
 groups = ["lint", "test"]
 dependencies = [
     "PyYAML",
-    "ansible-core>=2.14",
+    "ansible-core>=2.16",
     "jsonschema>=4.6.0",
     "packaging",
     "subprocess-tee>=0.4.1",
-    "typing-extensions>=4.5.0; python_version < \"3.10\"",
 ]
 files = [
-    {file = "ansible_compat-24.10.0-py3-none-any.whl", hash = "sha256:0415bcd82f7d84e5b344c03439154c1f16576809dc3a523b81178354c86ae5a1"},
-    {file = "ansible_compat-24.10.0.tar.gz", hash = "sha256:0ad873e0dae8b2de79bc33ced813d6c92c716c4d7b82f9a4693e1fd57f43776e"},
+    {file = "ansible_compat-25.0.0-py3-none-any.whl", hash = "sha256:c6a8be0bbf398c6bac10ed61b9583d6267270118ef6512fbf8de179da33e5883"},
+    {file = "ansible_compat-25.0.0.tar.gz", hash = "sha256:48c4200f1cab886d007a8e0ad39d163abb956ac1ea275aa92349ef058e70a721"},
 ]
 
 [[package]]
