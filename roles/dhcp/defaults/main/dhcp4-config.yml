@@ -2,7 +2,7 @@ kea_dhcp4_config:
   Dhcp4:
     interfaces-config:
       interfaces:
-        - "*"
+        - "enp1s0"
 
     lease-database:
       type: memfile
@@ -27,4 +27,4 @@ kea_dhcp4_config:
           - name: routers
             data: 10.42.0.1
           - name: domain-name-servers
-            data: 8.8.8.8, 8.8.4.4
+            data: 10.42.0.1 8.8.8.8, 8.8.4.4
