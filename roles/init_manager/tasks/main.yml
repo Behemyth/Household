@@ -1,7 +1,6 @@
 ---
 - name: Update the package cache
   ansible.builtin.apt:
-    state: present
     update_cache: true
 
 - name: Setup DHCP server
