@@ -41,20 +41,21 @@ files = [
 
 [[package]]
 name = "ansible-compat"
-version = "25.0.0"
-requires_python = ">=3.10"
+version = "24.10.0"
+requires_python = ">=3.9"
 summary = "Ansible compatibility goodies"
 groups = ["lint", "test"]
 dependencies = [
     "PyYAML",
-    "ansible-core>=2.16",
+    "ansible-core>=2.14",
     "jsonschema>=4.6.0",
     "packaging",
     "subprocess-tee>=0.4.1",
+    "typing-extensions>=4.5.0; python_version < \"3.10\"",
 ]
 files = [
-    {file = "ansible_compat-25.0.0-py3-none-any.whl", hash = "sha256:c6a8be0bbf398c6bac10ed61b9583d6267270118ef6512fbf8de179da33e5883"},
-    {file = "ansible_compat-25.0.0.tar.gz", hash = "sha256:48c4200f1cab886d007a8e0ad39d163abb956ac1ea275aa92349ef058e70a721"},
+    {file = "ansible_compat-24.10.0-py3-none-any.whl", hash = "sha256:0415bcd82f7d84e5b344c03439154c1f16576809dc3a523b81178354c86ae5a1"},
+    {file = "ansible_compat-24.10.0.tar.gz", hash = "sha256:0ad873e0dae8b2de79bc33ced813d6c92c716c4d7b82f9a4693e1fd57f43776e"},
 ]
 
 [[package]]
@@ -77,30 +78,29 @@ files = [
 
 [[package]]
 name = "ansible-lint"
-version = "24.12.2"
+version = "25.1.0"
 requires_python = ">=3.10"
 summary = "Checks playbooks for practices and behavior that could potentially be improved"
 groups = ["lint"]
 dependencies = [
     "ansible-compat>=24.10.0",
-    "ansible-core>=2.13.0",
+    "ansible-core>=2.16.0",
     "black>=24.3.0",
-    "filelock>=3.3.0",
+    "filelock>=3.8.2",
     "importlib-metadata",
     "jsonschema>=4.10.0",
-    "packaging>=21.3",
+    "packaging>=22.0",
     "pathspec>=0.10.3",
-    "pyyaml>=5.4.1",
-    "ruamel-yaml>=0.18.5",
+    "pyyaml>=6.0.2",
+    "ruamel-yaml!=0.18.7,!=0.18.8,>=0.18.5",
     "subprocess-tee>=0.4.1",
     "wcmatch>=8.1.2; python_version < \"3.12\"",
     "wcmatch>=8.5.0; python_version >= \"3.12\"",
-    "will-not-work-on-windows-try-from-wsl-instead; platform_system == \"Windows\"",
-    "yamllint>=1.30.0",
+    "yamllint>=1.34.0",
 ]
 files = [
-    {file = "ansible_lint-24.12.2-py3-none-any.whl", hash = "sha256:ce7a783ce4f053a965e31f308cdb57554259052efea04b8491c9704f11095e54"},
-    {file = "ansible_lint-24.12.2.tar.gz", hash = "sha256:f636309c4e7f724fc1a544df529c4c2354f54cf35ede11d750366afb1158a464"},
+    {file = "ansible_lint-25.1.0-py3-none-any.whl", hash = "sha256:9553b2aee124999b2005140bf27619793910454fcf2381e25ceb5b21f7384eed"},
+    {file = "ansible_lint-25.1.0.tar.gz", hash = "sha256:e4d657578a8354832a84a1d5a2b9225a78b9c5fefa8880506b7fa0347d6b5f7e"},
 ]
 
 [[package]]
@@ -320,8 +320,8 @@ files = [
 
 [[package]]
 name = "importlib-metadata"
-version = "8.5.0"
-requires_python = ">=3.8"
+version = "8.6.0"
+requires_python = ">=3.9"
 summary = "Read metadata from Python packages"
 groups = ["lint"]
 dependencies = [
@@ -329,8 +329,8 @@ dependencies = [
     "zipp>=3.20",
 ]
 files = [
-    {file = "importlib_metadata-8.5.0-py3-none-any.whl", hash = "sha256:45e54197d28b7a7f1559e60b95e7c567032b602131fbd588f1497f47880aa68b"},
-    {file = "importlib_metadata-8.5.0.tar.gz", hash = "sha256:71522656f0abace1d072b9e5481a48f07c138e00f079c38c8f883823f9c26bd7"},
+    {file = "importlib_metadata-8.6.0-py3-none-any.whl", hash = "sha256:bf530e3215e221140ce730fdb932e31cc0a8f8171946b7c9c2b3f9443849378b"},
+    {file = "importlib_metadata-8.6.0.tar.gz", hash = "sha256:41de0ebd24696ce441af2951a79d09a0a235f9af08e30199a8bd6e8cd11aba4d"},
 ]
 
 [[package]]
@@ -678,17 +678,18 @@ files = [
 
 [[package]]
 name = "referencing"
-version = "0.35.1"
-requires_python = ">=3.8"
+version = "0.36.1"
+requires_python = ">=3.9"
 summary = "JSON Referencing + Python"
 groups = ["lint", "test"]
 dependencies = [
     "attrs>=22.2.0",
     "rpds-py>=0.7.0",
+    "typing-extensions>=4.4.0; python_version < \"3.13\"",
 ]
 files = [
-    {file = "referencing-0.35.1-py3-none-any.whl", hash = "sha256:eda6d3234d62814d1c64e305c1331c9a3a6132da475ab6382eaa997b21ee75de"},
-    {file = "referencing-0.35.1.tar.gz", hash = "sha256:25b42124a6c8b632a425174f24087783efb348a6f1e0008e63cd4466fedf703c"},
+    {file = "referencing-0.36.1-py3-none-any.whl", hash = "sha256:363d9c65f080d0d70bc41c721dce3c7f3e77fc09f269cd5c8813da18069a6794"},
+    {file = "referencing-0.36.1.tar.gz", hash = "sha256:ca2e6492769e3602957e9b831b94211599d2aade9477f5d44110d2530cf9aade"},
 ]
 
 [[package]]
@@ -776,13 +777,13 @@ files = [
 
 [[package]]
 name = "ruff"
-version = "0.9.1"
+version = "0.9.2"
 requires_python = ">=3.7"
 summary = "An extremely fast Python linter and code formatter, written in Rust."
 groups = ["lint"]
 files = [
-    {file = "ruff-0.9.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3f94942a3bb767675d9a051867c036655fe9f6c8a491539156a6f7e6b5f31831"},
-    {file = "ruff-0.9.1.tar.gz", hash = "sha256:fd2b25ecaf907d6458fa842675382c8597b3c746a2dde6717fe3415425df0c17"},
+    {file = "ruff-0.9.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c547f7f256aa366834829a08375c297fa63386cbe5f1459efaf174086b564247"},
+    {file = "ruff-0.9.2.tar.gz", hash = "sha256:b5eceb334d55fae5f316f783437392642ae18e16dcf4f1858d55d3c2a0f8f5d0"},
 ]
 
 [[package]]
@@ -827,7 +828,7 @@ name = "typing-extensions"
 version = "4.12.2"
 requires_python = ">=3.8"
 summary = "Backported and Experimental Type Hints for Python 3.8+"
-groups = ["default", "lint"]
+groups = ["default", "lint", "test"]
 files = [
     {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
     {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
