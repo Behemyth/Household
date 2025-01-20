@@ -2,7 +2,7 @@ kea_dhcp4_config:
   Dhcp4:
     interfaces-config:
       interfaces:
-        - "enp1s0"
+        - "*"
 
     lease-database:
       type: memfile

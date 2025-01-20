@@ -28,35 +28,10 @@ platforms:
           - subnet: 10.42.0.0/24
     networks:
       - name: cluster_network
-        ipv4_address: 10.42.0.1
     groups:
       - managers
 
   - name: worker-1
-    image: geerlingguy/docker-debian12-ansible:latest
-    pre_build_image: true
-    networks:
-      - name: cluster_network
-    groups:
-      - workers
-
-  - name: worker-2
-    image: geerlingguy/docker-debian12-ansible:latest
-    pre_build_image: true
-    networks:
-      - name: cluster_network
-    groups:
-      - workers
-
-  - name: worker-3
-    image: geerlingguy/docker-debian12-ansible:latest
-    pre_build_image: true
-    networks:
-      - name: cluster_network
-    groups:
-      - workers
-
-  - name: worker-4
     image: geerlingguy/docker-debian12-ansible:latest
     pre_build_image: true
     networks:
