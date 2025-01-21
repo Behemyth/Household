@@ -20,14 +20,14 @@ platforms:
       - NET_ADMIN
     privileged: true
     docker_networks:
-      - name: cluster_network
+      - name: manager_network
         driver: macvlan
         driver_options:
           parent: eth0
         ipam_config:
           - subnet: 10.42.0.0/24
     networks:
-      - name: cluster_network
+      - name: manager_network
     groups:
       - managers
 

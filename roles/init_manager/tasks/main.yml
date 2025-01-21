@@ -1,5 +1,6 @@
 ---
 - name: Update the package cache
+  become: true
   ansible.builtin.apt:
     update_cache: true
 
