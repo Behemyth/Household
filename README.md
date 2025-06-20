@@ -1,4 +1,4 @@
-# Household
+# Homelab
 Home server management.
 ___
 

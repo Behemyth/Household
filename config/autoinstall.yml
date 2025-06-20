@@ -15,10 +15,10 @@ autoinstall:
     ansible_config:
     setup_controller:
       repositories:
-        - path: /home/ansible/household/
-          source: git@github.com:Behemyth/Household.git
+        - path: /home/ansible/homelab/
+          source: git@github.com:Behemyth/homelab.git
       run_ansible:
-        - playbook_dir: /home/ansible/household
+        - playbook_dir: /home/ansible/homelab
           playbook_name: playbooks/autoinstall.yml
           forks: 1
   network:

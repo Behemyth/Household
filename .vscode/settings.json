@@ -6,5 +6,5 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
     },
-    "ansible.python.interpreterPath": "/home/asher/projects/behemyth/household/.venv/bin/python",
+    "ansible.python.interpreterPath": "/home/asher/projects/behemyth/homelab/.venv/bin/python",
 }

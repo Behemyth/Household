@@ -6,6 +6,6 @@
       ansible.builtin.command:
         # This should match the 'run_ansible:' command in config/autoinstall.yml
         cmd: ansible-playbook --syntax-check playbooks/autoinstall.yml
-        chdir: "/home/ansible/household"
+        chdir: "/home/ansible/homelab"
       register: command_result
       changed_when: false
