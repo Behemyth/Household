@@ -1,0 +1,15 @@
+---
+namespace: behemyth
+name: homelab
+version: 0.1.0
+readme: README.md
+authors:
+  - Asher Norland <asher.norland@gmail.com>
+description: A collection of various roles to support my homelab infrastructure.
+license_file: "LICENSE"
+dependencies: {}
+repository: https://github.com/behemyth/homelab
+issues: https://github.com/behemyth/homelab/issues
+build_ignore: [tests]
+tags:
+  - infrastructure

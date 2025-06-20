@@ -92,18 +92,14 @@ update = ["--update-all"]
 source = "scm"
 
 [tool.pdm.scripts]
-analyze = {cmd = "ruff check tests"}
-ansible-lint = {cmd = "ansible-lint"}
-destroy.cmd = "molecule destroy"
-destroy.working_dir = "extensions"
-dev.cmd = "molecule converge"
-dev.working_dir = "extensions"
-format = {cmd = "ruff format"}
+analyze = "ruff check tests"
+ansible-lint = "ansible-lint"
+format = "ruff format"
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
-test = {cmd = "pytest --verbose tests"}
-test-molecule.cmd = "molecule test --all"
-test-molecule.working_dir = "extensions"
-type-check = {cmd = "mypy ."}
+test = "pytest tests"
+test-integration = "pytest tests/integration"
+test-unit = "pytest tests/unit"
+type-check = "mypy ."
 
 [tool.pdm]
 distribution = false

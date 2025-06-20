@@ -1,4 +1,6 @@
 ---
+profile: production
+
 mock_roles:
   - init_manager
 
