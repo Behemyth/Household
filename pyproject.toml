@@ -13,10 +13,10 @@ dynamic = ["version"]
 requires-python = ">=3.12" # Pinned to Ubuntu 24 version
 
 dependencies = [
-  "ansible>=11.1.0", # Full ansible for vscode extension
-  "ansible-vault>=2.1",
-  "pydantic>=2.10.3",
+  "ansible-vault>=4.1.0",
+  "pydantic>=2.11.7",
   "pyyaml>=6.0.2",
+  "ansible-dev-tools>=25.5.2",
 ]
 
 [project.urls]
@@ -25,17 +25,16 @@ repository = "https://github.com/Behemyth/Household"
 
 [dependency-groups]
 lint = [
-  "ansible-lint>=24.12.2",
-  "ruff>=0.8.5",
-  "mypy>=1.14",
+  "ruff>=0.12.0",
+  "mypy>=1.16.1",
 ]
 test = [
-  "dnspython>=2.7.0", # For molecule verification
-  "molecule>=24.12.0",
-  "pytest>=8.3.4",
-  "pytest-mock>=3.14.0",
-  "pytest-ansible>=24.12.0",
-  "molecule-plugins[docker]>=23.6.0",
+  "dnspython>=2.7.0",
+  "molecule>=25.6.0",
+  "pytest>=8.4.1",
+  "pytest-mock>=3.14.1",
+  "pytest-ansible>=25.5.0",
+  "molecule-plugins[docker]>=23.7.0",
 ]
 
 [tool.pytest.ini_options]
