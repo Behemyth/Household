@@ -49,12 +49,6 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
     - Set the git repository as the current directory
     - `pdm install`
 
-- Install `virtualbox` on Windows
-
-- Install `vagrant` within WSL
-    - See external site for installation instructions
-    - https://developer.hashicorp.com/vagrant/docs/other/wsl
-
 ## First-time Server Setup
 
 ### Network Setup

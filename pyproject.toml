@@ -36,10 +36,8 @@ test = [
 ]
 
 [tool.pytest.ini_options]
+addopts = "-v"
 log_cli = true
-markers = [
-  "setup: Tests that should be run prior to any automation, verifying static IP setup",
-]
 testpaths = [
   "tests",
 ]
