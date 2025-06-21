@@ -1,11 +1,18 @@
 ---
 - name: Converge
   hosts: managers
+  become: true
+  vars:
+    description: |
+      This scenario only verifies that the autoinstall playbook is present and can be parsed (syntax check), not executed.
   tasks:
-    - name: Run the playbook as a command
+    - name: Syntax Check Autoinstall Playbook
       ansible.builtin.command:
-        # This should match the 'run_ansible:' command in config/autoinstall.yml
         cmd: ansible-playbook --syntax-check playbooks/autoinstall.yml
         chdir: "/home/ansible/homelab"
-      register: command_result
+      register: syntax_check_result
       changed_when: false
+
+    - name: Show Syntax Check Result
+      ansible.builtin.debug:
+        var: syntax_check_result.stdout

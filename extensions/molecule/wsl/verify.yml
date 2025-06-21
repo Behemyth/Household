@@ -1,26 +1,32 @@
 ---
-- name: Verify manager network setup
+- name: Verify Manager Network Setup
   hosts: managers
+  vars:
+    description: |
+      This scenario verifies that the manager node can perform DNS lookups, indicating correct network configuration.
   tasks:
-    - name: Perform DNS lookup
+    - name: Perform DNS Lookup
       ansible.builtin.set_fact:
         dns_result: "{{ lookup('community.general.dig', 'www.google.com.', '127.0.0.1') }}"
 
-    - name: Verify DNS lookup
+    - name: Verify DNS Lookup
       ansible.builtin.assert:
         that: dns_result is defined and dns_result != ""
         fail_msg: "Could not lookup DNS for 'www.google.com'"
         success_msg: "DNS lookup result: {{ dns_result }}"
 
-- name: Verify worker network setup
+- name: Verify Worker Network Setup
   hosts: workers
+  vars:
+    description: |
+      This scenario verifies that worker nodes receive an IP address from the DHCP server and are correctly networked.
   tasks:
-    - name: Check IP address assigned by DHCP
+    - name: Check IP Address Assigned by DHCP
       ansible.builtin.command: ip -4 addr show eth0
       changed_when: true
       register: ip_output
 
-    - name: Verify IP address
+    - name: Verify IP Address
       ansible.builtin.assert:
         that:
           - "'inet 10.42.0.' in ip_output.stdout"

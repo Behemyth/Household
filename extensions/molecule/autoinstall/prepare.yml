@@ -1,29 +1,32 @@
 ---
-- name: Prepare Managers
+# Molecule prepare playbook for the 'autoinstall' scenario
+- name: Prepare
   hosts: managers
   become: true
+  vars:
+    description: |
+      This scenario only verifies that the autoinstall playbook is present and can be parsed (syntax check), not executed.
   tasks:
-    # Our cloud-init script will have already enabled IPv4 forwarding
-    - name: Enable IPv4 forwarding
+    - name: Enable IPv4 Forwarding
       ansible.posix.sysctl:
         name: net.ipv4.ip_forward
         value: 1
         state: present
         reload: true
 
-    - name: Install the rsync package
+    - name: Install Rsync
       ansible.builtin.apt:
         name: rsync
         state: present
         update_cache: true
 
-    - name: Create the destination folder
+    - name: Create Destination Folder
       ansible.builtin.file:
         path: /home/ansible/homelab
         state: directory
         mode: "0755"
 
-    - name: Copy the repository to where autoinstall.yml expects it
+    - name: Copy Repository Contents
       ansible.posix.synchronize:
-        src: /home/asher/ansible/collections/ansible_collections/synodic/infra/
+        src: ../../../../
         dest: /home/ansible/homelab/

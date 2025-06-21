@@ -7,7 +7,8 @@ authors:
   - Asher Norland <asher.norland@gmail.com>
 description: A collection of various roles to support my homelab infrastructure.
 license_file: "LICENSE"
-dependencies: {}
+dependencies:
+  synodic.core: "*"
 repository: https://github.com/behemyth/homelab
 issues: https://github.com/behemyth/homelab/issues
 build_ignore: [tests]

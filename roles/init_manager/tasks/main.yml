@@ -6,4 +6,4 @@
 
 - name: Setup DHCP server
   ansible.builtin.include_role:
-    name: dhcp
+    name: synodic.core.dhcp
