@@ -1,0 +1,30 @@
+- name: Setup Localhost
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Install Packages
+      ansible.builtin.apt:
+        name:
+          - wget
+          - gnupg
+          - software-properties-common
+        state: present
+        update_cache: true
+
+    - name: Add HashiCorp GPG key
+      ansible.builtin.apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
+        keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+    - name: Add HashiCorp Repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+        filename: hashicorp
+        state: present
+
+    - name: Install `terraform`
+      ansible.builtin.apt:
+        name: terraform
+        state: present
+        update_cache: true
