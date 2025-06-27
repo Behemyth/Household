@@ -1,6 +1,11 @@
 - name: Setup Localhost
   hosts: localhost
   become: true
+  pre_tasks:
+    - name: Verify Host
+      ansible.builtin.fail:
+        msg: "This playbook is intended for Ubuntu/Debian systems only."
+      when: ansible_facts['os_family'] != "Debian"
   tasks:
     - name: Install Packages
       ansible.builtin.apt:
