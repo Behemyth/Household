@@ -26,9 +26,10 @@ lint = [
   "mypy>=1.16.1",
 ]
 test = [
-    "pytest>=8.4.1",
-    "pytest-mock>=3.14.1",
-    "tftest>=1.8.5",
+  "pytest>=8.4.1",
+  "pytest-mock>=3.14.1",
+  "tftest>=1.8.5",
+  "azure-cli>=2.74.0",
 ]
 
 [tool.pytest.ini_options]
@@ -89,8 +90,8 @@ source = "scm"
 analyze = "ruff check tests"
 ansible-lint = "ansible-lint"
 format = "ruff format"
+init = "ansible-playbook -i ansible_core/inventory.yml ansible_core/playbooks/setup.yml -K"
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
-post_install = "ansible-playbook -i ansible_core/inventory.yml ansible_core/playbooks/setup.yml -K"
 test = "pytest tests"
 test-integration = "pytest tests/integration"
 test-unit = "pytest tests/unit"

@@ -49,6 +49,9 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
     - Set the git repository as the current directory
     - `pdm install`
 
+- Install system dependencies with a `pdm` script
+    - `pdm init`
+
 ## First-time Server Setup
 
 ### Network Setup
