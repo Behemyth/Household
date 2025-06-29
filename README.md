@@ -50,7 +50,7 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
     - `pdm install`
 
 - Install system dependencies with a `pdm` script
-    - `pdm init`
+    - `pdm setup`
 
 ## First-time Server Setup
 
