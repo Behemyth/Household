@@ -2,8 +2,7 @@
     "recommendations": [
         "charliermarsh.ruff",
         "be5invis.toml",
-        "ms-python.mypy-type-checker",
         "redhat.ansible",
-        "hashicorp.hcl"
+        "meta.pyrefly"
     ]
 }

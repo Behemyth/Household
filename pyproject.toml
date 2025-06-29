@@ -23,13 +23,11 @@ repository = "https://github.com/Behemyth/homelab"
 [dependency-groups]
 lint = [
   "ruff>=0.12.0",
-  "mypy>=1.16.1",
+  "pyrefly>=0.21.0",
 ]
 test = [
   "pytest>=8.4.1",
   "pytest-mock>=3.14.1",
-  "tftest>=1.8.5",
-  "azure-cli>=2.74.0",
 ]
 
 [tool.pytest.ini_options]
@@ -39,10 +37,8 @@ testpaths = [
   "tests",
 ]
 
-[tool.mypy]
-exclude = "__pypackages__"
-plugins = ["pydantic.mypy"]
-strict = true
+[tool.pyrefly]
+project-includes = ["tests"]
 
 [tool.ruff]
 line-length = 120
@@ -95,7 +91,7 @@ setup = "ansible-playbook -i inventory/localhost.yml playbooks/setup.yml -K"
 test = "pytest tests"
 test-integration = "pytest tests/integration"
 test-unit = "pytest tests/unit"
-type-check = "mypy ."
+type-check = "pyrefly ."
 
 [tool.pdm]
 distribution = false
