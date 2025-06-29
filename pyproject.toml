@@ -26,9 +26,9 @@ lint = [
   "mypy>=1.16.1",
 ]
 test = [
-  "pytest>=8.4.1",
-  "pytest-mock>=3.14.1",
-  "pytest-terraform>=0.7.0",
+    "pytest>=8.4.1",
+    "pytest-mock>=3.14.1",
+    "tftest>=1.8.5",
 ]
 
 [tool.pytest.ini_options]
