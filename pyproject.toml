@@ -91,7 +91,7 @@ setup = "ansible-playbook -i inventory/localhost.yml playbooks/setup.yml -K"
 test = "pytest tests"
 test-integration = "pytest tests/integration"
 test-unit = "pytest tests/unit"
-type-check = "pyrefly ."
+type-check = "pyrefly check"
 
 [tool.pdm]
 distribution = false
