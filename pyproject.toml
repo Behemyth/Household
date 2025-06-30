@@ -4,7 +4,7 @@ authors = [
 ] 
 description = "Ansible roles for my homelab" 
 dynamic = ["version"] 
-license = {text = "MIT"} 
+license = "MIT" 
 name = "homelab" 
 readme = "README.md" 
 requires-python = ">=3.12" # Pinned to Ubuntu 24 version
@@ -26,13 +26,16 @@ docs = [
 ]
 [dependency-groups]
 lint = [
-  "ruff>=0.12.0",
-  "pyrefly>=0.21.0",
+  "ruff>=0.12.1",
+  "pyrefly>=0.22.0",
 ]
 test = [
   "pytest>=8.4.1",
   "pytest-mock>=3.14.1",
 ]
+
+[tool.setuptools]
+py-modules = []
 
 [tool.pytest.ini_options]
 addopts = "-v"
@@ -79,9 +82,6 @@ quote-style = "single"
 
 [tool.coverage.report]
 skip_empty = true
-
-[tool.pdm.options]
-update = ["--update-all"]
 
 [tool.pdm.version]
 source = "scm"
