@@ -32,13 +32,7 @@ Follow the steps listed in [the boot configuration files](/config/boot/README.md
 
 **Must be run through WSL**, and **not** on the shared mount.
 
-- Clone the repository
-    - `git clone ansible/collections/ansible_collections/synodic/infra`
-
-**Note: This repository expects to be cloned into a specific directory. Due to `ansible` I am unable to easily bypass this requirement.**
-
 **TODO: Bypass the vscode-ansible extension requiring absolute paths**
-
 
 - Setup `pipx` and `pdm` if they are not already on the distribution
     - `sudo apt install pipx`
