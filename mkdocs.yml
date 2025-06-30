@@ -1,5 +1,5 @@
 site_name: Homelab
-site_url: https://behemyth.github.io
+site_url: https://behemyth.github.io/homelab/
 theme:
   name: material
 site_dir: dist
