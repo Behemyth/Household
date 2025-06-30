@@ -5,3 +5,4 @@ theme:
 site_dir: dist
 nav:
   - Home: index.md
+  - Setup: setup.md
