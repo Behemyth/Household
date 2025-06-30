@@ -3,3 +3,5 @@ site_url: https://behemyth.github.io/homelab/
 theme:
   name: material
 site_dir: dist
+nav:
+  - Home: index.md
