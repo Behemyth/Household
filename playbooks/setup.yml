@@ -9,15 +9,11 @@
         msg: "This playbook is intended for Ubuntu/Debian systems only."
       when: ansible_facts['os_family'] != "Debian"
   tasks:
-    - name: System Dependencies
+    - name: Install System Dependencies
       ansible.builtin.apt:
-        name: genisoimage
-        state: present
-        update_cache: true
-
-    - name: Install Vagrant
-      ansible.builtin.apt:
-        name: vagrant
+        name:
+          - genisoimage
+          - vagrant
         state: present
         update_cache: true
 
