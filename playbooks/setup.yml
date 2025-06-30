@@ -1,35 +1,48 @@
 - name: Setup Localhost
   hosts: localhost
   become: true
+  vars:
+    is_wsl: "{{ 'microsoft' in ansible_facts['kernel'] | lower or 'microsoft' in ansible_facts['virtualization_type'] | lower }}"
   pre_tasks:
     - name: Verify Host
       ansible.builtin.fail:
         msg: "This playbook is intended for Ubuntu/Debian systems only."
       when: ansible_facts['os_family'] != "Debian"
   tasks:
-    - name: Install Packages
+    - name: System Dependencies
       ansible.builtin.apt:
-        name:
-          - wget
-          - gnupg
-          - software-properties-common
+        name: genisoimage
         state: present
         update_cache: true
 
-    - name: Add HashiCorp GPG key
-      ansible.builtin.apt_key:
-        url: https://apt.releases.hashicorp.com/gpg
-        state: present
-        keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
-
-    - name: Add HashiCorp Repository
-      ansible.builtin.apt_repository:
-        repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
-        filename: hashicorp
-        state: present
-
-    - name: Install `terraform`
+    - name: Install Vagrant
       ansible.builtin.apt:
-        name: terraform
+        name: vagrant
         state: present
         update_cache: true
+
+    - name: Ensure VAGRANT_WSL_ENABLE_WINDOWS_ACCESS
+      ansible.builtin.lineinfile:
+        path: ~/.bashrc
+        regexp: '^export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS='
+        line: 'export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS=1'
+        state: present
+      when: is_wsl
+      notify: Reload
+
+    - name: Ensure Windows PATH in WSL
+      ansible.builtin.lineinfile:
+        path: ~/.bashrc
+        regexp: '^export PATH="\$PATH:.*cmd.exe.*echo %PATH%.*"'
+        line: 'export PATH="$PATH:$(/mnt/c/Windows/System32/cmd.exe /c ''echo %PATH%'' | tr -d ''\r'' | tr '';'' '':'')"'
+        state: present
+        insertafter: EOF
+      notify: Reload
+      when: is_wsl
+
+  handlers:
+    - name: Reload
+      ansible.builtin.debug:
+        msg: |
+          Data has been set in ~/.bashrc.
+          Please reload your shell or run 'source ~/.bashrc' for the change to take effect.

@@ -3,7 +3,7 @@
 WORKER_IPS_COUNT = 4
 
 
-def test_terraform_outputs(infrastructure):
+def test_vagrant(infrastructure) -> None:
     """Check that Terraform outputs manager and worker IPs."""
     assert 'manager_ip' in infrastructure, 'manager_ip output missing'
     assert 'worker_ips' in infrastructure, 'worker_ips output missing'
