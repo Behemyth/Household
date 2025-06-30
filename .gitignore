@@ -32,3 +32,4 @@ ansible/vars/azure.yml
 collections/
 
 .vagrant/
+dist/

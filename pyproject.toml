@@ -20,6 +20,10 @@ dependencies = [
 homepage = "https://github.com/Behemyth/homelab"
 repository = "https://github.com/Behemyth/homelab"
 
+[project.optional-dependencies]
+docs = [
+  "mkdocs-material>=9.6.14",
+]
 [dependency-groups]
 lint = [
   "ruff>=0.12.0",
@@ -85,6 +89,8 @@ source = "scm"
 [tool.pdm.scripts]
 analyze = "ruff check tests"
 ansible-lint = "ansible-lint"
+build-docs = 'mkdocs build --strict'
+dev = 'mkdocs serve'
 format = "ruff format"
 lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
 setup = "ansible-playbook -i inventory/localhost.yml playbooks/setup.yml -K"
