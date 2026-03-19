@@ -1,7 +1,6 @@
 {
     "recommendations": [
         "charliermarsh.ruff",
-        "be5invis.toml",
         "redhat.ansible",
         "meta.pyrefly"
     ]
