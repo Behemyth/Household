@@ -11,7 +11,7 @@ dependencies = [
   "ansible-vault>=4.1.0",
   "pydantic>=2.12.5",
   "pyyaml>=6.0.3",
-  "ansible-dev-tools>=26.3.0",
+  "ansible-dev-tools>=26.3.1",
 ]
 
 [project.urls]
@@ -19,7 +19,7 @@ homepage = "https://github.com/Behemyth/homelab"
 repository = "https://github.com/Behemyth/homelab"
 
 [project.optional-dependencies]
-docs = ["mkdocs-material>=9.7.5"]
+docs = ["zensical>=0.0.28"]
 [dependency-groups]
 lint = ["ruff>=0.15.6", "pyrefly>=0.57.1"]
 test = ["pytest>=9.0.2", "pytest-mock>=3.15.1"]
@@ -70,8 +70,8 @@ source = "scm"
 [tool.pdm.scripts]
 analyze = "ruff check tests"
 ansible-lint = "ansible-lint"
-build-docs = 'mkdocs build --strict'
-dev = 'mkdocs serve'
+build-docs = 'zensical build --strict'
+dev = 'zensical serve'
 format = "ruff format"
 lint = { composite = ["analyze", "format", "type-check", "ansible-lint"] }
 setup = "ansible-playbook -i inventory/localhost.yml playbooks/setup.yml -K"

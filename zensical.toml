@@ -1,0 +1,4 @@
+[project]
+site_name = "Homelab"
+site_url = "https://behemyth.github.io/homelab/"
+site_dir = "dist"
