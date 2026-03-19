@@ -2,23 +2,20 @@
 
 ## Overview
 
-A portable homelab cluster built from 4 Raspberry Pi 5s, managed by a MikroTik router and exposed to the internet through a Pangolin reverse tunnel on an Azure VPS.
+A portable homelab cluster built from 4 Raspberry Pi 5s, managed by a MikroTik router and exposed to the internet through Pangolin Cloud with a Newt tunnel client running as a container on the MikroTik.
 
 ## Network Topology
 
 ```mermaid
 graph TB
     internet((Internet))
-
-    subgraph Azure
-        pangolin[Azure VPS<br/>Pangolin]
-    end
+    pangolin_cloud((Pangolin Cloud))
 
     subgraph Home Network
         home_router[Home Router<br/>Dynamic IP]
 
         subgraph Cluster LAN – 10.42.0.0/24
-            mikrotik[MikroTik Router<br/>DHCP · L2 Bridge · Tunnel Endpoint<br/>10.42.0.1]
+            mikrotik[MikroTik hEX S 2025<br/>DHCP · L2 Bridge<br/>Newt Container<br/>10.42.0.1]
             pi1[mini-wumpus<br/>Raspberry Pi 5<br/>10.42.0.10]
             pi2[mini-mush<br/>Raspberry Pi 5<br/>10.42.0.11]
             pi3[mini-mouse<br/>Raspberry Pi 5<br/>10.42.0.12]
@@ -26,8 +23,8 @@ graph TB
         end
     end
 
-    internet <-->|Public IP| pangolin
-    pangolin <-.->|Reverse Tunnel| mikrotik
+    internet <--> pangolin_cloud
+    pangolin_cloud <-.->|Reverse Tunnel| mikrotik
     home_router --- mikrotik
     mikrotik --- pi1
     mikrotik --- pi2
@@ -37,18 +34,18 @@ graph TB
 
 | Device | Hostname | IP | Role |
 |--------|----------|----|------|
-| MikroTik Router | — | 10.42.0.1 | DHCP server, L2 bridge, tunnel endpoint |
+| MikroTik hEX S (2025) | — | 10.42.0.1 | DHCP server, L2 bridge, Newt tunnel client (container) |
 | Raspberry Pi 5 | mini-wumpus | 10.42.0.10 | K3s node |
 | Raspberry Pi 5 | mini-mush | 10.42.0.11 | K3s node |
 | Raspberry Pi 5 | mini-mouse | 10.42.0.12 | K3s node |
 | Raspberry Pi 5 | mini-sota | 10.42.0.13 | K3s node |
-| Azure VPS | — | Public | Pangolin reverse tunnel ingress |
 
 ### Key points
 
-- **Dynamic IP** — The home connection has no static IP. Pangolin on the Azure VPS provides a stable public endpoint via a reverse tunnel that terminates on the MikroTik.
+- **Dynamic IP** — The home connection has no static IP. Pangolin Cloud provides a stable public endpoint. A Newt tunnel client runs as a container on the MikroTik, maintaining the reverse tunnel to Pangolin Cloud.
 - **DHCP** — The MikroTik assigns IPs to all Pis on the `10.42.0.0/24` subnet.
 - **L2 bridge** — The MikroTik bridges all Pi-facing ports at layer 2. Routing/NAT between the cluster and the home network is TBD.
+- **MikroTik model** — hEX S (2025), product code E60iUGS. ARM 32-bit, 512 MB RAM, 128 MB NAND, USB 3.0. Supports RouterOS v7 containers.
 
 ## Boot & Provisioning Flow
 
@@ -79,12 +76,10 @@ flowchart TD
 
 ```mermaid
 graph TB
-    subgraph Azure VPS
-        pangolin_svc[Pangolin<br/>Reverse Tunnel Server]
-    end
+    pangolin_cloud((Pangolin Cloud))
 
-    subgraph MikroTik
-        tunnel_client[Tunnel Client]
+    subgraph MikroTik hEX S 2025
+        newt[Newt Container<br/>Tunnel Client]
         dhcp[DHCP Server]
     end
 
@@ -110,14 +105,16 @@ graph TB
         end
     end
 
-    pangolin_svc <-.-> tunnel_client
-    tunnel_client --> k3s_server
+    pangolin_cloud <-.->|Reverse Tunnel| newt
+    newt --> k3s_server
 ```
 
 ### Decisions
 
 | Topic | Status |
 |-------|--------|
+| MikroTik model | E60iUGS (hEX S 2025) — decided |
+| Ingress method | Pangolin Cloud + Newt container on MikroTik — decided |
 | K3s topology (dedicated control plane vs. dual-role) | TBD |
 | Which Pi is the control plane | TBD |
 | Cluster workloads | TBD |
@@ -130,7 +127,7 @@ This cluster is managed by the `behemyth.homelab` Ansible collection.
 
 | Playbook | Target | Purpose |
 |----------|--------|---------|
-| `setup.yml` | localhost | Developer workstation setup (Vagrant, WSL) |
+| `setup.yml` | localhost | Developer workstation setup |
 | `install.yml` | managers, workers | Full cluster initialization |
 | `autoinstall.yml` | localhost, workers | First-boot provisioning via cloud-init |
 
@@ -138,3 +135,4 @@ This cluster is managed by the `behemyth.homelab` Ansible collection.
 |------|-----------|---------|
 | `init_manager` | Manager Pi | APT update, DHCP setup (being reworked) |
 | `init_worker` | Worker Pis | TBD (stub) |
+> **Note:** The MikroTik (including the Newt container) is configured via RouterOS CLI/WinBox, not Ansible.

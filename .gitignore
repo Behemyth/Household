@@ -27,9 +27,7 @@ __pypackages__/
 .pdm-python
 
 # Secret Files
-ansible/vars/azure.yml
 .ansible/
 collections/
 
-.vagrant/
 dist/
