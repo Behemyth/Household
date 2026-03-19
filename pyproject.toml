@@ -1,19 +1,17 @@
 [project]
-authors = [
-  {name = "Asher Norland", email = "asher.norland@gmail.com"},
-] 
-description = "Ansible roles for my homelab" 
-dynamic = ["version"] 
-license = "MIT" 
-name = "homelab" 
-readme = "README.md" 
-requires-python = ">=3.12" # Pinned to Ubuntu 24 version
+authors = [{ name = "Asher Norland", email = "asher.norland@gmail.com" }]
+description = "Ansible roles for my homelab"
+dynamic = ["version"]
+license = "MIT"
+name = "homelab"
+readme = "README.md"
+requires-python = ">=3.13"                                                # Pinned to Ubuntu 24 version
 
 dependencies = [
   "ansible-vault>=4.1.0",
-  "pydantic>=2.11.7",
-  "pyyaml>=6.0.2",
-  "ansible-dev-tools>=25.5.2",
+  "pydantic>=2.12.5",
+  "pyyaml>=6.0.3",
+  "ansible-dev-tools>=26.3.0",
 ]
 
 [project.urls]
@@ -21,18 +19,10 @@ homepage = "https://github.com/Behemyth/homelab"
 repository = "https://github.com/Behemyth/homelab"
 
 [project.optional-dependencies]
-docs = [
-  "mkdocs-material>=9.6.14",
-]
+docs = ["mkdocs-material>=9.7.5"]
 [dependency-groups]
-lint = [
-  "ruff>=0.12.1",
-  "pyrefly>=0.22.0",
-]
-test = [
-  "pytest>=8.4.1",
-  "pytest-mock>=3.14.1",
-]
+lint = ["ruff>=0.15.6", "pyrefly>=0.57.1"]
+test = ["pytest>=9.0.2", "pytest-mock>=3.15.1"]
 
 [tool.setuptools]
 py-modules = []
@@ -40,9 +30,7 @@ py-modules = []
 [tool.pytest.ini_options]
 addopts = "-v"
 log_cli = true
-testpaths = [
-  "tests",
-]
+testpaths = ["tests"]
 
 [tool.pyrefly]
 project-includes = ["tests"]
@@ -52,24 +40,17 @@ line-length = 120
 preview = true
 
 [tool.ruff.lint]
-ignore = [
-  "D206",
-  "D300",
-  "D415",
-  "E111",
-  "E114",
-  "E117",
-]
+ignore = ["D206", "D300", "D415", "E111", "E114", "E117"]
 select = [
-  "D", # pydocstyle
-  "F", # Pyflakes
-  "I", # isort
-  "PL", # pylint
-  "UP", # pyupgrade
-  "E", # pycodestyle
-  "B", # flake8-bugbear
+  "D",   # pydocstyle
+  "F",   # Pyflakes
+  "I",   # isort
+  "PL",  # pylint
+  "UP",  # pyupgrade
+  "E",   # pycodestyle
+  "B",   # flake8-bugbear
   "SIM", # flake8-simplify
-  "PT", # flake8-pytest-style
+  "PT",  # flake8-pytest-style
 ]
 
 [tool.ruff.lint.pydocstyle]
@@ -92,7 +73,7 @@ ansible-lint = "ansible-lint"
 build-docs = 'mkdocs build --strict'
 dev = 'mkdocs serve'
 format = "ruff format"
-lint = {composite = ["analyze", "format", "type-check", "ansible-lint"]}
+lint = { composite = ["analyze", "format", "type-check", "ansible-lint"] }
 setup = "ansible-playbook -i inventory/localhost.yml playbooks/setup.yml -K"
 test = "pytest tests"
 test-integration = "pytest tests/integration"
